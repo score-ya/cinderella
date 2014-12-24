@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for name in $(find docker/tmp -maxdepth 1  -type f ! -path docker/tmp -name "*.cid"); do
+    docker stop $(cat $name)
+    docker rm $(cat $name)
+    rm -f $name
+done;

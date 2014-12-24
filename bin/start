@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+docker run -d \
+           --volumes-from app-data \
+           -v $(pwd)/docker/logs/php:/var/log/php-fpm \
+           --name php \
+           --cidfile $(pwd)/docker/tmp/php-docker.cid \
+           scoreya/php-debug
+
+docker run -d \
+           --volumes-from app-data \
+           -v $(pwd)/docker/logs/nginx:/var/log/nginx \
+           -v $(pwd)/docker/nginx/nginx.conf:/opt/nginx/conf/nginx.conf \
+           -v $(pwd)/docker/nginx/certs:/opt/nginx/certs \
+           --name nginx \
+           -p 80:80 \
+           -p 443:443 \
+           --cidfile $(pwd)/docker/tmp/nginx-docker.cid \
+           scoreya/nginx

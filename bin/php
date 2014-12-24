@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+docker run -ti \
+           --rm \
+           --volumes-from app-data \
+           scoreya/php-debug "$@"

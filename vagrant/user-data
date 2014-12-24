@@ -1,0 +1,96 @@
+#cloud-config
+
+coreos:
+  etcd:
+    # generate a new token for each unique cluster from https://discovery.etcd.io/new
+    # WARNING: replace each time you 'vagrant destroy'
+    #discovery: https://discovery.etcd.io/<token>
+    addr: $public_ipv4:4001
+    peer-addr: $public_ipv4:7001
+  fleet:
+    public-ip: $public_ipv4
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: docker.service
+      command: restart
+      content: |
+        [Unit]
+        Description=Docker Application Container Engine
+        Documentation=http://docs.docker.io
+        Requires=docker.socket
+        After=docker.socket
+
+        [Service]
+        Environment="TMPDIR=/var/tmp/"
+        ExecStartPre=/bin/mount --make-rprivate /
+        LimitNOFILE=1048576
+        LimitNPROC=1048576
+        # Run docker but don't have docker automatically restart
+        # containers. This is a job for systemd and unit files.
+        ExecStart=/usr/bin/docker --daemon --storage-driver=btrfs --host=fd:// --bip=172.17.42.1/16 --dns=172.17.42.1
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-tcp.socket
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=2375
+        Service=docker.service
+        BindIPv6Only=both
+
+        [Install]
+        WantedBy=sockets.target
+
+    - name: docker-skydns.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=skydns service
+        After=docker.service
+
+        [Service]
+        User=core
+        ExecStartPre=-/usr/bin/docker kill skydns
+        ExecStartPre=-/usr/bin/docker rm -f skydns
+        ExecStart=/usr/bin/docker run -d -p 172.17.42.1:53:53/udp --name skydns crosbymichael/skydns -nameserver 10.10.10.10:53,10.10.11.11:53,8.8.8.8:53 -domain cinderella
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-skydock.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=skydock service
+        After=docker-skydns.service
+
+        [Service]
+        User=core
+        ExecStartPre=-/usr/bin/docker kill skydock
+        ExecStartPre=-/usr/bin/docker rm -f skydock
+        ExecStart=/usr/bin/docker run -d -v /var/run/docker.sock:/docker.sock --name skydock crosbymichael/skydock -ttl 30 -environment dev -s /docker.sock -domain cinderella -name skydns
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: docker-app-data.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description= app data service
+        After=docker-skydock.service
+
+        [Service]
+        User=core
+        ExecStartPre=-/usr/bin/docker kill app-data
+        ExecStartPre=-/usr/bin/docker rm -f app-data
+        ExecStart=/usr/bin/docker run -v /home/core/project:/var/www -v /tmp/vagrant-cache/composer:/root/.composer --name app-data fedora:20 echo "init app data"
