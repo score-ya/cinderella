@@ -1,0 +1,5 @@
+score_ya_cinderella_security_login:
+    pattern: /login
+    schemes: [https]
+    requirements:
+        _method: POST

@@ -20,5 +20,4 @@ class Get
     {
         return new JsonResponse([$id]);
     }
-
 }

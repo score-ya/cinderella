@@ -21,7 +21,7 @@ trait ServiceLoadExtensionTrait
      */
     protected function loadServices(ContainerBuilder $container, $path)
     {
-        $servicesPath = $path . '/../Resources/config/services';
+        $servicesPath = $path.'/../Resources/config/services';
         $loader = new XmlFileLoader($container, new FileLocator($servicesPath));
 
         $finder = new Finder();

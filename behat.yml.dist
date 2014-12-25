@@ -1,0 +1,36 @@
+default:
+    calls:
+        error_reporting: 16383 #ignore E_USER_DEPRECATED
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+    suites:
+        security:
+            paths:
+                features: %paths.base%/tests/features/security
+                fixtures: %paths.base%/tests/fixtures/security
+            contexts:
+                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@security"
+
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                default:
+                    symfony2: ~
+            base_url: "https://cinderella.local/api/"
+            show_auto:    false
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: %paths.base%/var/bootstrap.php.cache
+
+apiary:
+    extensions:
+        Behat\MinkExtension:
+            base_url: "http://private-09e91-cinderella.apiary-mock.com"
+            goutte: ~
+            default_session: goutte

@@ -94,3 +94,17 @@ coreos:
         ExecStartPre=-/usr/bin/docker kill app-data
         ExecStartPre=-/usr/bin/docker rm -f app-data
         ExecStart=/usr/bin/docker run -v /home/core/project:/var/www -v /tmp/vagrant-cache/composer:/root/.composer --name app-data fedora:20 echo "init app data"
+
+    - name: docker-mongo-01.service
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description= mongo 01 service
+        After=docker-skydock.service
+
+        [Service]
+        User=core
+        ExecStartPre=-/usr/bin/docker kill mongo01
+        ExecStartPre=-/usr/bin/docker rm -f mongo01
+        ExecStart=/usr/bin/docker run -v /home/core/project/docker/mongo/mongodb.conf:/mongodb.conf -v /home/core/project/docker/data/mongo/mongo01:/data/db --name mongo01 scoreya/mongo

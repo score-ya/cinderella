@@ -1,5 +1,6 @@
 <?php
 
+use ScoreYa\Cinderella\Bundle as CinderellaBundle;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -7,18 +8,25 @@ class AppKernel extends Kernel
 {
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new ScoreYa\Cinderella\Bundle\TemplateApiBundle\ScoreYaCinderellaTemplateApiBundle(),
-        );
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new Gfreeau\Bundle\GetJWTBundle\GfreeauGetJWTBundle(),
+            new CinderellaBundle\TemplateApiBundle\ScoreYaCinderellaTemplateApiBundle(),
+            new CinderellaBundle\SecurityBundle\ScoreYaCinderellaSecurityBundle(),
+            new CinderellaBundle\UserBundle\ScoreYaCinderellaUserBundle(),
+        ];
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        if (in_array($this->getEnvironment(), ['dev', 'test'])) {
+            $bundles[] = new h4cc\AliceFixturesBundle\h4ccAliceFixturesBundle();
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
@@ -32,4 +40,16 @@ class AppKernel extends Kernel
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+    public function getCacheDir()
+    {
+        return $this->rootDir.'/../var/cache/'.$this->environment;
+    }
+
+    public function getLogDir()
+    {
+        return $this->rootDir.'/../var/logs';
+    }
+
+
 }

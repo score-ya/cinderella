@@ -1,6 +1,7 @@
 /vagrant/.vagrant
 
 /docker/logs/
+/docker/data
 /docker/tmp/*
 !docker/tmp/.gitkeep
 
@@ -13,6 +14,7 @@
 /var/coverage
 /var/cache/*
 /var/logs/*
+/var/jwt
 !var/cache/.gitkeep
 !var/logs/.gitkeep
 /build/

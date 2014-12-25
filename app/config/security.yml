@@ -1,12 +1,28 @@
 security:
-    providers:
-        in_memory:
-            memory: ~
 
+    encoders:
+        ScoreYa\Cinderella\User\Model\User:
+          algorithm:            bcrypt
+
+    providers:
+        users:
+            canonicalized_document: {class: ScoreYa\Cinderella\User\Model\User, property: emailCanonical}
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
 
-        default:
-            anonymous: ~
+        login:
+            pattern:  ^/api/login
+            stateless: true
+            anonymous: true
+            gfreeau_get_jwt:
+                username_parameter: email
+        api:
+            pattern:   ^/api
+            stateless: true
+            lexik_jwt: ~
+
+    access_control:
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
