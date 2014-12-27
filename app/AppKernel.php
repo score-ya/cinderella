@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new CinderellaBundle\TemplateApiBundle\ScoreYaCinderellaTemplateApiBundle(),
             new CinderellaBundle\SecurityBundle\ScoreYaCinderellaSecurityBundle(),
             new CinderellaBundle\UserBundle\ScoreYaCinderellaUserBundle(),
+            new CinderellaBundle\CoreBundle\ScoreYaCinderellaCoreBundle(),
+            new CinderellaBundle\MultitenancyBundle\ScoreYaCinderellaMultitenancyBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {

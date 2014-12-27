@@ -4,7 +4,9 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="score_ya.cinderella.security.util.canonicalizer"
-             class="ScoreYa\Cinderella\Security\Util\Canonicalizer" public="false" />
+    <service id="score_ya.cinderella.security.controller.register"
+             class="ScoreYa\Cinderella\Security\Controller\Register">
+      <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+    </service>
   </services>
 </container>

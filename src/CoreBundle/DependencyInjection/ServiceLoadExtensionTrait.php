@@ -10,8 +10,6 @@ use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
- *
- * @codeCoverageIgnore
  */
 trait ServiceLoadExtensionTrait
 {

@@ -11,13 +11,17 @@
 
     <field name="usernameCanonical" fieldName="usernameCanonical" type="string" /> -->
 
-    <field name="email" fieldName="email" type="string" />
+    <field name="e" fieldName="email" type="string" />
 
-    <field name="emailCanonical" fieldName="emailCanonical" type="string" />
+    <field name="ec" fieldName="emailCanonical" type="string" />
 
-    <field name="password" fieldName="password" type="string" />
+    <field name="p" fieldName="password" type="string" />
 
-    <!--<field name="enabled" fieldName="enabled" type="boolean" />
+    <field name="ct" fieldName="confirmationToken" type="string" />
+
+    <field name="en" fieldName="enabled" type="boolean" />
+
+    <!--
 
     <field name="salt" fieldName="salt" type="string" />
 
@@ -31,8 +35,6 @@
 
     <field name="expiresAt" fieldName="expiresAt" type="date" />
 
-    <field name="confirmationToken" fieldName="confirmationToken" type="string" />
-
     <field name="passwordRequestedAt" fieldName="passwordRequestedAt" type="date" />
 
     <field name="roles" fieldName="roles" type="collection" />
@@ -40,13 +42,16 @@
     <field name="credentialsExpired" column="credentialsExpired" type="boolean" />
 
     <field name="credentialsExpireAt" column="credentialsExpireAt" type="date" /> -->
+
+    <reference-one target-document="ScoreYa\Cinderella\Multitenancy\Model\Tenant" field="t" fieldName="tenant" inversed-by="users" />
+
     <indexes>
      <!-- <index unique="true" dropDups="true">
         <key name="usernameCanonical" order="asc" />
         <option name="safe" value="true" />
       </index> -->
       <index unique="true" dropDups="true">
-        <key name="emailCanonical" order="asc" />
+        <key name="ec" order="asc" />
         <option name="safe" value="true" />
       </index>
     </indexes>

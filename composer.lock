@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b6cd0b2fb65a0971e3268f5e29554e34",
+    "hash": "0a948141e59b141803b224c0a8b735e1",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -677,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "6ec796c5a119b39b191e1c974031ea38ba8fbc6d"
+                "reference": "721f47ef1f6aec271ed5a73217adbe2db2be089a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/6ec796c5a119b39b191e1c974031ea38ba8fbc6d",
-                "reference": "6ec796c5a119b39b191e1c974031ea38ba8fbc6d",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/721f47ef1f6aec271ed5a73217adbe2db2be089a",
+                "reference": "721f47ef1f6aec271ed5a73217adbe2db2be089a",
                 "shasum": ""
             },
             "require": {
@@ -746,7 +746,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2014-12-11 08:38:29"
+            "time": "2014-12-26 09:07:06"
         },
         {
             "name": "gfreeau/get-jwt-bundle",
@@ -1730,12 +1730,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c1c5cd58b71b41799f728e4b14e2a00f680ad04d"
+                "reference": "550ca9d98795d02cb4d81887b21613fffd2f15c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c1c5cd58b71b41799f728e4b14e2a00f680ad04d",
-                "reference": "c1c5cd58b71b41799f728e4b14e2a00f680ad04d",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/550ca9d98795d02cb4d81887b21613fffd2f15c7",
+                "reference": "550ca9d98795d02cb4d81887b21613fffd2f15c7",
                 "shasum": ""
             },
             "require": {
@@ -1838,7 +1838,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-12-25 10:29:16"
+            "time": "2014-12-26 11:36:36"
         },
         {
             "name": "twig/extensions",
@@ -1894,16 +1894,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.16.2",
+            "version": "v1.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc"
+                "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/42f758d9fe2146d1f0470604fc05ee43580873fc",
-                "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
+                "reference": "6dc11a1e8ecfc30e2c68aaeb218148409d8e68af",
                 "shasum": ""
             },
             "require": {
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
                     "role": "Contributors"
                 }
             ],
@@ -1947,7 +1947,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-17 12:53:44"
+            "time": "2014-12-25 19:58:19"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -2501,6 +2501,55 @@
             "time": "2014-05-15 22:08:22"
         },
         {
+            "name": "behatch/contexts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Behatch/contexts.git",
+                "reference": "5d0c33d02f5e3fb494ebcb3effd7a01eca56e94a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Behatch/contexts/zipball/5d0c33d02f5e3fb494ebcb3effd7a01eca56e94a",
+                "reference": "5d0c33d02f5e3fb494ebcb3effd7a01eca56e94a",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": "3.*",
+                "behat/mink": "*",
+                "behat/mink-extension": "~2.0",
+                "justinrainbow/json-schema": "*",
+                "symfony/property-access": "~2.3"
+            },
+            "replace": {
+                "sanpi/behatch-skeleton": "self.version"
+            },
+            "require-dev": {
+                "atoum/atoum": "*@dev",
+                "behat/mink-goutte-driver": "*",
+                "behat/mink-selenium2-driver": "*",
+                "kherge/box": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sanpi\\Behatch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "beerware"
+            ],
+            "description": "Behatch contexts",
+            "keywords": [
+                "BDD",
+                "Behat",
+                "Context",
+                "Symfony2"
+            ],
+            "time": "2014-12-16 15:38:31"
+        },
+        {
             "name": "fabpot/goutte",
             "version": "dev-master",
             "source": {
@@ -2879,6 +2928,100 @@
             "time": "2014-08-25 02:48:14"
         },
         {
+            "name": "matthiasnoback/symfony-config-test",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthiasnoback/SymfonyConfigTest.git",
+                "reference": "8d3a62aa4ba4e9f2c4d3e8a635a047cd74e6c102"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthiasnoback/SymfonyConfigTest/zipball/8d3a62aa4ba4e9f2c4d3e8a635a047cd74e6c102",
+                "reference": "8d3a62aa4ba4e9f2c4d3e8a635a047cd74e6c102",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/config": "2.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7",
+                "sebastian/exporter": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matthias\\SymfonyConfigTest\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Noback",
+                    "email": "matthiasnoback@gmail.com",
+                    "homepage": "http://php-and-symfony.matthiasnoback.nl"
+                }
+            ],
+            "description": "Library for testing user classes related to the Symfony Config Component",
+            "homepage": "https://github.com/matthiasnoback/SymfonyConfigTest",
+            "keywords": [
+                "config",
+                "phpunit",
+                "symfony"
+            ],
+            "time": "2014-10-12 20:31:08"
+        },
+        {
+            "name": "matthiasnoback/symfony-dependency-injection-test",
+            "version": "v0.7.1",
+            "target-dir": "Matthias/SymfonyDependencyInjectionTest",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthiasnoback/SymfonyDependencyInjectionTest.git",
+                "reference": "807c4374a7d65e7fd07f1383d3260c9178cb41d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthiasnoback/SymfonyDependencyInjectionTest/zipball/807c4374a7d65e7fd07f1383d3260c9178cb41d4",
+                "reference": "807c4374a7d65e7fd07f1383d3260c9178cb41d4",
+                "shasum": ""
+            },
+            "require": {
+                "matthiasnoback/symfony-config-test": "0.*",
+                "phpunit/phpunit": ">=3",
+                "sebastian/exporter": "~1",
+                "symfony/dependency-injection": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Matthias\\SymfonyDependencyInjectionTest\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Noback",
+                    "email": "matthiasnoback@gmail.com",
+                    "homepage": "http://php-and-symfony.matthiasnoback.nl"
+                }
+            ],
+            "description": "Library for testing user classes related to the Symfony Dependency Injection Component",
+            "homepage": "http://github.com/matthiasnoback/SymfonyDependencyInjectionTest",
+            "keywords": [
+                "Symfony2",
+                "dependency injection",
+                "phpunit"
+            ],
+            "time": "2014-07-07 07:35:26"
+        },
+        {
             "name": "nelmio/alice",
             "version": "1.7.2",
             "source": {
@@ -3045,16 +3188,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.13",
+            "version": "2.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "0e7d2eec5554f869fa7a4ec2d21e4b37af943ea5"
+                "reference": "ca158276c1200cc27f5409a5e338486bc0b4fc94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/0e7d2eec5554f869fa7a4ec2d21e4b37af943ea5",
-                "reference": "0e7d2eec5554f869fa7a4ec2d21e4b37af943ea5",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ca158276c1200cc27f5409a5e338486bc0b4fc94",
+                "reference": "ca158276c1200cc27f5409a5e338486bc0b4fc94",
                 "shasum": ""
             },
             "require": {
@@ -3106,7 +3249,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-12-03 06:41:44"
+            "time": "2014-12-26 13:28:33"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3924,6 +4067,7 @@
         "friendsofsymfony/rest-bundle": 20,
         "gfreeau/get-jwt-bundle": 20,
         "symfony/symfony": 20,
+        "behatch/contexts": 20,
         "fabpot/goutte": 20,
         "phpunit/phpunit": 20,
         "webmozart/json": 20

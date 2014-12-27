@@ -2,10 +2,10 @@
 Feature: login a user to get a jwt token
 
   Scenario: login in a user
-    Given I add "CONTENT_TYPE" header equal to "application/json"
-    And I add "HTTP_ACCEPT" header equal to "application/json"
-    And I add "HTTP_AUTHORIZATION" header equal to " "
-    And I add "SCRIPT_FILENAME" header equal to " "
+    Given I add "CONTENT_TYPE" client header equal to "application/json"
+    And I add "HTTP_ACCEPT" client header equal to "application/json"
+    And I add "HTTP_AUTHORIZATION" client header equal to " "
+    And I add "SCRIPT_FILENAME" client header equal to " "
     When I send a POST request to "/login" with body:
     """
     {

@@ -23,7 +23,7 @@ class CanonicalizedDocumentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $documentFactory->create($container, 'test', $config);
 
-        $this->assertEquals('score_ya.cinderella.security.util.canonicalizer', (string) $container->getDefinition('test')->getArgument(0));
+        $this->assertEquals('score_ya.cinderella.core.util.canonicalizer', (string) $container->getDefinition('test')->getArgument(0));
         $this->assertEquals('test.wrapped', (string) $container->getDefinition('test')->getArgument(1));
     }
 }

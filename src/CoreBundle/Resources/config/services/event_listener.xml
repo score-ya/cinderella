@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+  <services>
+    <service id="score_ya.cinderella.core.event_listener.canonicalize_property" abstract="true"
+             class="ScoreYa\Cinderella\Core\EventListener\CanonicalizePropertyListener">
+      <argument type="service" id="score_ya.cinderella.core.util.canonicalizer"/>
+    </service>
+
+    <service id="score_ya.cinderella.core.event_listener.violations"
+             class="ScoreYa\Cinderella\Bundle\CoreBundle\EventListener\ViolationsListener">
+      <argument>%fos_rest.converter.request_body.validation_errors_argument%</argument>
+      <tag name="kernel.event_listener" event="kernel.controller" method="checkViolation" priority="-5"/>
+    </service>
+
+  </services>
+</container>

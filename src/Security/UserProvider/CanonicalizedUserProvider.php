@@ -2,7 +2,7 @@
 
 namespace ScoreYa\Cinderella\Security\UserProvider;
 
-use ScoreYa\Cinderella\Security\Util\Canonicalizer;
+use ScoreYa\Cinderella\Core\Util\Canonicalizer;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

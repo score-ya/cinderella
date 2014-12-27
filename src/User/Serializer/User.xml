@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+  <class name="ScoreYa\Cinderella\User\Model\User" exclusion-policy="ALL">
+    <property name="email" type="string" since-version="1.0" expose="true" />
+  </class>
+</serializer>

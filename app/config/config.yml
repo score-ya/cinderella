@@ -1,6 +1,10 @@
 imports:
+    - { resource: cinderella.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
+
+parameters:
+    app.root_dir: %kernel.root_dir%/..
 
 framework:
     #esi:             ~
@@ -38,8 +42,8 @@ swiftmailer:
     spool:     { type: memory }
 
 lexik_jwt_authentication:
-    private_key_path: %kernel.root_dir%/../var/jwt/jwt.pem   # ssh private key path
-    public_key_path:  %kernel.root_dir%/../var/jwt/jwt_public.pem    # ssh public key path
+    private_key_path: %app.root_dir%/var/jwt/jwt.pem   # ssh private key path
+    public_key_path:  %app.root_dir%/var/jwt/jwt_public.pem    # ssh public key path
     pass_phrase:      %private_key.pass_phrase%               # ssh key pass phrase
     token_ttl:        86400                                   # token ttl - defaults to 86400
 
@@ -82,4 +86,21 @@ doctrine_mongodb:
             #  instance_class: Memcached
             #  host: localhost
             #  port: 11211
-            auto_mapping: true
+            mappings:
+                multitenancy:
+                    type: xml
+                    dir: %app.root_dir%/src/Multitenancy/Doctrine
+                    prefix: ScoreYa\Cinderella\Multitenancy\Model
+                user:
+                    type: xml
+                    dir: %app.root_dir%/src/User/Doctrine
+                    prefix: ScoreYa\Cinderella\User\Model
+jms_serializer:
+    metadata:
+        directories:
+            Multitenancy:
+                namespace_prefix: "ScoreYa\\Cinderella\\Multitenancy\\Model"
+                path: "%app.root_dir%/src/Multitenancy/Serializer"
+            User:
+                namespace_prefix: "ScoreYa\\Cinderella\\User\\Model"
+                path: "%app.root_dir%/src/User/Serializer"

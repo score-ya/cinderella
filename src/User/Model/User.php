@@ -2,6 +2,7 @@
 
 namespace ScoreYa\Cinderella\User\Model;
 
+use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
@@ -19,10 +20,13 @@ class User implements AdvancedUserInterface
     private $enabled;
     private $locked;
     private $roles;
+    private $tenant;
+    private $confirmationToken;
 
     public function __construct()
     {
-        $this->enabled = true;
+        $this->id = (string) new \MongoId();
+        $this->enabled = false;
         $this->locked = false;
         $this->roles = [new Role('ROLE_USER')];
     }
@@ -141,6 +145,62 @@ class User implements AdvancedUserInterface
     public function getUsername()
     {
         return $this->email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @param string $emailCanonical
+     *
+     * @return User
+     */
+    public function setEmailCanonical($emailCanonical)
+    {
+        $this->emailCanonical = $emailCanonical;
+
+        return $this;
+    }
+
+    /**
+     * @param Tenant $tenant
+     *
+     * @return User
+     */
+    public function setTenant($tenant)
+    {
+        $this->tenant = $tenant;
+
+        return $this;
+    }
+
+    /**
+     * @param string $confirmationToken
+     *
+     * @return User
+     */
+    public function setConfirmationToken($confirmationToken)
+    {
+        $this->confirmationToken = $confirmationToken;
+
+        return $this;
     }
 
     /**

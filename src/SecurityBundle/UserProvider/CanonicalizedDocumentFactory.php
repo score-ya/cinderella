@@ -19,7 +19,7 @@ class CanonicalizedDocumentFactory extends EntityFactory
 
         $container
             ->setDefinition($id, new Definition(CanonicalizedUserProvider::class))
-            ->addArgument(new Reference('score_ya.cinderella.security.util.canonicalizer'))
+            ->addArgument(new Reference('score_ya.cinderella.core.util.canonicalizer'))
             ->addArgument(new Reference($id.'.wrapped'))
         ;
     }

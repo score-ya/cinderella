@@ -7,15 +7,21 @@
         "psr-4": {
             "ScoreYa\\Cinderella\\Bundle\\CoreBundle\\Tests\\": "tests/CoreBundle",
             "ScoreYa\\Cinderella\\Bundle\\SecurityBundle\\Tests\\": "tests/SecurityBundle",
-            "ScoreYa\\Cinderella\\Security\\Tests\\": "tests/Security"
+            "ScoreYa\\Cinderella\\Core\\Tests\\": "tests/Core",
+            "ScoreYa\\Cinderella\\Multitenancy\\Tests\\": "tests/Multitenancy",
+            "ScoreYa\\Cinderella\\Security\\Tests\\": "tests/Security",
+            "ScoreYa\\Cinderella\\User\\Tests\\": "tests/User"
         }
     },
     "autoload": {
         "psr-4": {
             "ScoreYa\\Cinderella\\Bundle\\CoreBundle\\": "src/CoreBundle",
+            "ScoreYa\\Cinderella\\Bundle\\MultitenancyBundle\\": "src/MultitenancyBundle",
             "ScoreYa\\Cinderella\\Bundle\\SecurityBundle\\": "src/SecurityBundle",
             "ScoreYa\\Cinderella\\Bundle\\TemplateApiBundle\\": "src/TemplateApiBundle",
             "ScoreYa\\Cinderella\\Bundle\\UserBundle\\": "src/UserBundle",
+            "ScoreYa\\Cinderella\\Core\\": "src/Core",
+            "ScoreYa\\Cinderella\\Multitenancy\\": "src/Multitenancy",
             "ScoreYa\\Cinderella\\Security\\": "src/Security",
             "ScoreYa\\Cinderella\\TemplateApi\\": "src/TemplateApi",
             "ScoreYa\\Cinderella\\User\\": "src/User"
@@ -44,8 +50,11 @@
         "behat/mink-extension": "~2.0",
         "behat/mink-goutte-driver": "~1.1",
         "behat/symfony2-extension": "~2.0",
+        "behatch/contexts": "@dev",
         "fabpot/goutte" : "~2.0@dev",
         "h4cc/alice-fixtures-bundle": "~0.3",
+        "matthiasnoback/symfony-config-test": "~0.1",
+        "matthiasnoback/symfony-dependency-injection-test": "~0.3",
         "phpunit/phpunit": "~4.5@dev",
         "sensio/generator-bundle": "~2.3",
         "webmozart/json" : "~1.0@dev"

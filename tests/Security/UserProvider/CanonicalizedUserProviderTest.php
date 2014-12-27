@@ -5,7 +5,7 @@ namespace ScoreYa\Cinderella\Security\Tests\UserProvider;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use ScoreYa\Cinderella\Security\UserProvider\CanonicalizedUserProvider;
-use ScoreYa\Cinderella\Security\Util\Canonicalizer;
+use ScoreYa\Cinderella\Core\Util\Canonicalizer;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 

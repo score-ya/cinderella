@@ -1,5 +1,5 @@
 ScoreYa\Cinderella\User\Model\User:
   login_user:
     email: thetest@beamscore.com
-    emailCanonical: thetest@beamscore.com
     password: $2y$13$sRWw.cL.jNc/AoFM9dB1XOV2el1hu1VkucyxPa4Q8rkh2VInPbaxe
+    enabled: true

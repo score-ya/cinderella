@@ -1,0 +1,12 @@
+score_ya_cinderella_core:
+  canonicalizable:
+    -
+      class: ScoreYa\Cinderella\User\Model\User
+      event: cinderella.user.created
+      property_name: email
+      canonicalized_property_name: emailCanonical
+    -
+      class: ScoreYa\Cinderella\Multitenancy\Model\Tenant
+      event: cinderella.tenant.created
+      property_name: name
+      canonicalized_property_name: nameCanonical

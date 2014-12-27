@@ -3,3 +3,20 @@ score_ya_cinderella_security_login:
     schemes: [https]
     requirements:
         _method: POST
+
+score_ya_cinderella_security_register:
+    pattern: /register
+    defaults:
+        _controller: score_ya.cinderella.security.controller.register
+        _converters:
+            user:
+                converter: score_ya.cinderella.request_body
+                name: user
+                class: ScoreYa\Cinderella\User\Model\User
+            tenant:
+                converter: score_ya.cinderella.request_body
+                name: tenant
+                class: ScoreYa\Cinderella\Multitenancy\Model\Tenant
+    schemes: [https]
+    requirements:
+        _method: POST

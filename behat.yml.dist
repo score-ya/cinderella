@@ -12,12 +12,15 @@ default:
                 features: %paths.base%/tests/features/security
                 fixtures: %paths.base%/tests/fixtures/security
             contexts:
+                - behatch:rest
+                - behatch:json
                 - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
                 - Behat\MinkExtension\Context\MinkContext
             filters:
                 tags: "@security"
 
     extensions:
+        Sanpi\Behatch\Extension: ~
         Behat\MinkExtension:
             sessions:
                 default:

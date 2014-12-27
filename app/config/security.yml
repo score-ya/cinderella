@@ -11,7 +11,10 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-
+        register:
+            pattern: ^/api/register
+            stateless: true
+            security: false
         login:
             pattern:  ^/api/login
             stateless: true

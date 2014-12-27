@@ -4,10 +4,7 @@ namespace ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Mink\Element\DocumentElement;
 use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\DefaultContext;
-use Symfony\Component\BrowserKit\Client;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Webmozart\Json\JsonDecoder;
 
@@ -29,7 +26,10 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
         $manager = $this->kernel->getContainer()->get('h4cc_alice_fixtures.manager');
 
         $objects = $manager->loadFiles(
-            [$beforeScenarioScope->getEnvironment()->getSuite()->getSetting('paths')['fixtures'].'/User.yml'],
+            [
+                $beforeScenarioScope->getEnvironment()->getSuite()->getSetting('paths')['fixtures'].'/User.yml',
+                $beforeScenarioScope->getEnvironment()->getSuite()->getSetting('paths')['fixtures'].'/Tenant.yml',
+            ],
             'yaml'
         );
 
@@ -42,41 +42,11 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
      * @param string $name
      * @param string $value
      *
-     * @Then I add :name header equal to :value
+     * @Then I add :name client header equal to :value
      */
-    public function iAddHeaderEqualTo($name, $value)
+    public function iAddClientHeaderEqualTo($name, $value)
     {
         $this->getSession()->getDriver()->getClient()->setServerParameter($name, $value);
-    }
-
-    /**
-     * Sends a HTTP request with a body
-     *
-     * @param string       $method
-     * @param string       $url
-     * @param PyStringNode $body
-     *
-     * @return DocumentElement
-     *
-     * @Given I send a :method request to :url with body:
-     */
-    public function iSendARequestToWithBody($method, $url, PyStringNode $body)
-    {
-        /** @var Client $client */
-        $client = $this->getSession()->getDriver()->getClient();
-        // intercept redirection
-        $client->followRedirects(false);
-        $client->request(
-            $method,
-            $this->locatePath($url),
-            array(),
-            array(),
-            array(),
-            $body->getRaw()
-        );
-        $client->followRedirects(true);
-
-        return $this->getSession()->getPage();
     }
 
     /**
