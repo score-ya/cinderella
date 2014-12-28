@@ -10,14 +10,34 @@ default:
         security:
             paths:
                 features: %paths.base%/tests/features/security
-                fixtures: %paths.base%/tests/fixtures/security
             contexts:
                 - behatch:rest
                 - behatch:json
-                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
+                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext:
+                    fixtues:
+                        - %paths.base%/tests/fixtures/security/User.yml
+                        - %paths.base%/tests/fixtures/security/Tenant.yml
+                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext
                 - Behat\MinkExtension\Context\MinkContext
             filters:
                 tags: "@security"
+        template:
+            paths:
+                features: %paths.base%/tests/features/template
+                fixtures: %paths.base%/tests/fixtures/template
+            contexts:
+                - behatch:rest
+                - behatch:json
+                - ScoreYa\Cinderella\Bundle\TemplateBundle\Tests\Behat\TemplateContext:
+                    fixtures:
+                        - %paths.base%/tests/fixtures/template/ApiUser.yml
+                        - %paths.base%/tests/fixtures/template/Template.yml
+                        - %paths.base%/tests/fixtures/security/User.yml
+                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
+                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@template"
 
     extensions:
         Sanpi\Behatch\Extension: ~

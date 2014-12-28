@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                  http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+
+  <document name="ScoreYa\Cinderella\User\Model\ApiUser" collection="api_users"
+            repository-class="ScoreYa\Cinderella\User\Repository\ApiUserDocumentRepository">
+    <field fieldName="id" id="true" />
+
+    <field name="ak" fieldName="apiKey" type="string" />
+
+    <reference-one target-document="ScoreYa\Cinderella\Multitenancy\Model\Tenant" field="t" fieldName="tenant" inversed-by="apiUser" />
+
+    <indexes>
+      <index unique="true" dropDups="true">
+        <key name="ak" order="asc" />
+        <option name="safe" value="true" />
+      </index>
+    </indexes>
+  </document>
+</doctrine-mongo-mapping>

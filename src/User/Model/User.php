@@ -28,7 +28,6 @@ class User implements AdvancedUserInterface
         $this->id = (string) new \MongoId();
         $this->enabled = false;
         $this->locked = false;
-        $this->roles = [new Role('ROLE_USER')];
     }
 
     /**
@@ -109,7 +108,7 @@ class User implements AdvancedUserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        return [new Role('ROLE_USER')];
     }
 
     /**

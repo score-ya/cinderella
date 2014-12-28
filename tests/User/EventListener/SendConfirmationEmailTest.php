@@ -35,7 +35,7 @@ class SendConfirmationEmailTest extends \PHPUnit_Framework_TestCase
 
         $this->hashGenerator->nextBytes(32)->willReturn('test_hash_random');
 
-        $user->setConfirmationToken('dGVzdF9oYXNoX3JhbmRvbQ,,')->shouldBeCalled();
+        $user->setConfirmationToken('dGVzdF9oYXNoX3JhbmRvbQ')->shouldBeCalled();
 
         $event->getUser()->willReturn($user->reveal());
 

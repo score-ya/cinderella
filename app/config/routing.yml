@@ -1,5 +1,5 @@
-ScoreYaCinderellaTemplateApiBundle:
-  resource: "@ScoreYaCinderellaTemplateApiBundle/Resources/config/routing/routing.yml"
+ScoreYaCinderellaTemplateBundle:
+  resource: "@ScoreYaCinderellaTemplateBundle/Resources/config/routing/routing.yml"
   prefix:   /api
 
 ScoreYaCinderellaSecurityBundle:

@@ -10,7 +10,9 @@
 
     <field name="n" fieldName="name" type="string" />
     <field name="nc" fieldName="nameCanonical" type="string" />
+    <reference-one target-document="ScoreYa\Cinderella\User\Model\ApiUser" field="au" fieldName="apiUser" mapped-by="tenant" />
     <reference-many target-document="ScoreYa\Cinderella\User\Model\User" field="u" fieldName="users" mapped-by="tenant" />
+    <reference-many target-document="ScoreYa\Cinderella\Template\Model\Template" field="t" fieldName="templates" mapped-by="tenant" />
     <indexes>
       <index unique="true" dropDups="true">
         <key name="nameCanonical" order="asc" />

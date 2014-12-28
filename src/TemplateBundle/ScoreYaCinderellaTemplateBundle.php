@@ -1,6 +1,6 @@
 <?php
 
-namespace ScoreYa\Cinderella\Bundle\TemplateApiBundle;
+namespace ScoreYa\Cinderella\Bundle\TemplateBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -9,6 +9,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @codeCoverageIgnore
  */
-class ScoreYaCinderellaTemplateApiBundle extends Bundle
+class ScoreYaCinderellaTemplateBundle extends Bundle
 {
 }

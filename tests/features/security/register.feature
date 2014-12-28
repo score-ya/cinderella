@@ -13,7 +13,6 @@ Feature: register a new tenant and user
         "name": "tenant-test"
     }
     """
-    Then print last response
     Then the response status code should be 201
 
   Scenario: register a new tenant and user with invalid email

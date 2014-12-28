@@ -39,6 +39,6 @@ class Register
 
         $this->dm->flush();
 
-        return new Response(null, 201);
+        return new Response(null, Response::HTTP_CREATED);
     }
 }

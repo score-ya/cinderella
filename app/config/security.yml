@@ -7,6 +7,8 @@ security:
     providers:
         users:
             canonicalized_document: {class: ScoreYa\Cinderella\User\Model\User, property: emailCanonical}
+        api_users:
+            mongodb: {class: ScoreYa\Cinderella\User\Model\ApiUser, property: apiKey}
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
@@ -21,8 +23,14 @@ security:
             anonymous: true
             gfreeau_get_jwt:
                 username_parameter: email
+        api_template:
+            pattern:   ^/api/template
+            stateless: true
+            simple_preauth:
+                provider: api_users
+                authenticator: score_ya.cinderella.security.authentication.api_key
         api:
-            pattern:   ^/api
+            pattern:   ^/api/(^template)
             stateless: true
             lexik_jwt: ~
 

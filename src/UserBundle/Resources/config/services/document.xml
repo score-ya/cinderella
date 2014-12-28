@@ -3,10 +3,14 @@
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-  <services>
-    <service id="score_ya.cinderella.template_api.controller.template.get"
-             class="ScoreYa\Cinderella\TemplateApi\Controller\Template\Get">
 
+  <services>
+
+    <service id="score_ya.cinderella.user.repository.api_user"
+             class="ScoreYa\Cinderella\User\Repository\ApiUserDocumentRepository"
+             factory-service="doctrine_mongodb.odm.default_document_manager" factory-method="getRepository">
+      <argument>ScoreYa\Cinderella\User\Model\ApiUser</argument>
     </service>
   </services>
+
 </container>

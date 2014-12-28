@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0a948141e59b141803b224c0a8b735e1",
+    "hash": "3cb049361aa8f73afed4119f26635066",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3439,12 +3439,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7dc97126f997a553ea0b7c524ae849b1f18ed32b"
+                "reference": "239c8b4d807aa89ccd0047b5a78fd29c193fcebb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7dc97126f997a553ea0b7c524ae849b1f18ed32b",
-                "reference": "7dc97126f997a553ea0b7c524ae849b1f18ed32b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/239c8b4d807aa89ccd0047b5a78fd29c193fcebb",
+                "reference": "239c8b4d807aa89ccd0047b5a78fd29c193fcebb",
                 "shasum": ""
             },
             "require": {
@@ -3503,7 +3503,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-12-08 09:41:21"
+            "time": "2014-12-28 07:56:28"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

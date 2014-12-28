@@ -96,6 +96,7 @@ Vagrant.configure("2") do |config|
           d.build_image "/home/core/project/docker/nginx", args: "-t scoreya/nginx"
           d.build_image "/home/core/project/docker/php", args: "-t scoreya/php"
           d.build_image "/home/core/project/docker/php-debug", args: "-t scoreya/php-debug"
+          d.build_image "/home/core/project/docker/php-mongoadmin", args: "-t scoreya/php-mongoadmin"
           d.build_image "/home/core/project/docker/mongo", args: "-t scoreya/mongo"
       end
 

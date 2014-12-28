@@ -1,0 +1,18 @@
+ScoreYa\Cinderella\Template\Model\Template:
+  first_template:
+    name: first_template
+    mimeType: text/plain
+    content: plain content
+    tenant: @first_tenant
+  second_template:
+    name: second_template
+    mimeType: text/html
+    tenant: @first_tenant
+  third_template:
+    name: first_template
+    mimeType: text/plain
+    tenant: @second_tenant
+  fourth_template:
+    name: second_template
+    mimeType: text/html
+    tenant: @second_tenant

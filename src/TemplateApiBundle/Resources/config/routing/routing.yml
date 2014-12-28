@@ -1,7 +1,0 @@
-score_ya_cinderella_template_api_get:
-    pattern: /template/{id}
-    defaults: { _controller: score_ya.cinderella.template_api.controller.template.get }
-    schemes: [https]
-    requirements:
-        _method: GET
-        id: "\d+"

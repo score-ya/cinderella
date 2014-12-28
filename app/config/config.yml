@@ -95,6 +95,10 @@ doctrine_mongodb:
                     type: xml
                     dir: %app.root_dir%/src/User/Doctrine
                     prefix: ScoreYa\Cinderella\User\Model
+                template:
+                    type: xml
+                    dir: %app.root_dir%/src/Template/Doctrine
+                    prefix: ScoreYa\Cinderella\Template\Model
 jms_serializer:
     metadata:
         directories:

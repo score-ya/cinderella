@@ -1,6 +1,6 @@
 <?php
 
-namespace ScoreYa\Cinderella\Bundle\TemplateApiBundle\DependencyInjection;
+namespace ScoreYa\Cinderella\Bundle\TemplateBundle\DependencyInjection;
 
 use ScoreYa\Cinderella\Bundle\CoreBundle\DependencyInjection\ServiceLoadExtensionTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
  *
  * @codeCoverageIgnore
  */
-class ScoreYaCinderellaTemplateApiExtension extends Extension
+class ScoreYaCinderellaTemplateExtension extends Extension
 {
     use ServiceLoadExtensionTrait;
 

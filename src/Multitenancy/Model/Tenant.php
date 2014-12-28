@@ -16,11 +16,14 @@ class Tenant
     private $name;
     private $nameCanonical;
     private $users;
+    private $apiUser;
+    private $templates;
 
     public function __construct()
     {
         $this->id = (string) new \MongoId();
         $this->users = new ArrayCollection();
+        $this->templates = new ArrayCollection();
     }
 
     /**

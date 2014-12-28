@@ -1,0 +1,7 @@
+score_ya_cinderella_template_get:
+    pattern: /template/{name}
+    defaults: { _controller: score_ya.cinderella.template.controller.template.get }
+    schemes: [https]
+    requirements:
+        _method: GET
+        name: "[\w-]+"

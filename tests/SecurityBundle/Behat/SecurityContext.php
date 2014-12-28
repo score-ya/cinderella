@@ -2,9 +2,13 @@
 
 namespace ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat;
 
+use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Gherkin\Node\PyStringNode;
+use Sanpi\Behatch\Context\JsonContext;
 use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\DefaultContext;
+use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Webmozart\Json\JsonDecoder;
 
@@ -14,39 +18,45 @@ use Webmozart\Json\JsonDecoder;
 class SecurityContext extends DefaultContext implements SnippetAcceptingContext
 {
     /**
-     * @param BeforeScenarioScope $beforeScenarioScope
-     *
+     * @var JsonContext
+     */
+    private $jsonContext;
+
+    /**
+     * @var RestContext
+     */
+    private $scoreYaRestContext;
+
+    /**
+     * @var string
+     */
+    private $jwt;
+
+    /**
      * @BeforeScenario
      */
-    public function loadUser(BeforeScenarioScope $beforeScenarioScope)
+    public function prepare(BeforeScenarioScope $scope)
     {
-        $dm = $this->kernel->getContainer()->get('doctrine.odm.mongodb.document_manager');
-        $dm->getSchemaManager()->dropDatabases();
-
-        $manager = $this->kernel->getContainer()->get('h4cc_alice_fixtures.manager');
-
-        $objects = $manager->loadFiles(
-            [
-                $beforeScenarioScope->getEnvironment()->getSuite()->getSetting('paths')['fixtures'].'/User.yml',
-                $beforeScenarioScope->getEnvironment()->getSuite()->getSetting('paths')['fixtures'].'/Tenant.yml',
-            ],
-            'yaml'
-        );
-
-        $manager->persist($objects, true);
+        /** @var InitializedContextEnvironment $env */
+        $env               = $scope->getEnvironment();
+        $this->jsonContext = $env->getContext(JsonContext::class);
+        $this->scoreYaRestContext = $env->getContext(RestContext::class);
     }
 
     /**
-     * Add an header element in a request
-     *
-     * @param string $name
-     * @param string $value
-     *
-     * @Then I add :name client header equal to :value
+     * @Given I save the jwt
      */
-    public function iAddClientHeaderEqualTo($name, $value)
+    public function iSaveTheJwt()
     {
-        $this->getSession()->getDriver()->getClient()->setServerParameter($name, $value);
+        $this->jwt = $this->getJson()->token;
+    }
+
+    /**
+     * @Given I set the jwt header
+     */
+    public function iSetTheJwtHeader()
+    {
+        $this->scoreYaRestContext->iAddClientHeaderEqualTo('HTTP_AUTHORIZATION', 'Bearer '.$this->jwt);
     }
 
     /**
@@ -85,5 +95,23 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
         $jsonDecoder = new JsonDecoder();
 
         return $jsonDecoder->decode($json);
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     *
+     * @return array
+     *
+     * @Given I log in as :email with :password
+     */
+    public function iLogInAs($email, $password)
+    {
+        $this->scoreYaRestContext->iAddClientHeaderEqualTo('CONTENT_TYPE', 'application/json');
+        $this->scoreYaRestContext->iAddClientHeaderEqualTo('HTTP_ACCEPT', 'application/json');
+        $this->scoreYaRestContext->iAddClientHeaderEqualTo('HTTP_AUTHORIZATION', '');
+        $this->restContext->iSendARequestToWithBody('POST', '/login', new PyStringNode(['{"email": "'.$email.'","password": "'.$password.'"}'], 0));
+        $this->jsonContext->theResponseShouldBeInJson();
+        $this->iSaveTheJwt();
     }
 }

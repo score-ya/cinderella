@@ -6,20 +6,20 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\UnitOfWork;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
-use ScoreYa\Cinderella\User\Event\UserEvent;
-use ScoreYa\Cinderella\User\Model\User;
-use ScoreYa\Cinderella\User\Processor\UserFlushProcessor;
+use ScoreYa\Cinderella\User\Event\ApiUserEvent;
+use ScoreYa\Cinderella\User\Model\ApiUser;
+use ScoreYa\Cinderella\User\Processor\ApiUserFlushProcessor;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
  *
- * @covers ScoreYa\Cinderella\User\Processor\UserFlushProcessor
+ * @covers ScoreYa\Cinderella\User\Processor\ApiUserFlushProcessor
  */
-class TenantFlushProcessorTest extends \PHPUnit_Framework_TestCase
+class ApiUserFlushProcessorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var UserFlushProcessor
+     * @var ApiUserFlushProcessor
      */
     private $processor;
 
@@ -35,14 +35,14 @@ class TenantFlushProcessorTest extends \PHPUnit_Framework_TestCase
     {
         $dm = $this->prophesize(DocumentManager::class);
         $uow = $this->prophesize(UnitOfWork::class);
-        $user = $this->prophesize(User::class);
+        $user = $this->prophesize(ApiUser::class);
 
         $dm->getUnitOfWork()->willReturn($uow->reveal());
 
         $uow->getDocumentChangeSet($user)->willReturn([]);
         $uow->getDocumentState($user)->willReturn(UnitOfWork::STATE_MANAGED);
 
-        $this->dispatcher->dispatch('cinderella.user.created', Argument::type(UserEvent::class))->shouldBeCalled();
+        $this->dispatcher->dispatch('cinderella.api_user.created', Argument::type(ApiUserEvent::class))->shouldBeCalled();
 
         $this->processor->process($dm->reveal(), $user->reveal());
     }
@@ -52,13 +52,13 @@ class TenantFlushProcessorTest extends \PHPUnit_Framework_TestCase
      */
     public function supports()
     {
-        $this->assertTrue($this->processor->supports(User::class));
+        $this->assertTrue($this->processor->supports(ApiUser::class));
         $this->assertFalse($this->processor->supports(\stdClass::class));
     }
 
     protected function setUp()
     {
         $this->dispatcher = $this->prophesize(EventDispatcherInterface::class);
-        $this->processor = new UserFlushProcessor($this->dispatcher->reveal());
+        $this->processor = new ApiUserFlushProcessor($this->dispatcher->reveal());
     }
 }

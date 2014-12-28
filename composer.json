@@ -7,9 +7,11 @@
         "psr-4": {
             "ScoreYa\\Cinderella\\Bundle\\CoreBundle\\Tests\\": "tests/CoreBundle",
             "ScoreYa\\Cinderella\\Bundle\\SecurityBundle\\Tests\\": "tests/SecurityBundle",
+            "ScoreYa\\Cinderella\\Bundle\\TemplateBundle\\Tests\\": "tests/TemplateBundle",
             "ScoreYa\\Cinderella\\Core\\Tests\\": "tests/Core",
             "ScoreYa\\Cinderella\\Multitenancy\\Tests\\": "tests/Multitenancy",
             "ScoreYa\\Cinderella\\Security\\Tests\\": "tests/Security",
+            "ScoreYa\\Cinderella\\Template\\Tests\\": "tests/Template",
             "ScoreYa\\Cinderella\\User\\Tests\\": "tests/User"
         }
     },
@@ -18,12 +20,12 @@
             "ScoreYa\\Cinderella\\Bundle\\CoreBundle\\": "src/CoreBundle",
             "ScoreYa\\Cinderella\\Bundle\\MultitenancyBundle\\": "src/MultitenancyBundle",
             "ScoreYa\\Cinderella\\Bundle\\SecurityBundle\\": "src/SecurityBundle",
-            "ScoreYa\\Cinderella\\Bundle\\TemplateApiBundle\\": "src/TemplateApiBundle",
+            "ScoreYa\\Cinderella\\Bundle\\TemplateBundle\\": "src/TemplateBundle",
             "ScoreYa\\Cinderella\\Bundle\\UserBundle\\": "src/UserBundle",
             "ScoreYa\\Cinderella\\Core\\": "src/Core",
             "ScoreYa\\Cinderella\\Multitenancy\\": "src/Multitenancy",
             "ScoreYa\\Cinderella\\Security\\": "src/Security",
-            "ScoreYa\\Cinderella\\TemplateApi\\": "src/TemplateApi",
+            "ScoreYa\\Cinderella\\Template\\": "src/Template",
             "ScoreYa\\Cinderella\\User\\": "src/User"
         }
     },

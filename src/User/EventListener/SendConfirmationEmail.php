@@ -26,6 +26,6 @@ class SendConfirmationEmail
     public function onUserCreated(UserEvent $event)
     {
         //todo send email to user
-        $event->getUser()->setConfirmationToken(strtr(base64_encode($this->hashGenerator->nextBytes(32)), '+/=', '-_,'));
+        $event->getUser()->setConfirmationToken(rtrim(strtr(base64_encode($this->hashGenerator->nextBytes(32)), '+/', '-_'), '='));
     }
 }
