@@ -1,0 +1,6 @@
+score_ya_cinderella_user_create_api_key:
+    pattern: /users/create-api-key
+    defaults: { _controller: score_ya.cinderella.user.controller.template.create_api_key }
+    schemes: [https]
+    requirements:
+        _method: POST

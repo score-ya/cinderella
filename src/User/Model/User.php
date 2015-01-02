@@ -212,4 +212,12 @@ class User implements AdvancedUserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    /**
+     * @return Tenant
+     */
+    public function getTenant()
+    {
+        return $this->tenant;
+    }
 }

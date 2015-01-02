@@ -7,6 +7,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\PyStringNode;
 use Sanpi\Behatch\Context\JsonContext;
+use Sanpi\Behatch\HttpCall\HttpCallResult;
 use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\DefaultContext;
 use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -33,13 +34,15 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
     private $jwt;
 
     /**
+     * @param BeforeScenarioScope $scope
+     *
      * @BeforeScenario
      */
     public function prepare(BeforeScenarioScope $scope)
     {
         /** @var InitializedContextEnvironment $env */
-        $env               = $scope->getEnvironment();
-        $this->jsonContext = $env->getContext(JsonContext::class);
+        $env                      = $scope->getEnvironment();
+        $this->jsonContext        = $env->getContext(JsonContext::class);
         $this->scoreYaRestContext = $env->getContext(RestContext::class);
     }
 
@@ -86,18 +89,6 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
     }
 
     /**
-     * @return mixed
-     */
-    private function getJson()
-    {
-        $json = $this->getSession()->getDriver()->getContent();
-
-        $jsonDecoder = new JsonDecoder();
-
-        return $jsonDecoder->decode($json);
-    }
-
-    /**
      * @param $email
      * @param $password
      *
@@ -110,8 +101,30 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
         $this->scoreYaRestContext->iAddClientHeaderEqualTo('CONTENT_TYPE', 'application/json');
         $this->scoreYaRestContext->iAddClientHeaderEqualTo('HTTP_ACCEPT', 'application/json');
         $this->scoreYaRestContext->iAddClientHeaderEqualTo('HTTP_AUTHORIZATION', '');
-        $this->restContext->iSendARequestToWithBody('POST', '/login', new PyStringNode(['{"email": "'.$email.'","password": "'.$password.'"}'], 0));
+        $this->scoreYaRestContext->iAddClientHeaderEqualTo('SCRIPT_FILENAME', '');
+        $this->resultPool->store(
+            new HttpCallResult(
+                $this->restContext->iSendARequestToWithBody(
+                    'POST',
+                    '/login',
+                    new PyStringNode(['{"email": "'.$email.'","password": "'.$password.'"}'], 0)
+                )->getContent()
+            )
+        );
         $this->jsonContext->theResponseShouldBeInJson();
         $this->iSaveTheJwt();
+        $this->iSetTheJwtHeader();
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getJson()
+    {
+        $json = $this->getSession()->getDriver()->getContent();
+
+        $jsonDecoder = new JsonDecoder();
+
+        return $jsonDecoder->decode($json);
     }
 }

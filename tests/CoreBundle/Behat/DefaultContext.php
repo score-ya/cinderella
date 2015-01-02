@@ -7,7 +7,9 @@ use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Sanpi\Behatch\Context\RestContext;
+use Sanpi\Behatch\HttpCall\HttpCallResultPool;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -21,7 +23,7 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
      */
     private static $placeholders = array();
 
-    private $fixtues;
+    private $fixtures;
 
     /**
      * @var KernelInterface
@@ -39,6 +41,11 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
     protected $restContext;
 
     /**
+     * @var HttpCallResultPool
+     */
+    protected $resultPool;
+
+    /**
      * {@inheritdoc}
      */
     public function setKernel(KernelInterface $kernel)
@@ -47,12 +54,15 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
         $this->container = $kernel->getContainer();
     }
 
-    public function __construct($fixtures = array())
+    public function __construct(HttpCallResultPool $resultPool, $fixtures = array())
     {
-        $this->fixtues = $fixtures;
+        $this->resultPool = $resultPool;
+        $this->fixtures   = $fixtures;
     }
 
     /**
+     * @param BeforeScenarioScope $scope
+     *
      * @BeforeScenario
      */
     public function prepareContext(BeforeScenarioScope $scope)
@@ -67,15 +77,14 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
      */
     public function loadFixtures()
     {
-        if (count($this->fixtues) === 0) {
+        if (count($this->fixtures) === 0) {
             return;
         }
 
-        $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $dm->getSchemaManager()->dropDatabases();
+        $this->getDocumentManager()->getSchemaManager()->dropDatabases();
 
         $manager = $this->container->get('h4cc_alice_fixtures.manager');
-        $objects = $manager->loadFiles($this->fixtues, 'yaml');
+        $objects = $manager->loadFiles($this->fixtures, 'yaml');
 
         $manager->persist($objects, true);
     }
@@ -99,5 +108,13 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
     protected function setPlaceholder($key, $value)
     {
         self::$placeholders[$key] = $value;
+    }
+
+    /**
+     * @return DocumentManager
+     */
+    protected function getDocumentManager()
+    {
+        return $this->container->get('doctrine.odm.mongodb.document_manager');
     }
 }

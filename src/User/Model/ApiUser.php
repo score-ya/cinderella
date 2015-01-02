@@ -42,7 +42,7 @@ class ApiUser implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        return [new Role('ROLE_USER')];
     }
 
     /**
@@ -117,5 +117,17 @@ class ApiUser implements UserInterface
     public function getTenant()
     {
         return $this->tenant;
+    }
+
+    /**
+     * @param Tenant $tenant
+     *
+     * @return ApiUser
+     */
+    public function setTenant(Tenant $tenant)
+    {
+        $this->tenant = $tenant;
+
+        return $this;
     }
 }

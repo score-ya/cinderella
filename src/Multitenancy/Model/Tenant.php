@@ -4,6 +4,7 @@ namespace ScoreYa\Cinderella\Multitenancy\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use ScoreYa\Cinderella\User\Model\ApiUser;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -58,6 +59,26 @@ class Tenant
     public function setNameCanonical($nameCanonical)
     {
         $this->nameCanonical = $nameCanonical;
+
+        return $this;
+    }
+
+    /**
+     * @return ApiUser
+     */
+    public function getApiUser()
+    {
+        return $this->apiUser;
+    }
+
+    /**
+     * @param ApiUser $apiUser
+     *
+     * @return Tenant
+     */
+    public function setApiUser(ApiUser $apiUser)
+    {
+        $this->apiUser = $apiUser;
 
         return $this;
     }
