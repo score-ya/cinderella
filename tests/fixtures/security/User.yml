@@ -1,5 +1,5 @@
 ScoreYa\Cinderella\Multitenancy\Model\Tenant:
-  existing_tenant:
+  first_tenant:
     name: first_tenant
 
 ScoreYa\Cinderella\User\Model\User:
@@ -7,4 +7,4 @@ ScoreYa\Cinderella\User\Model\User:
     email: thetest@beamscore.com
     password: $2y$13$sRWw.cL.jNc/AoFM9dB1XOV2el1hu1VkucyxPa4Q8rkh2VInPbaxe
     enabled: true
-    tenant: @existing_tenant
+    tenant: @first_tenant

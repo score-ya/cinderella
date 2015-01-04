@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+  <class name="ScoreYa\Cinderella\Template\Model\Template">
+    <constraint name="Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique">
+      <option name="fields">
+        <value>nameCanonical</value>
+        <value>tenant</value>
+      </option>
+      <option name="errorPath">name</option>
+    </constraint>
+    <property name="name">
+      <constraint name="NotBlank" />
+    </property>
+    <property name="content">
+      <constraint name="NotBlank" />
+    </property>
+    <property name="mimeType">
+      <constraint name="NotBlank" />
+      <constraint name="Choice">
+        <option name="choices">
+          <value>text/plain</value>
+          <value>test/html</value>
+        </option>
+      </constraint>
+
+    </property>
+  </class>
+</constraint-mapping>

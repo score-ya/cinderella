@@ -108,3 +108,6 @@ jms_serializer:
             User:
                 namespace_prefix: "ScoreYa\\Cinderella\\User\\Model"
                 path: "%app.root_dir%/src/User/Serializer"
+            Template:
+                namespace_prefix: "ScoreYa\\Cinderella\\Template\\Model"
+                path: "%app.root_dir%/src/Template/Serializer"

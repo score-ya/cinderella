@@ -535,12 +535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "29bdaa310f791fc0ec439fe2935348dfce4797c3"
+                "reference": "23152aa353c7790af2970f204580e689fad494bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/29bdaa310f791fc0ec439fe2935348dfce4797c3",
-                "reference": "29bdaa310f791fc0ec439fe2935348dfce4797c3",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/23152aa353c7790af2970f204580e689fad494bf",
+                "reference": "23152aa353c7790af2970f204580e689fad494bf",
                 "shasum": ""
             },
             "require": {
@@ -601,7 +601,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2014-10-06 15:30:16"
+            "time": "2015-01-03 01:40:32"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -1730,12 +1730,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "9ca3e8be5f538cc3e60416f2a0c38c7193a06ac2"
+                "reference": "60a97ec3c5b47b4424ef1d15131a7de2c01a7523"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/9ca3e8be5f538cc3e60416f2a0c38c7193a06ac2",
-                "reference": "9ca3e8be5f538cc3e60416f2a0c38c7193a06ac2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/60a97ec3c5b47b4424ef1d15131a7de2c01a7523",
+                "reference": "60a97ec3c5b47b4424ef1d15131a7de2c01a7523",
                 "shasum": ""
             },
             "require": {
@@ -1838,7 +1838,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-02 07:57:18"
+            "time": "2015-01-04 10:49:17"
         },
         {
             "name": "twig/extensions",
@@ -3399,12 +3399,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4a9fb9c9d7f980b00da53eb809d82f9f1a9fe56b"
+                "reference": "6cee4f056858257824a57c9e040528ee0c0b1ae5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4a9fb9c9d7f980b00da53eb809d82f9f1a9fe56b",
-                "reference": "4a9fb9c9d7f980b00da53eb809d82f9f1a9fe56b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6cee4f056858257824a57c9e040528ee0c0b1ae5",
+                "reference": "6cee4f056858257824a57c9e040528ee0c0b1ae5",
                 "shasum": ""
             },
             "require": {
@@ -3463,7 +3463,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-01 14:54:44"
+            "time": "2015-01-02 16:27:24"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

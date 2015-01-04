@@ -8,7 +8,6 @@ Feature: Should get a template for an api key
     And I add "HTTP_AUTHORIZATION" client header equal to " "
     And I add "SCRIPT_FILENAME" client header equal to " "
 
-
   Scenario: should return valid response for api_key
     When I send a GET request to "/template/first_template?apikey=API_KEY" with placeholder
     Then the response status code should be 200
@@ -25,4 +24,4 @@ Feature: Should get a template for an api key
     Given I log in as "thetest@beamscore.com" with "test"
     And I set the jwt header
     When I send a GET request to "/template/first_template"
-    Then the response status code should be 401
+    Then the response status code should be 200

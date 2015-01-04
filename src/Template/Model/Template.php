@@ -2,6 +2,8 @@
 
 namespace ScoreYa\Cinderella\Template\Model;
 
+use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
+
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
  *
@@ -55,5 +57,17 @@ class Template
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * @param Tenant $tenant
+     *
+     * @return Template
+     */
+    public function setTenant(Tenant $tenant)
+    {
+        $this->tenant = $tenant;
+
+        return $this;
     }
 }

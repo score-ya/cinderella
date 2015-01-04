@@ -4,7 +4,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="score_ya.cinderella.user.controller.template.create_api_key"
+    <service id="score_ya.cinderella.user.controller.create_api_key"
              class="ScoreYa\Cinderella\User\Controller\CreateApiKey">
       <argument type="service" id="security.token_storage" />
       <argument type="service" id="doctrine.odm.mongodb.document_manager" />

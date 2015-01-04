@@ -27,11 +27,13 @@ security:
             pattern:   ^/api/template
             stateless: true
             anonymous: false
+            methods: [GET]
+            lexik_jwt: ~
             simple_preauth:
                 provider: api_users
                 authenticator: score_ya.cinderella.security.authentication.api_key
         api:
-            pattern:   ^/api/(?!template)
+            pattern:   ^/api
             stateless: true
             lexik_jwt: ~
             anonymous: false

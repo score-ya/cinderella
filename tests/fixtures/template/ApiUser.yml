@@ -1,8 +1,6 @@
 ScoreYa\Cinderella\Multitenancy\Model\Tenant:
-  first_tenant:
-    name: first_tenant
   second_tenant:
-    name: second_tenant
+    name: second_template_tenant
 
 ScoreYa\Cinderella\User\Model\ApiUser:
   api_user:

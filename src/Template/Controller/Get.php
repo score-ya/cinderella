@@ -1,6 +1,6 @@
 <?php
 
-namespace ScoreYa\Cinderella\Template\Controller\Template;
+namespace ScoreYa\Cinderella\Template\Controller;
 
 use ScoreYa\Cinderella\Core\Util\Canonicalizer;
 use ScoreYa\Cinderella\Template\Repository\TemplateRepository;
@@ -47,6 +47,8 @@ class Get
             $this->canonicalizer->canonicalize($name),
             $user->getTenant()
         );
+
+        #todo return for non api user, json
 
         return new Response($template->getContent(), Response::HTTP_OK, ['Content-Type' => $template->getMimeType()]);
     }

@@ -4,8 +4,15 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="score_ya.cinderella.template.controller.template.get"
-             class="ScoreYa\Cinderella\Template\Controller\Template\Get">
+
+    <service id="score_ya.cinderella.template.controller.create"
+             class="ScoreYa\Cinderella\Template\Controller\Create">
+      <argument type="service" id="security.token_storage" />
+      <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+    </service>
+
+    <service id="score_ya.cinderella.template.controller.get"
+             class="ScoreYa\Cinderella\Template\Controller\Get">
       <argument type="service" id="security.token_storage" />
       <argument type="service" id="score_ya.cinderella.template.repository.template" />
       <argument type="service" id="score_ya.cinderella.core.util.canonicalizer" />

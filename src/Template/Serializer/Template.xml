@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+  <class name="ScoreYa\Cinderella\Template\Model\Template" exclusion-policy="ALL">
+    <property name="name" type="string" since-version="1.0" expose="true" />
+    <property name="mimeType" type="string" since-version="1.0" expose="true" />
+    <property name="content" type="string" since-version="1.0" expose="true" />
+  </class>
+</serializer>

@@ -66,7 +66,6 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
      * @param string $field
      * @param string $value
      *
-     * @throws \Exception
      * @Then the jwt should have a :field field with :value
      */
     public function theJwtShouldHaveAFieldWith($field, $value)
@@ -75,9 +74,11 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
 
         $tokenParts = explode('.', $jwt);
 
-        if (count($tokenParts) !== 3) {
-            throw new \Exception(sprintf('The token "%s" is not a valid jwt token, expect was 3 parts', $jwt));
-        }
+        \PHPUnit_Framework_Assert::assertCount(
+            3,
+            $tokenParts,
+            sprintf('The token "%s" is not a valid jwt token, expect was 3 parts', $jwt)
+        );
 
         $jsonDecoder = new JsonDecoder();
 
@@ -114,17 +115,5 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
         $this->jsonContext->theResponseShouldBeInJson();
         $this->iSaveTheJwt();
         $this->iSetTheJwtHeader();
-    }
-
-    /**
-     * @return mixed
-     */
-    private function getJson()
-    {
-        $json = $this->getSession()->getDriver()->getContent();
-
-        $jsonDecoder = new JsonDecoder();
-
-        return $jsonDecoder->decode($json);
     }
 }

@@ -12,6 +12,7 @@ use Sanpi\Behatch\Context\RestContext;
 use Sanpi\Behatch\HttpCall\HttpCallResultPool;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Webmozart\Json\JsonDecoder;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -116,5 +117,17 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
     protected function getDocumentManager()
     {
         return $this->container->get('doctrine.odm.mongodb.document_manager');
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getJson()
+    {
+        $json = $this->getSession()->getDriver()->getContent();
+
+        $jsonDecoder = new JsonDecoder();
+
+        return $jsonDecoder->decode($json);
     }
 }
