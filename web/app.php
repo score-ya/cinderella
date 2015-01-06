@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 $loader = require_once __DIR__.'/../var/bootstrap.php.cache';
 
+Dotenv::load(__DIR__ . '/../');
 // Enable APC for autoloading to improve performance.
 // You should change the ApcClassLoader first argument to a unique prefix
 // in order to prevent cache key conflicts with other applications
@@ -18,24 +19,7 @@ $apcLoader->register(true);
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';
 
-if (!isset($_SERVER['SYMFONY_ENV'])) {
-    $_SERVER['SYMFONY_ENV'] = 'prod';
-}
-switch ($_SERVER['SYMFONY_ENV']){
-    case 'dev':
-        $debug = true;
-        $environment =  'dev';
-        break;
-    case 'dev_system':
-        $debug = false;
-        $environment = 'dev_system';
-        break;
-    default:
-        $debug = false;
-        $environment = 'prod';
-}
-
-$kernel = new AppKernel($environment, $debug);
+$kernel = new AppKernel($_SERVER['SYMFONY_ENV'], (bool)$_SERVER['SYMFONY_DEBUG']);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 

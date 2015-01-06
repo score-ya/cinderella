@@ -7,8 +7,9 @@
 
 /.idea
 
+
+.env
 /web/bundles/
-/app/config/parameters.yml
 /var/bootstrap.php.cache
 /var/SymfonyRequirements.php
 /var/coverage

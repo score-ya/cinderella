@@ -1,6 +1,5 @@
 imports:
     - { resource: cinderella.yml }
-    - { resource: parameters.yml }
     - { resource: security.yml }
 
 parameters:
@@ -76,7 +75,6 @@ doctrine_mongodb:
     connections:
         default:
             server: %database_server%
-            options: %database_options%
     default_database: "%database_name%"
     document_managers:
         default:
