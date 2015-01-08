@@ -14,6 +14,8 @@
     <field name="nc" fieldName="nameCanonical" type="string"/>
     <field name="c" fieldName="content" type="string"/>
     <field name="mt" fieldName="mimeType" type="string"/>
+    <field name="ov" fieldName="openingVariable" type="string"/>
+    <field name="cv" fieldName="closingVariable" type="string"/>
 
     <reference-one target-document="ScoreYa\Cinderella\Multitenancy\Model\Tenant" field="t" fieldName="tenant"
                    inversed-by="templates"/>

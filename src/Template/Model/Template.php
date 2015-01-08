@@ -17,6 +17,8 @@ class Template
     private $tenant;
     private $content;
     private $mimeType;
+    private $openingVariable;
+    private $closingVariable;
 
     public function __construct()
     {
@@ -69,5 +71,29 @@ class Template
         $this->tenant = $tenant;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOpeningVariable()
+    {
+        return $this->openingVariable;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClosingVariable()
+    {
+        return $this->closingVariable;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

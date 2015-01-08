@@ -33,6 +33,7 @@
     "require": {
         "doctrine/mongodb-odm": "~1.0.0@dev",
         "doctrine/mongodb-odm-bundle": "~3.0.0@dev",
+        "doctrine/doctrine-cache-bundle": "~1.0.0",
         "friendsofsymfony/rest-bundle": "~1.5@dev",
         "gfreeau/get-jwt-bundle" : "@dev",
         "jms/serializer-bundle": "~0.13",

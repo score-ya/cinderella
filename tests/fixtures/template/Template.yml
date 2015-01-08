@@ -2,8 +2,15 @@ ScoreYa\Cinderella\Template\Model\Template:
   first_template:
     name: first_template
     mimeType: text/plain
-    content: plain content
+    content: |
+      Lorem ipsum dolor {{first}} amet,
+      consetetur {{ second }} elitr,
+      sed diam nonumy eirmod tempor
+      invidunt ut {{third}} et dolore
+      magna aliquyam
     tenant: @first_tenant
+    openingVariable: '{{'
+    closingVariable: '}}'
   second_template:
     name: second_template
     mimeType: text/html

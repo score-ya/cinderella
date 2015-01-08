@@ -109,3 +109,10 @@ jms_serializer:
             Template:
                 namespace_prefix: "ScoreYa\\Cinderella\\Template\\Model"
                 path: "%app.root_dir%/src/Template/Serializer"
+
+doctrine_cache:
+    providers:
+        template_variables_cache:
+            file_system:
+                extension: .template_variables.data
+                directory: %kernel.cache_dir%/template_variables
