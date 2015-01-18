@@ -8,6 +8,14 @@ Feature: register a new tenant and user
     And I add "SCRIPT_FILENAME" client header equal to " "
 
   Scenario: register a new tenant and user
+    Given the template client send a request for "user_created.txt" with:
+    """
+    txt user_created content
+    """
+    And the template client send a request for "user_created.html" with:
+    """
+    html user_created content
+    """
     When I send a POST request to "/register" with body:
     """
     {
@@ -15,7 +23,13 @@ Feature: register a new tenant and user
         "name": "tenant-test"
     }
     """
+    Then print last response
     Then the response status code should be 201
+    And I should receive an email on "theregister@beamscore.com" with:
+    """
+html user_created content
+    """
+
 
   Scenario: register a new tenant and user with invalid email
     When I send a POST request to "/register" with body:

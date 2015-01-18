@@ -8,6 +8,10 @@
     <service id="score_ya.cinderella.user.event_listener.send_confirmation_email"
              class="ScoreYa\Cinderella\User\EventListener\SendConfirmationEmail">
       <argument type="service" id="security.secure_random" />
+      <argument type="service" id="score_ya.cinderella.sdk.template_client" />
+      <argument type="service" id="mailer" />
+      <argument type="service" id="translator" />
+      <argument>no-reply@cinderella.dev</argument>
       <tag name="kernel.event_listener" event="cinderella.user.created" method="onUserCreated"/>
     </service>
     <service id="score_ya.cinderella.user.event_listener.generate_api_key"

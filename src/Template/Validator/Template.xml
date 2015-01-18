@@ -8,6 +8,7 @@
       <option name="fields">
         <value>nameCanonical</value>
         <value>tenant</value>
+        <value>mimeType</value>
       </option>
       <option name="errorPath">name</option>
     </constraint>
@@ -22,7 +23,7 @@
       <constraint name="Choice">
         <option name="choices">
           <value>text/plain</value>
-          <value>test/html</value>
+          <value>text/html</value>
         </option>
       </constraint>
 

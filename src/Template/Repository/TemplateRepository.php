@@ -14,9 +14,17 @@ interface TemplateRepository
 {
     /**
      * @param string $name
+     * @param string $mimeType
      * @param Tenant $tenant
      *
      * @return Template
      */
-    public function findByCanonicalName($name, Tenant $tenant);
+    public function findForApiCall($name, $mimeType, Tenant $tenant);
+
+    /**
+     * @param Tenant $tenant
+     *
+     * @return Template[]
+     */
+    public function findAllByTenant(Tenant $tenant);
 }

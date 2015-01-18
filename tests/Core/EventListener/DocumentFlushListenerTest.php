@@ -3,7 +3,7 @@
 namespace ScoreYa\Cinderella\Tests\Core\EventListener;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ODM\MongoDB\Event\ManagerEventArgs;
+use Doctrine\ODM\MongoDB\Event\OnFlushEventArgs;
 use Doctrine\ODM\MongoDB\UnitOfWork;
 use Prophecy\Prophecy\ObjectProphecy;
 use ScoreYa\Cinderella\Core\EventListener\DocumentFlushListener;
@@ -31,7 +31,7 @@ class DocumentFlushListenerTest extends \PHPUnit_Framework_TestCase
      */
     public function doNothingIfNoProcessorIsFound()
     {
-        $event = $this->prophesize(ManagerEventArgs::class);
+        $event = $this->prophesize(OnFlushEventArgs::class);
         $dm = $this->prophesize(DocumentManager::class);
         $uow = $this->prophesize(UnitOfWork::class);
 
@@ -43,7 +43,7 @@ class DocumentFlushListenerTest extends \PHPUnit_Framework_TestCase
 
         $this->processor->supports('otherClass')->willReturn(false);
 
-        $this->listener->preFlush($event->reveal());
+        $this->listener->onFlush($event->reveal());
     }
 
     /**
@@ -51,7 +51,7 @@ class DocumentFlushListenerTest extends \PHPUnit_Framework_TestCase
      */
     public function processDocument()
     {
-        $event = $this->prophesize(ManagerEventArgs::class);
+        $event = $this->prophesize(OnFlushEventArgs::class);
         $dm = $this->prophesize(DocumentManager::class);
         $uow = $this->prophesize(UnitOfWork::class);
 
@@ -64,7 +64,7 @@ class DocumentFlushListenerTest extends \PHPUnit_Framework_TestCase
         $this->processor->supports('otherClass')->willReturn(true);
         $this->processor->process($dm, ['doc'])->shouldBeCalled();
 
-        $this->listener->preFlush($event->reveal());
+        $this->listener->onFlush($event->reveal());
     }
 
     protected function setUp()

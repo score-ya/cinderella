@@ -31,11 +31,16 @@
         }
     },
     "require": {
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "scoreya/cinderella-sdk-bundle" : "~1.0@dev",
+        "scoreya/cinderella-sdk" : "~1.0@dev",
         "doctrine/mongodb-odm": "~1.0.0@dev",
         "doctrine/mongodb-odm-bundle": "~3.0.0@dev",
         "doctrine/doctrine-cache-bundle": "~1.0.0",
-        "friendsofsymfony/rest-bundle": "~1.5@dev",
+        "friendsofsymfony/rest-bundle": "~1.5",
         "gfreeau/get-jwt-bundle" : "@dev",
+        "incenteev/composer-parameter-handler": "~2.0",
         "jms/serializer-bundle": "~0.13",
         "lexik/jwt-authentication-bundle": "~1.0",
         "php": ">=5.3.3",
@@ -44,8 +49,7 @@
         "symfony/monolog-bundle": "~2.4",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/symfony": "~2.7.0@dev",
-        "twig/extensions": "~1.0",
-        "vlucas/phpdotenv" : "~1.0"
+        "twig/extensions": "~1.0"
     },
     "require-dev": {
         "behat/behat": "~3.0",
@@ -59,17 +63,25 @@
         "matthiasnoback/symfony-config-test": "~0.1",
         "matthiasnoback/symfony-dependency-injection-test": "~0.3",
         "phpunit/phpunit": "~4.5.0@dev",
+        "sebastian/exporter" : "~1.2@dev",
         "sensio/generator-bundle": "~2.3",
         "webmozart/json" : "~1.0@dev"
     },
     "scripts": {
+        "pre-install-cmd": [
+            "ScoreYa\\Cinderella\\Core\\Composer\\HerokuEnvironment::populateEnvironment"
+        ],
         "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "mkdir -p var/jwt;curl -o var/jwt/jwt_public.pem -L $JWT_PUBLIC; curl -o var/jwt/jwt.pem -L $JWT_PRIVATE",
+            "cd ui; npm install --production;rm -rf node_modules;",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -85,6 +97,14 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml",
+            "env-map": {
+                "database_name": "SYMFONY__DATABASE_NAME",
+                "database_server": "SYMFONY__DATABASE_SERVER",
+                "private_key.pass_phrase": "SYMFONY__PRIVATE_KEY__PASS_PHRASE"
+            }
+        },
         "branch-alias": {
             "dev-master": "2.7-dev"
         }

@@ -36,6 +36,10 @@ class TemplateFlushProcessor implements FlushProcessor
         if (count($changeSet) === 0 && $state === UnitOfWork::STATE_MANAGED) {
             $this->eventDispatcher->dispatch(TemplateEvent::CREATED, new TemplateEvent($doc));
         }
+
+        if (count($changeSet) > 0 && $state === UnitOfWork::STATE_MANAGED) {
+            $this->eventDispatcher->dispatch(TemplateEvent::UPDATED, new TemplateEvent($doc));
+        }
     }
 
     /**

@@ -50,6 +50,25 @@ class TemplateFlushProcessorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function processChangedObject()
+    {
+        $dm = $this->prophesize(DocumentManager::class);
+        $uow = $this->prophesize(UnitOfWork::class);
+        $template = $this->prophesize(Template::class);
+
+        $dm->getUnitOfWork()->willReturn($uow->reveal());
+
+        $uow->getDocumentChangeSet($template)->willReturn(['changeset']);
+        $uow->getDocumentState($template)->willReturn(UnitOfWork::STATE_MANAGED);
+
+        $this->dispatcher->dispatch('cinderella.template.updated', Argument::type(TemplateEvent::class))->shouldBeCalled();
+
+        $this->processor->process($dm->reveal(), $template->reveal());
+    }
+
+    /**
+     * @test
+     */
     public function supports()
     {
         $this->assertTrue($this->processor->supports(Template::class));

@@ -1,8 +1,7 @@
 score_ya_cinderella_security_login:
     pattern: /login
     schemes: [https]
-    requirements:
-        _method: POST
+    methods: [POST]
 
 score_ya_cinderella_security_register:
     pattern: /register
@@ -18,5 +17,4 @@ score_ya_cinderella_security_register:
                 name: tenant
                 class: ScoreYa\Cinderella\Multitenancy\Model\Tenant
     schemes: [https]
-    requirements:
-        _method: POST
+    methods: [POST]

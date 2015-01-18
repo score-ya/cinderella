@@ -18,6 +18,7 @@ default:
                     fixtures:
                         - %paths.base%/tests/fixtures/security/User.yml
                 - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext
+                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\SDKContext
                 - Behat\MinkExtension\Context\MinkContext
             filters:
                 tags: "@security"

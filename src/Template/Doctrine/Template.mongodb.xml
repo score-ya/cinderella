@@ -24,6 +24,7 @@
       <index unique="true" dropDups="true">
         <key name="nc" order="asc"/>
         <key name="t" order="asc"/>
+        <key name="mt" order="asc"/>
         <option name="safe" value="true"/>
       </index>
     </indexes>

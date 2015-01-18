@@ -1,0 +1,8 @@
+{
+  "security.form.email.placeholder": "name@example.com",
+  "security.form.password.placeholder": "Kennwort",
+  "security.form.login.header": "Anmeldung",
+  "security.form.login.msg": "Geben Sie hier bitte ihre Login-Daten ein.",
+  "security.form.login.label": "Anmelden",
+  "security.form.forgot_password.label": "Passwort vergessen?"
+}

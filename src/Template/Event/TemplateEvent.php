@@ -14,6 +14,7 @@ use Symfony\Component\EventDispatcher\Event;
 class TemplateEvent extends Event implements CanonicalizableEventObject
 {
     const CREATED = 'cinderella.template.created';
+    const UPDATED = 'cinderella.template.updated';
 
     private $template;
 

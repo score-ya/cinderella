@@ -15,3 +15,10 @@ score_ya_cinderella_core:
       event: cinderella.template.created
       property_name: name
       canonicalized_property_name: nameCanonical
+
+score_ya_cinderella_sdk:
+  api_key: cBRRU2W4gE5KPXnKAhDOqRoHajo7w1vFYvzFyZ3QKOE
+  verify_ssl: false
+  clients:
+    template:
+      base_url: https://nginx.nginx.dev.cinderella

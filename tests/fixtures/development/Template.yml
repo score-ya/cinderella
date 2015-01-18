@@ -1,0 +1,25 @@
+ScoreYa\Cinderella\Template\Model\Template:
+  user_create_txt:
+    name: user_create
+    mimeType: text/plain
+    content: |
+      Lorem ipsum dolor {{first}} amet,
+      consetetur {{ second }} elitr,
+      sed diam nonumy eirmod tempor
+      invidunt ut {{third}} et dolore
+      magna aliquyam
+    tenant: @score_ya
+    openingVariable: '{{'
+    closingVariable: '}}'
+  user_create_html:
+    name: user_create
+    mimeType: text/html
+    tenant: @score_ya
+    content: |
+      Lorem ipsum dolor {{first}} amet,
+      consetetur {{ second }} elitr,
+      sed diam nonumy eirmod tempor
+      invidunt ut {{third}} et dolore
+      magna aliquyam
+    openingVariable: '{{'
+    closingVariable: '}}'

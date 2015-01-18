@@ -46,7 +46,7 @@ class Template
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMimeType()
     {

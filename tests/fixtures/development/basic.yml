@@ -1,0 +1,16 @@
+ScoreYa\Cinderella\Multitenancy\Model\Tenant:
+  score_ya:
+    name: ScoreYa
+
+ScoreYa\Cinderella\User\Model\User:
+  score_ya_test_user:
+    email: thetest@beamscore.com
+    password: $2y$13$sRWw.cL.jNc/AoFM9dB1XOV2el1hu1VkucyxPa4Q8rkh2VInPbaxe #password is test
+    enabled: true
+    tenant: @score_ya
+
+ScoreYa\Cinderella\User\Model\ApiUser:
+  api_user:
+    apiKey: cBRRU2W4gE5KPXnKAhDOqRoHajo7w1vFYvzFyZ3QKOE
+    tenant: @score_ya
+

@@ -1,10 +1,16 @@
 score_ya_cinderella_template_get:
-    pattern: /template/{name}
+    pattern: /template/{name}.{format}
     defaults: { _controller: score_ya.cinderella.template.controller.get }
     schemes: [https]
+    methods: [GET]
     requirements:
-        _method: GET
         name: "[\w-]+"
+
+score_ya_cinderella_template_index:
+    pattern: /template
+    defaults: { _controller: score_ya.cinderella.template.controller.index }
+    schemes: [https]
+    methods: [GET]
 
 score_ya_cinderella_template_create:
     pattern: /template
@@ -13,8 +19,21 @@ score_ya_cinderella_template_create:
         _converters:
             template:
                 converter: score_ya.cinderella.request_body
-                name: user
+                name: template
                 class: ScoreYa\Cinderella\Template\Model\Template
     schemes: [https]
+    methods: [POST]
+
+score_ya_cinderella_template_update:
+    pattern: /template/{id}
+    defaults:
+        _controller: score_ya.cinderella.template.controller.update
+        _converters:
+            template:
+                converter: score_ya.cinderella.request_body
+                name: template
+                class: ScoreYa\Cinderella\Template\Model\Template
+    schemes: [https]
+    methods: [PUT]
     requirements:
-        _method: POST
+        id: "[a-f\d]{24}"

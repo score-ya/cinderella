@@ -7,7 +7,7 @@
   <services>
     <service id="score_ya.cinderella.core.event_lister.document_flush" public="false"
              class="ScoreYa\Cinderella\Core\EventListener\DocumentFlushListener">
-      <tag name="doctrine_mongodb.odm.event_listener" event="preFlush" />
+      <tag name="doctrine_mongodb.odm.event_listener" event="onFlush" />
     </service>
   </services>
 </container>

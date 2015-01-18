@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-sm-3 col-md-3 col-lg-2">
+        <div class="panel panel-default" ng-repeat="template in vm.templates  | unique:'mimeType'"  ng-init="mimeType = template.mimeType">
+            <!-- Default panel contents -->
+            <div class="panel-heading" ng-click="hide[mimeType] = !hide[mimeType]">{{::template.mimeType}}</div>
+            <!-- List group -->
+            <ul class="list-group" ng-hide="hide[mimeType]">
+                <li class="list-group-item" ui-sref="template.detail({id: template.id})" ng-repeat="template in ::vm.templates | filter:{mimeType:mimeType}">{{::template.name}}</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-md-9" ui-view="detail"></div>
+</div>

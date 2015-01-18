@@ -7,7 +7,7 @@ Feature: Should create a new template
     And I add "HTTP_ACCEPT" client header equal to "application/json"
     And I add "SCRIPT_FILENAME" client header equal to " "
 
-  Scenario: should return valid response for api_key
+  Scenario: should create a new template
     When I send a POST request to "/template" with body:
     """
     {
@@ -17,7 +17,7 @@ Feature: Should create a new template
     }
     """
     Then the response status code should be 201
-    And the template "Dummy" should contains:
+    And the template "Dummy" for "text/plain" should contains:
     """
     template content
     """
@@ -35,3 +35,28 @@ Feature: Should create a new template
     And the response should have a violation for "name"
     And the response should have a violation for "mimeType"
     And the response should have a violation for "content"
+
+  Scenario: should allow a new template with same name and other mime type
+    And I send a POST request to "/template" with body:
+    """
+    {
+      "name" : "Dummy",
+      "mimeType": "text/plain",
+      "content": "template content"
+    }
+    """
+    And the response status code should be 201
+    When I send a POST request to "/template" with body:
+    """
+    {
+      "name" : "Dummy",
+      "mimeType": "text/html",
+      "content": "html content"
+    }
+    """
+    Then print last response
+    Then the response status code should be 201
+    And the template "Dummy" for "text/html" should contains:
+    """
+    html content
+    """

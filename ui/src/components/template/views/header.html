@@ -1,0 +1,12 @@
+<li>
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input class="form-control" type="text" value="{{vm.template.name}}" ng-model="vm.template.name" />
+        </div>
+    </form>
+</li>
+<li>
+    <a ng-click="vm.save()">
+        <i class="fa fa-save"></i><span translate>template.save</span>
+    </a>
+</li>

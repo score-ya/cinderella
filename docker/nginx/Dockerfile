@@ -1,8 +1,9 @@
-FROM fedora:20
+FROM ubuntu:14.04.1
 MAINTAINER Alexander Miehe <thelex@beamscore.com>
 ENV NGINX_VERSION 1.7.9
 
-RUN yum install -y gcc pcre pcre-devel openssl-devel make \
+RUN apt-get update \
+    && apt-get install -y curl gcc libpcre3-dev libssl-dev make \
     && mkdir -p /tmp/nginx \
     && cd /tmp/nginx \
     && curl -O http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
@@ -14,11 +15,10 @@ RUN yum install -y gcc pcre pcre-devel openssl-devel make \
     && make \
     && make install \
     && rm -rf /tmp/nginx \
-    && echo "clean_requirements_on_remove=1" >> /etc/yum.conf \
-    && yum remove -y gcc make \
-    && yum -y clean all
+    && apt-get remove -y gcc make \
+    && apt-get -y autoremove
 
-VOLUME ["/var/www", "/var/log/nginx", "/opt/nginx/conf/nginx.conf", "/opt/nginx/certs"]
+VOLUME ["/srv/www/app", "/var/log/nginx", "/opt/nginx/conf/nginx.conf", "/opt/nginx/certs"]
 
 EXPOSE 80:80 443:443
 

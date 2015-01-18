@@ -4,7 +4,6 @@ namespace ScoreYa\Cinderella\Template\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
-use ScoreYa\Cinderella\Template\Model\Template;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -14,13 +13,18 @@ use ScoreYa\Cinderella\Template\Model\Template;
 class TemplateDocumentRepository extends DocumentRepository implements TemplateRepository
 {
     /**
-     * @param string $name
-     * @param Tenant $tenant
-     *
-     * @return Template
+     * {@inheritdoc}
      */
-    public function findByCanonicalName($name, Tenant $tenant)
+    public function findForApiCall($name, $mimeType, Tenant $tenant)
     {
-        return $this->findOneBy(['nameCanonical' => $name, 'tenant.id' => $tenant->getId()]);
+        return $this->findOneBy(['nameCanonical' => $name, 'mimeType' => $mimeType , 'tenant.id' => $tenant->getId()]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllByTenant(Tenant $tenant)
+    {
+        return $this->findBy(['tenant.id' => $tenant->getId()]);
     }
 }

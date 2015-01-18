@@ -27,16 +27,19 @@ class TemplateContext extends DefaultContext implements SnippetAcceptingContext
     }
 
     /**
-     * @param string       $name
+     * @param string $name
+     * @param string $mimeType
      * @param PyStringNode $content
      *
-     * @Then the template :name should contains:
+     * @Then the template :name for :mimeType should contains:
      */
-    public function theTemplateShouldContains($name, PyStringNode $content)
+    public function theTemplateForShouldContains($name, $mimeType, PyStringNode $content)
     {
         $this->getDocumentManager()->clear();
         /** @var Template $template */
-        $template = $this->getDocumentManager()->getRepository(Template::class)->findOneByName($name);
+        $template = $this->container->get('score_ya.cinderella.template.repository.template')->findOneBy(
+            ['name' => $name, 'mimeType' => $mimeType]
+        );
 
         \PHPUnit_Framework_Assert::assertInstanceOf(Template::class, $template, 'Template does not exist');
 

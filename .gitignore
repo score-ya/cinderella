@@ -7,6 +7,14 @@
 
 /.idea
 
+ui/coverage
+ui/node_modules
+ui/web/js/*
+!ui/web/js/.gitkeep
+ui/web/media/css
+ui/web/media/fonts
+ui/web/i18n
+ui/web/views
 
 .env
 /web/bundles/
@@ -18,6 +26,7 @@
 /var/jwt
 !var/cache/.gitkeep
 !var/logs/.gitkeep
+/app/config/parameters.yml
 /build/
 /vendor/
 /bin/*

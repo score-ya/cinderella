@@ -4,5 +4,6 @@
     <property name="name" type="string" since-version="1.0" expose="true" />
     <property name="mimeType" type="string" since-version="1.0" expose="true" />
     <property name="content" type="string" since-version="1.0" expose="true" />
+    <property name="id" type="string" since-version="1.0" expose="true" />
   </class>
 </serializer>

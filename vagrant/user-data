@@ -30,7 +30,7 @@ coreos:
         LimitNPROC=1048576
         # Run docker but don't have docker automatically restart
         # containers. This is a job for systemd and unit files.
-        ExecStart=/usr/bin/docker --daemon --storage-driver=btrfs --host=fd:// --bip=172.17.42.1/16 --dns=172.17.42.1
+        ExecStart=/usr/bin/docker --daemon --host=fd:// --bip=172.17.42.1/16 --dns=172.17.42.1
 
         [Install]
         WantedBy=multi-user.target
@@ -93,7 +93,7 @@ coreos:
         User=core
         ExecStartPre=-/usr/bin/docker kill app-data
         ExecStartPre=-/usr/bin/docker rm -f app-data
-        ExecStart=/usr/bin/docker run -v /home/core/project:/var/www -v /tmp/vagrant-cache/composer:/root/.composer --name app-data fedora:20 echo "init app data"
+        ExecStart=/usr/bin/docker run -v /home/core/project:/srv/www/app -v /tmp/vagrant-cache/composer:/root/.composer --name app-data ubuntu:14.04.1 echo "init app data"
 
     - name: docker-mongo-01.service
       command: start
@@ -107,4 +107,4 @@ coreos:
         User=core
         ExecStartPre=-/usr/bin/docker kill mongo01
         ExecStartPre=-/usr/bin/docker rm -f mongo01
-        ExecStart=/usr/bin/docker run -v /home/core/project/docker/mongo/mongodb.conf:/mongodb.conf -v /home/core/project/docker/data/mongo/mongo01:/data/db --name mongo01 scoreya/mongo
+        ExecStart=/usr/bin/docker run -v /home/core/project/docker/mongo/mongodb.conf:/etc/mongod.conf -v /home/core/project/docker/data/mongo/mongo01:/data/db --name mongo01 scoreya/mongo

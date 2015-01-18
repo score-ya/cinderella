@@ -2,7 +2,7 @@
 
 namespace ScoreYa\Cinderella\Core\EventListener;
 
-use Doctrine\ODM\MongoDB\Event\ManagerEventArgs;
+use Doctrine\ODM\MongoDB\Event\OnFlushEventArgs;
 use ScoreYa\Cinderella\Core\Processor\FlushProcessor;
 
 /**
@@ -40,9 +40,9 @@ class DocumentFlushListener
     }
 
     /**
-     * @param ManagerEventArgs $event
+     * @param OnFlushEventArgs $event
      */
-    public function preFlush(ManagerEventArgs $event)
+    public function onFlush(OnFlushEventArgs $event)
     {
         $dm  = $event->getDocumentManager();
         $uow = $dm->getUnitOfWork();

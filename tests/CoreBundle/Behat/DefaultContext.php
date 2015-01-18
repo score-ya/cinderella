@@ -10,6 +10,7 @@ use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Sanpi\Behatch\Context\RestContext;
 use Sanpi\Behatch\HttpCall\HttpCallResultPool;
+use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Webmozart\Json\JsonDecoder;
@@ -129,5 +130,13 @@ class DefaultContext extends RawMinkContext implements Context, KernelAwareConte
         $jsonDecoder = new JsonDecoder();
 
         return $jsonDecoder->decode($json);
+    }
+
+    /**
+     * @return Client
+     */
+    protected function getClient()
+    {
+        return $this->getSession()->getDriver()->getClient();
     }
 }
