@@ -4,6 +4,8 @@ namespace ScoreYa\Cinderella\Tests\Core\EventListener;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Event\OnFlushEventArgs;
+use Doctrine\ODM\MongoDB\Mapping\ClassMetadata;
+use Doctrine\ODM\MongoDB\Mapping\ClassMetadataFactory;
 use Doctrine\ODM\MongoDB\UnitOfWork;
 use Prophecy\Prophecy\ObjectProphecy;
 use ScoreYa\Cinderella\Core\EventListener\DocumentFlushListener;
@@ -54,15 +56,23 @@ class DocumentFlushListenerTest extends \PHPUnit_Framework_TestCase
         $event = $this->prophesize(OnFlushEventArgs::class);
         $dm = $this->prophesize(DocumentManager::class);
         $uow = $this->prophesize(UnitOfWork::class);
+        $doc = new \stdClass();
+        $metadata = $this->prophesize(ClassMetadata::class);
+        $metadataFactory = $this->prophesize(ClassMetadataFactory::class);
 
         $event->getDocumentManager()->willReturn($dm->reveal());
 
-        $uow->getIdentityMap()->willReturn(['otherClass' => [['doc']]]);
+        $metadataFactory->getMetadataFor('stdClass')->willReturn($metadata->reveal());
 
+        $uow->recomputeSingleDocumentChangeSet($metadata->reveal(), $doc)->shouldBeCalled();
+        $uow->getIdentityMap()->willReturn(['otherClass' => [$doc]]);
+
+        $dm->getMetadataFactory()->willReturn($metadataFactory->reveal());
         $dm->getUnitOfWork()->willReturn($uow->reveal());
 
         $this->processor->supports('otherClass')->willReturn(true);
-        $this->processor->process($dm, ['doc'])->shouldBeCalled();
+        $this->processor->process($dm, $doc)->shouldBeCalled();
+
 
         $this->listener->onFlush($event->reveal());
     }

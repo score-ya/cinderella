@@ -14,7 +14,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
  *
- * @covers ScoreYa\Cinderella\Template\Processor\TemplateFlushProcessor
+ * @covers ScoreYa\Cinderella\Template\Processor\TemplateFlushProcessor<extended>
  */
 class TemplateFlushProcessorTest extends \PHPUnit_Framework_TestCase
 {
@@ -39,7 +39,7 @@ class TemplateFlushProcessorTest extends \PHPUnit_Framework_TestCase
 
         $dm->getUnitOfWork()->willReturn($uow->reveal());
 
-        $uow->getDocumentChangeSet($template)->willReturn([]);
+        $uow->getDocumentChangeSet($template)->willReturn(['id' => [null, 'id']]);
         $uow->getDocumentState($template)->willReturn(UnitOfWork::STATE_MANAGED);
 
         $this->dispatcher->dispatch('cinderella.template.created', Argument::type(TemplateEvent::class))->shouldBeCalled();
@@ -58,7 +58,7 @@ class TemplateFlushProcessorTest extends \PHPUnit_Framework_TestCase
 
         $dm->getUnitOfWork()->willReturn($uow->reveal());
 
-        $uow->getDocumentChangeSet($template)->willReturn(['changeset']);
+        $uow->getDocumentChangeSet($template)->willReturn(['id' => ['id', 'id']]);
         $uow->getDocumentState($template)->willReturn(UnitOfWork::STATE_MANAGED);
 
         $this->dispatcher->dispatch('cinderella.template.updated', Argument::type(TemplateEvent::class))->shouldBeCalled();

@@ -44,13 +44,17 @@ class DocumentFlushListener
      */
     public function onFlush(OnFlushEventArgs $event)
     {
-        $dm  = $event->getDocumentManager();
+        $dm = $event->getDocumentManager();
         $uow = $dm->getUnitOfWork();
 
         foreach ($uow->getIdentityMap() as $class => $docs) {
             if ($result = $this->getFlushProcessor($class)) {
                 foreach ($docs as $doc) {
                     $result->process($dm, $doc);
+                    $uow->recomputeSingleDocumentChangeSet(
+                        $dm->getMetadataFactory()->getMetadataFor(get_class($doc)),
+                        $doc
+                    );
                 }
             }
         }

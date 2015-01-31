@@ -3,8 +3,7 @@
 namespace ScoreYa\Cinderella\User\Processor;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ODM\MongoDB\UnitOfWork;
-use ScoreYa\Cinderella\Core\Processor\FlushProcessor;
+use ScoreYa\Cinderella\Core\Processor\BaseFlushProcessor;
 use ScoreYa\Cinderella\User\Event\ApiUserEvent;
 use ScoreYa\Cinderella\User\Model\ApiUser;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -12,7 +11,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
  */
-class ApiUserFlushProcessor implements FlushProcessor
+class ApiUserFlushProcessor extends BaseFlushProcessor
 {
     private $eventDispatcher;
 
@@ -30,10 +29,7 @@ class ApiUserFlushProcessor implements FlushProcessor
      */
     public function process(DocumentManager $dm, $doc)
     {
-        $changeSet = $dm->getUnitOfWork()->getDocumentChangeSet($doc);
-        $state     = $dm->getUnitOfWork()->getDocumentState($doc);
-
-        if (count($changeSet) === 0 && $state === UnitOfWork::STATE_MANAGED) {
+        if ($this->isCreated($dm, $doc)) {
             $this->eventDispatcher->dispatch(ApiUserEvent::CREATED, new ApiUserEvent($doc));
         }
     }
