@@ -24,7 +24,7 @@ security:
             gfreeau_get_jwt:
                 username_parameter: email
         api_template:
-            pattern:   ^/api/template
+            pattern:   ^/api/template/[\w-\.]+
             stateless: true
             anonymous: false
             methods: [GET]

@@ -58,7 +58,7 @@ class TemplateFlushProcessorTest extends \PHPUnit_Framework_TestCase
 
         $dm->getUnitOfWork()->willReturn($uow->reveal());
 
-        $uow->getDocumentChangeSet($template)->willReturn(['id' => ['id', 'id']]);
+        $uow->getDocumentChangeSet($template)->willReturn(['other']);
         $uow->getDocumentState($template)->willReturn(UnitOfWork::STATE_MANAGED);
 
         $this->dispatcher->dispatch('cinderella.template.updated', Argument::type(TemplateEvent::class))->shouldBeCalled();

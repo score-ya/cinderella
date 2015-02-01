@@ -31,8 +31,6 @@ class Update
      */
     public function __invoke(Template $template)
     {
-        $this->dm->persist($template);
-
         $this->dm->flush();
 
         return new Response(null, Response::HTTP_NO_CONTENT);
