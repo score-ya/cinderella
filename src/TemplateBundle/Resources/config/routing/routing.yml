@@ -1,10 +1,24 @@
-score_ya_cinderella_template_get:
+score_ya_cinderella_template_get_api:
     pattern: /template/{name}.{format}
-    defaults: { _controller: score_ya.cinderella.template.controller.get }
+    defaults: { _controller: score_ya.cinderella.template.controller.get_api }
     schemes: [https]
     methods: [GET]
     requirements:
         name: "[\w-]+"
+
+score_ya_cinderella_template_get:
+    pattern: /template/{id}
+    defaults:
+        _controller: score_ya.cinderella.template.controller.get
+        _converters:
+            template:
+                converter: score_ya.cinderella.doctrine_odm
+                name: template
+                class: ScoreYa\Cinderella\Template\Model\Template
+    schemes: [https]
+    methods: [GET]
+    requirements:
+        id: "[a-f\d]{24}"
 
 score_ya_cinderella_template_index:
     pattern: /template
@@ -35,5 +49,19 @@ score_ya_cinderella_template_update:
                 class: ScoreYa\Cinderella\Template\Model\Template
     schemes: [https]
     methods: [PUT]
+    requirements:
+        id: "[a-f\d]{24}"
+
+score_ya_cinderella_template_delete:
+    pattern: /template/{id}
+    defaults:
+        _controller: score_ya.cinderella.template.controller.delete
+        _converters:
+            template:
+                converter: score_ya.cinderella.doctrine_odm
+                name: template
+                class: ScoreYa\Cinderella\Template\Model\Template
+    schemes: [https]
+    methods: [DELETE]
     requirements:
         id: "[a-f\d]{24}"

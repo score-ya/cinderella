@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @codeCoverageIgnore
  */
-class Update
+class Delete
 {
     private $templateRepository;
 
@@ -26,11 +26,11 @@ class Update
     /**
      * @param Template $template
      *
-     * @return Response
+     * @return Template
      */
     public function __invoke(Template $template)
     {
-        $this->templateRepository->update($template);
+        $this->templateRepository->delete($template);
 
         return new Response(null, Response::HTTP_NO_CONTENT);
     }

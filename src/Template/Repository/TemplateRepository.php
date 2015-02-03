@@ -27,4 +27,26 @@ interface TemplateRepository
      * @return Template[]
      */
     public function findAllByTenant(Tenant $tenant);
+
+    /**
+     * @param Template $template
+     */
+    public function delete(Template $template);
+
+    /**
+     * @param Template $template
+     */
+    public function update(Template $template);
+
+    /**
+     * @param Template $template
+     */
+    public function create(Template $template);
+
+    /**
+     * @param array $options
+     *
+     * @return Template[]
+     */
+    public function findUniqueBy(array $options);
 }

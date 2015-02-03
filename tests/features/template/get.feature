@@ -40,7 +40,8 @@ Feature: Should return a template
   Scenario: should get json object for calls with jwt token
     Given I log in as "thetest@beamscore.com" with "test"
     And I set the jwt header
-    When I send a GET request to "/template/first_template.txt"
+    And I have a template id as placeholder
+    When I send a GET request to "/template/TEMPLATE_ID" with placeholder
     Then the response status code should be 200
     And the response should be in JSON
     And the JSON should be valid according to the schema "tests/fixtures/json-schema/template.json"

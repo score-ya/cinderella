@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ddb1eb1b834b85f0e603d3203067e2b5",
+    "hash": "95e4c6a3d04a7a92e3a924c109e8e7f6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -837,7 +837,7 @@
         },
         {
             "name": "gfreeau/get-jwt-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "target-dir": "Gfreeau/Bundle/GetJWTBundle",
             "source": {
                 "type": "git",
@@ -2003,12 +2003,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e25b751eb005de9b3e89e810b32775ae81800218"
+                "reference": "fcd6d6085f841fdb16b31d4633e664bcee478fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e25b751eb005de9b3e89e810b32775ae81800218",
-                "reference": "e25b751eb005de9b3e89e810b32775ae81800218",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/fcd6d6085f841fdb16b31d4633e664bcee478fb3",
+                "reference": "fcd6d6085f841fdb16b31d4633e664bcee478fb3",
                 "shasum": ""
             },
             "require": {
@@ -2111,7 +2111,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-30 09:18:28"
+            "time": "2015-02-03 06:47:10"
         },
         {
             "name": "twig/extensions",
@@ -2779,12 +2779,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behatch/contexts.git",
-                "reference": "84ae6a186e24f911a055586684f66478f3111058"
+                "reference": "fc1ffd6120be4c380fc0e61b1feb22bbde222f8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behatch/contexts/zipball/84ae6a186e24f911a055586684f66478f3111058",
-                "reference": "84ae6a186e24f911a055586684f66478f3111058",
+                "url": "https://api.github.com/repos/Behatch/contexts/zipball/fc1ffd6120be4c380fc0e61b1feb22bbde222f8d",
+                "reference": "fc1ffd6120be4c380fc0e61b1feb22bbde222f8d",
                 "shasum": ""
             },
             "require": {
@@ -2820,7 +2820,7 @@
                 "Context",
                 "Symfony2"
             ],
-            "time": "2015-01-14 12:35:08"
+            "time": "2015-02-02 08:34:52"
         },
         {
             "name": "fabpot/goutte",
@@ -3313,27 +3313,27 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "38743b677965c48a637097b2746a281264ae2347"
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/38743b677965c48a637097b2746a281264ae2347",
-                "reference": "38743b677965c48a637097b2746a281264ae2347",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d68dbdc53dc358a816f00b300704702b2eaff7b8",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*@stable"
+                "phpunit/phpunit": "~4.0"
             },
             "suggest": {
-                "dflydev/markdown": "1.0.*",
-                "erusev/parsedown": "~0.7"
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
             },
             "type": "library",
             "extra": {
@@ -3358,7 +3358,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2014-08-09 10:27:07"
+            "time": "2015-02-03 12:10:50"
         },
         {
             "name": "phpspec/prophecy",
@@ -3669,12 +3669,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "397bcbe22462455e513a8e92216e3192ee201b2e"
+                "reference": "c6de7c0ccf8b5af1ff12ee77974485fa8740d1a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/397bcbe22462455e513a8e92216e3192ee201b2e",
-                "reference": "397bcbe22462455e513a8e92216e3192ee201b2e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c6de7c0ccf8b5af1ff12ee77974485fa8740d1a9",
+                "reference": "c6de7c0ccf8b5af1ff12ee77974485fa8740d1a9",
                 "shasum": ""
             },
             "require": {
@@ -3733,7 +3733,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-27 07:30:17"
+            "time": "2015-02-03 14:13:56"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4306,7 +4306,6 @@
         "scoreya/cinderella-sdk": 20,
         "doctrine/mongodb-odm": 20,
         "doctrine/mongodb-odm-bundle": 20,
-        "gfreeau/get-jwt-bundle": 20,
         "symfony/symfony": 20,
         "behatch/contexts": 20,
         "phpunit/phpunit": 20,

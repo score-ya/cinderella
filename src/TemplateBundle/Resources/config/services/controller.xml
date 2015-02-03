@@ -7,14 +7,17 @@
 
     <service id="score_ya.cinderella.template.controller.update"
              class="ScoreYa\Cinderella\Template\Controller\Update">
-      <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+      <argument type="service" id="score_ya.cinderella.template.repository.template" />
     </service>
 
+    <service id="score_ya.cinderella.template.controller.delete"
+             class="ScoreYa\Cinderella\Template\Controller\Delete">
+      <argument type="service" id="score_ya.cinderella.template.repository.template" />
+    </service>
 
     <service id="score_ya.cinderella.template.controller.create"
              class="ScoreYa\Cinderella\Template\Controller\Create">
-      <argument type="service" id="security.token_storage" />
-      <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+      <argument type="service" id="score_ya.cinderella.template.repository.template" />
     </service>
 
     <service id="score_ya.cinderella.template.controller.index"
@@ -23,12 +26,16 @@
       <argument type="service" id="score_ya.cinderella.template.repository.template" />
     </service>
 
-    <service id="score_ya.cinderella.template.controller.get"
-             class="ScoreYa\Cinderella\Template\Controller\Get">
+    <service id="score_ya.cinderella.template.controller.get_api"
+             class="ScoreYa\Cinderella\Template\Controller\GetApi">
       <argument type="service" id="security.token_storage" />
       <argument type="service" id="score_ya.cinderella.template.repository.template" />
       <argument type="service" id="score_ya.cinderella.core.util.canonicalizer" />
       <argument type="service" id="score_ya.cinderella.template.engine" />
+    </service>
+
+    <service id="score_ya.cinderella.template.controller.get"
+             class="ScoreYa\Cinderella\Template\Controller\Get">
     </service>
   </services>
 </container>

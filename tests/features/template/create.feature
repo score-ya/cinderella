@@ -54,9 +54,29 @@ Feature: Should create a new template
       "content": "html content"
     }
     """
-    Then print last response
     Then the response status code should be 201
     And the template "Dummy" for "text/html" should contains:
     """
     html content
     """
+
+  Scenario: should not allow a new template with same name and mime type
+    And I send a POST request to "/template" with body:
+    """
+    {
+      "name" : "Dummy",
+      "mimeType": "text/plain",
+      "content": "template content"
+    }
+    """
+    And the response status code should be 201
+    When I send a POST request to "/template" with body:
+    """
+    {
+      "name" : "Dummy",
+      "mimeType": "text/plain",
+      "content": "html content"
+    }
+    """
+    Then the response status code should be 400
+    And the response should have a violation for "name"

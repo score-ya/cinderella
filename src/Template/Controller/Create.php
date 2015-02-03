@@ -4,6 +4,7 @@ namespace ScoreYa\Cinderella\Template\Controller;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
 use ScoreYa\Cinderella\Template\Model\Template;
+use ScoreYa\Cinderella\Template\Repository\TemplateRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -14,17 +15,14 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
  */
 class Create
 {
-    private $tokenStorage;
-    private $dm;
+    private $templateRepository;
 
     /**
-     * @param TokenStorageInterface $tokenStorage
-     * @param DocumentManager       $dm
+     * @param TemplateRepository $templateRepository
      */
-    public function __construct(TokenStorageInterface $tokenStorage, DocumentManager $dm)
+    public function __construct(TemplateRepository $templateRepository)
     {
-        $this->tokenStorage = $tokenStorage;
-        $this->dm           = $dm;
+        $this->templateRepository = $templateRepository;
     }
 
     /**
@@ -34,11 +32,7 @@ class Create
      */
     public function __invoke(Template $template)
     {
-        $template->setTenant($this->tokenStorage->getToken()->getUser()->getTenant());
-
-        $this->dm->persist($template);
-
-        $this->dm->flush();
+        $this->templateRepository->create($template);
 
         return new Response(null, Response::HTTP_CREATED);
     }

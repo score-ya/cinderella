@@ -11,4 +11,19 @@ module.exports = function (template, $state) {
       $state.reload();
     });
   };
+
+  this.copy = function() {
+    var templateCopy = angular.copy(template);
+    delete templateCopy.id;
+    templateCopy.name += '_copy';
+    templateCopy.$save().then(function(){
+      $state.reload();
+    });
+  };
+
+  this['delete'] = function() {
+    template.$delete().then(function(){
+      $state.go('template.overview', {}, {reload: true});
+    });
+  };
 };
