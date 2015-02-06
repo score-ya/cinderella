@@ -43,7 +43,7 @@ module.exports = {
     }
   },
   'template.detail': {
-    url: '/{id}',
+    url: '/{id:[a-f\\d]{24}}',
     views: {
       "detail": {
         templateUrl: '/views/template/detail.html',
@@ -63,6 +63,29 @@ module.exports = {
         return angular.copy($filter('filter')(templates, {
           id: $stateParams.id
         })[0]);
+      }
+    }
+  },
+  'template.new': {
+    url: '/new',
+    views: {
+      "detail": {
+        templateUrl: '/views/template/detail.html',
+        controller: 'TemplateDetailController as vm'
+      },
+      "header@": {
+        templateUrl: '/views/template/header.html',
+        controller: 'TemplateDetailController as vm'
+      }
+    },
+    resolve: {
+
+      // Get AngularJS resource to query
+      Template: 'Template',
+
+      // Use the resource to fetch data from the server
+      template: function (Template) {
+        return new Template();
       }
     }
   }

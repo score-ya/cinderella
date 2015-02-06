@@ -1,2 +1,21 @@
-<textarea class="form-control" ng-model="vm.template.content">{{vm.template.content}}</textarea>
+<form class="form-horizontal" name="form" novalidate>
+    <div class="form-group" ng-class="{'has-error': form.mimeType.$error.required}">
+        <select name="mimeType" ng-model="vm.template.mimeType" required class="form-control"
+                ng-options="o as o for o in vm.mimeTypes">
+            <option value="" translate="template.select_mime_type"></option>
+        </select>
+    </div>
+    <div class="form-group" ng-class="{'has-error': form.openingVariable.$error.required}">
+        <input class="form-control" name="openingVariable" type="text" placeholder="{{'template.openingVariable' | translate}}" value="{{vm.template.openingVariable}}" ng-model="vm.template.openingVariable"
+               required/>
+    </div>
+    <div class="form-group" ng-class="{'has-error': form.closingVariable.$error.required}">
+        <input class="form-control" name="closingVariable" type="text" placeholder="{{'template.closingVariable' | translate}}" value="{{vm.template.closingVariable}}" ng-model="vm.template.closingVariable"
+               required/>
+    </div>
+    <div class="form-group" ng-class="{'has-error': form.content.$error.required}">
+        <textarea class="form-control" name="content" ng-model="vm.template.content"
+                  required>{{vm.template.content}}</textarea>
+    </div>
+</form>
 <pre>{{vm.template | json}}</pre>

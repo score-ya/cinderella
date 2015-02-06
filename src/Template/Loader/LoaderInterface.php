@@ -9,7 +9,6 @@ use ScoreYa\Cinderella\Template\Model\Template;
  */
 interface LoaderInterface
 {
-
     /**
      * Loads the template variables.
      *

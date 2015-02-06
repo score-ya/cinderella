@@ -56,7 +56,7 @@ class SendConfirmationEmailTest extends \PHPUnit_Framework_TestCase
 
         $user->getEmail()->willReturn('user-mail');
         $user->isEnabled()->willReturn(false);
-        $user->setConfirmationToken(Argument::type('string'))->will(function($args) {
+        $user->setConfirmationToken(Argument::type('string'))->will(function ($args) {
             $this->getConfirmationToken()->willReturn($args[0]);
         });
 

@@ -23,8 +23,23 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
   it('should update a template', function () {
 
     template = jasmine.createSpyObj('template', ['$update']);
+    template.id = 'id';
 
     template.$update.and.returnValue($q.when(true));
+
+    var controller = createController();
+
+    controller.save();
+    $rootScope.$apply();
+
+    expect($state.reload).toHaveBeenCalled();
+  });
+
+  it('should save a new template', function () {
+
+    template = jasmine.createSpyObj('template', ['$save']);
+
+    template.$save.and.returnValue($q.when(true));
 
     var controller = createController();
 

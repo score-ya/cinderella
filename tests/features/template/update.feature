@@ -9,7 +9,7 @@ Feature: Should update a template
 
   Scenario: should update a template
     Given I have a template id as placeholder
-    When I send a PUT request to "/template/TEMPLATE_ID" with placeholder and body:
+    When I send a PUT request to "/templates/TEMPLATE_ID" with placeholder and body:
     """
     {
       "id" : "TEMPLATE_ID",

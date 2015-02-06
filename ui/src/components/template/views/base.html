@@ -6,7 +6,9 @@
             <!-- List group -->
             <ul class="list-group" ng-hide="hide[mimeType]">
                 <li class="list-group-item" ui-sref="template.detail({id: template.id})" ng-repeat="template in ::vm.templates | filter:{mimeType:mimeType}">{{::template.name}}</li>
+                <li ng-if="$last" class="list-group-item" ui-sref="template.new"><i class=" fa fa-plus-circle"></i></li>
             </ul>
+
         </div>
 
     </div>

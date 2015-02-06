@@ -11,7 +11,6 @@ use ScoreYa\Cinderella\Template\Model\Template;
  */
 class Get
 {
-
     /**
      * @param Template $template
      *

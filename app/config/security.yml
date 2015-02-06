@@ -28,7 +28,6 @@ security:
             stateless: true
             anonymous: false
             methods: [GET]
-            lexik_jwt: ~
             simple_preauth:
                 provider: api_users
                 authenticator: score_ya.cinderella.security.authentication.api_key

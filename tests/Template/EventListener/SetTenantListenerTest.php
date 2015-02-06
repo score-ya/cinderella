@@ -9,7 +9,7 @@ use ScoreYa\Cinderella\Template\Model\Template;
 
 /**
  * @author Alexander Miehe <alexander.miehe@movingimage24.com>
- * 
+ *
  * @covers ScoreYa\Cinderella\Template\EventListener\SetTenantListener
  */
 class SetTenantListenerTest extends \PHPUnit_Framework_TestCase

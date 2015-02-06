@@ -1,22 +1,22 @@
 <li>
-    <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-            <input class="form-control" type="text" value="{{vm.template.name}}" ng-model="vm.template.name" />
+    <form class="navbar-form navbar-left" name="form" novalidate>
+        <div class="form-group" ng-class="{'has-error': form.name.$error.required}">
+            <input class="form-control" name="name" type="text" value="{{vm.template.name}}" ng-model="vm.template.name" required />
         </div>
     </form>
 </li>
-<li>
-    <a ng-click="vm.save()">
+<li ng-class="{disabled: form.$invalid}">
+    <a ng-click="vm.save() && form.$invalid == false">
         <i class="fa fa-save"></i><span translate="template.save"></span>
     </a>
 </li>
-<li>
+<li ng-if="vm.template.id != undefined">
     <a ng-click="vm.copy()">
         <i class="fa fa-copy"></i><span translate="template.copy"></span>
     </a>
 </li>
 
-<li>
+<li ng-if="vm.template.id != undefined">
     <a ng-click="vm.delete()">
         <i class="fa fa-remove"></i><span translate="template.delete"></span>
     </a>

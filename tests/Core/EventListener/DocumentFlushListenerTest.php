@@ -73,7 +73,6 @@ class DocumentFlushListenerTest extends \PHPUnit_Framework_TestCase
         $this->processor->supports('otherClass')->willReturn(true);
         $this->processor->process($dm, $doc)->shouldBeCalled();
 
-
         $this->listener->onFlush($event->reveal());
     }
 

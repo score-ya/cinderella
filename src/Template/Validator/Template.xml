@@ -16,6 +16,12 @@
     <property name="name">
       <constraint name="NotBlank" />
     </property>
+    <property name="closingVariable">
+      <constraint name="NotBlank" />
+    </property>
+    <property name="openingVariable">
+      <constraint name="NotBlank" />
+    </property>
     <property name="content">
       <constraint name="NotBlank" />
     </property>

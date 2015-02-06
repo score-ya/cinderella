@@ -17,7 +17,6 @@ class CacheLoader implements LoaderInterface
     {
         $this->loader = $loader;
         $this->cache  = $cache;
-
     }
 
     /**
@@ -38,6 +37,5 @@ class CacheLoader implements LoaderInterface
         $this->cache->save($template->getId(), $variables);
 
         return $variables;
-
     }
 }

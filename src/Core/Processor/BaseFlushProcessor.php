@@ -52,5 +52,4 @@ abstract class BaseFlushProcessor implements FlushProcessor
 
         return false;
     }
-
 }

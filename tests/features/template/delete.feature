@@ -9,7 +9,7 @@ Feature: Should delete a template
 
   Scenario: should delete a template
     Given I have a template id as placeholder
-    When I send a DELETE request to "/template/TEMPLATE_ID" with placeholder
+    When I send a DELETE request to "/templates/TEMPLATE_ID" with placeholder
     Then the response status code should be 204
-    And I send a GET request to "/template/TEMPLATE_ID" with placeholder
+    And I send a GET request to "/templates/TEMPLATE_ID" with placeholder
     Then the response status code should be 404

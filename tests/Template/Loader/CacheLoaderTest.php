@@ -10,7 +10,7 @@ use ScoreYa\Cinderella\Template\Model\Template;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
- * 
+ *
  * @covers ScoreYa\Cinderella\Template\Loader\CacheLoader
  */
 class CacheLoaderTest extends \PHPUnit_Framework_TestCase

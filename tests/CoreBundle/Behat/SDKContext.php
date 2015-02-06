@@ -69,7 +69,6 @@ class SDKContext extends DefaultContext
      */
     public function iShouldReceiveAnEmailOnWith($emailAddress, PyStringNode $content)
     {
-
         $message = $this->getMessageForEmail($emailAddress);
         if (isset($message)) {
             // checking the content
@@ -84,11 +83,8 @@ class SDKContext extends DefaultContext
             );
 
             return;
-
         }
         throw new ExpectationException(sprintf('No message sent to "%s"', $emailAddress), $this->getSession());
-
-
     }
 
     /**
@@ -137,6 +133,6 @@ class SDKContext extends DefaultContext
             return $message;
         }
 
-        return null;
+        return;
     }
 }

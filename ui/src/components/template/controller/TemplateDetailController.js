@@ -4,12 +4,22 @@
  */
 module.exports = function (template, $state) {
   var vm = this;
-
+  vm.mimeTypes = ['text/html', 'text/plain'];
   vm.template =  template;
   this.save = function() {
-    template.$update().then(function(){
-      $state.reload();
-    });
+
+    if (template.id) {
+
+      template.$update().then(function () {
+        $state.reload();
+      });
+    }
+
+    if (template.id == undefined) {
+      template.$save().then(function () {
+        $state.reload();
+      });
+    }
   };
 
   this.copy = function() {
