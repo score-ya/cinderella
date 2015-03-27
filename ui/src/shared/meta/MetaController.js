@@ -3,15 +3,21 @@
 /**
  * @ngInject
  */
-module.exports = function (UserService, $state) {
+function MetaController(User, $state) {
   var vm = this;
 
-  vm.isLoggedIn = function() {
-    return UserService.isLoggedIn()
-  };
+  vm.isLoggedIn = isLoggedIn;
+  vm.logout = logout;
 
-  vm.logout = function() {
-    UserService.logout();
+  function isLoggedIn() {
+    return User.isLoggedIn();
+  }
+
+  function logout() {
+    User.logout();
     $state.go('security.login');
-  };
-};
+  }
+}
+
+
+module.exports = MetaController;

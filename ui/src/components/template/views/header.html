@@ -21,3 +21,9 @@
         <i class="fa fa-remove"></i><span translate="template.delete"></span>
     </a>
 </li>
+
+<li ng-if="vm.template.id != undefined">
+    <a ng-click="vm.showTemplateUrl()">
+        <i class="fa fa-download"></i><span translate="template.show_template_url"></span>
+    </a>
+</li>

@@ -1,4 +1,9 @@
 'use strict';
 
-module.exports = require('angular').module('shared', [require('./meta').name])
-  .service('UserService', require('./service/UserService'));
+var angular = require('angular');
+var metaModule = require('./meta');
+var User = require('./service/User');
+
+module.exports = angular
+  .module('shared', [metaModule.name])
+  .factory('User', User);

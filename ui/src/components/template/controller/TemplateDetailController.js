@@ -1,39 +1,61 @@
 'use strict';
+
+var angular = require('angular');
+
 /**
  * @ngInject
  */
-module.exports = function (template, $state) {
+function TemplateDetailController(template, $state, $modal) {
   var vm = this;
+
   vm.mimeTypes = ['text/html', 'text/plain'];
-  vm.template =  template;
-  this.save = function() {
+  vm.template = template;
+  vm.save = save;
+  vm.delete = $delete;
+  vm.showTemplateUrl = showTemplateUrl;
+  vm.copy = copy;
 
-    if (template.id) {
 
-      template.$update().then(function () {
+  function save() {
+    if (vm.template.id) {
+      vm.template.$update().then(function () {
         $state.reload();
       });
     }
 
-    if (template.id == undefined) {
-      template.$save().then(function () {
+    if (vm.template.id === undefined) {
+      vm.template.$save().then(function () {
         $state.reload();
       });
     }
-  };
+  }
 
-  this.copy = function() {
-    var templateCopy = angular.copy(template);
-    delete templateCopy.id;
-    templateCopy.name += '_copy';
-    templateCopy.$save().then(function(){
-      $state.reload();
-    });
-  };
-
-  this['delete'] = function() {
-    template.$delete().then(function(){
+  function $delete() {
+    vm.template.$delete().then(function () {
       $state.go('template.overview', {}, {reload: true});
     });
-  };
-};
+  }
+
+  function showTemplateUrl() {
+    $modal.open({
+      templateUrl: '/views/template/template_url.html',
+      controller: 'TemplateUrlController as vm',
+      resolve: {
+        template: function () {
+          return vm.template;
+        }
+      }
+    });
+  }
+
+  function copy() {
+    var templateCopy = angular.copy(vm.template);
+    delete templateCopy.id;
+    templateCopy.name += '_copy';
+    templateCopy.$save().then(function () {
+      $state.reload();
+    });
+  }
+}
+
+module.exports = TemplateDetailController;

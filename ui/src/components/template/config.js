@@ -1,18 +1,16 @@
 'use strict';
 
 module.exports = {
-  'template': {
+  template: {
     url: '/templates',
     abstract: true,
     views: {
-      "main@": {
+      'main@': {
         templateUrl: '/views/template/base.html',
         controller: 'TemplateListController as vm'
       }
     },
     resolve: {
-
-      // Get AngularJS resource to query
       Template: 'Template',
 
       // Use the resource to fetch data from the server
@@ -24,11 +22,11 @@ module.exports = {
   'template.overview': {
     url: '',
     views: {
-      "detail": {
+      detail: {
         templateUrl: '/views/template/detail.html',
         controller: 'TemplateDetailController as vm'
       },
-      "header@": {
+      'header@': {
         templateUrl: '/views/template/header.html',
         controller: 'TemplateDetailController as vm'
       }
@@ -45,11 +43,11 @@ module.exports = {
   'template.detail': {
     url: '/{id:[a-f\\d]{24}}',
     views: {
-      "detail": {
+      detail: {
         templateUrl: '/views/template/detail.html',
         controller: 'TemplateDetailController as vm'
       },
-      "header@": {
+      'header@': {
         templateUrl: '/views/template/header.html',
         controller: 'TemplateDetailController as vm'
       }
@@ -69,21 +67,18 @@ module.exports = {
   'template.new': {
     url: '/new',
     views: {
-      "detail": {
+      detail: {
         templateUrl: '/views/template/detail.html',
         controller: 'TemplateDetailController as vm'
       },
-      "header@": {
+      'header@': {
         templateUrl: '/views/template/header.html',
         controller: 'TemplateDetailController as vm'
       }
     },
     resolve: {
-
-      // Get AngularJS resource to query
       Template: 'Template',
 
-      // Use the resource to fetch data from the server
       template: function (Template) {
         return new Template();
       }
