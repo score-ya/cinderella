@@ -1,7 +1,7 @@
-FROM ubuntu:14.04.1
+FROM ubuntu:14.04.2
 MAINTAINER Alexander Miehe <thelex@beamscore.com>
+ENV PHP_VERSION 5.6.7
 WORKDIR /tmp
-ENV PHP_VERSION 5.6.4
 RUN echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" >> /etc/apt/sources.list \
     && echo "deb-src http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main " >> /etc/apt/sources.list \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C \

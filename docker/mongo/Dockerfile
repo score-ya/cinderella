@@ -1,7 +1,7 @@
-FROM ubuntu:14.04.1
+FROM ubuntu:14.04.2
 MAINTAINER Alexander Miehe <thelex@beamscore.com>
 
-ENV MONGO_VERSION 2.6.7
+ENV MONGO_VERSION 2.6.9
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 \
 	&& echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list \

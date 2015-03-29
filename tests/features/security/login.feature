@@ -14,4 +14,5 @@ Feature: login a user to get a jwt token
     }
     """
     Then the response status code should be 200
+    And the JSON node "data.apiKey" should contain "key"
     And the jwt should have a "username" field with "thetest@beamscore.com"
