@@ -15,25 +15,12 @@ coreos:
     - name: fleet.service
       command: start
     - name: docker.service
-      command: restart
-      content: |
-        [Unit]
-        Description=Docker Application Container Engine
-        Documentation=http://docs.docker.io
-        Requires=docker.socket
-        After=docker.socket
-
-        [Service]
-        Environment="TMPDIR=/var/tmp/"
-        ExecStartPre=/bin/mount --make-rprivate /
-        LimitNOFILE=1048576
-        LimitNPROC=1048576
-        # Run docker but don't have docker automatically restart
-        # containers. This is a job for systemd and unit files.
-        ExecStart=/usr/bin/docker --daemon --host=fd:// --bip=172.17.42.1/16 --dns=172.17.42.1
-
-        [Install]
-        WantedBy=multi-user.target
+      drop-ins:
+        - name: 50-skydns.conf
+          content: |
+            [Service]
+            Environment=DOCKER_OPTS='--dns="172.17.42.1"'
+            Environment=DOCKER_OPT_BIP='--bip="172.17.42.1/16"'
     - name: docker-tcp.socket
       command: start
       enable: true

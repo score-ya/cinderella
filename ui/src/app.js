@@ -6,34 +6,35 @@ require('angular-route');
 require('angular-jwt');
 require('angular-translate');
 require('angular-translate-loader-partial');
-require('angular-cache');
 require('angular-resource');
 require('angular-ui-unique');
+require('angular-bootstrap');
 var requires = [
   'ui.router',
   'angular-jwt',
   'pascalprecht.translate',
-  'angular-data.DSCacheFactory',
   'ngResource',
   'ui.unique',
+  'ui.bootstrap',
+  require('angular-cache'),
   require('./components').name,
   require('./shared').name
 ];
 
 angular.module('cinderella-ui-app', requires)
   .config(function ($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptorProvider.tokenGetter = ['UserService', function(UserService) {
-      return UserService.getToken();
+    jwtInterceptorProvider.tokenGetter = ['User', function (User) {
+      return User.getToken();
     }];
 
     $httpProvider.interceptors.push('jwtInterceptor');
   })
   .config(function ($urlRouterProvider, $locationProvider, $resourceProvider) {
     $urlRouterProvider.otherwise(function ($injector) {
-      var $state, UserService;
-      UserService = $injector.get('UserService');
+      var $state, User;
+      User = $injector.get('User');
       $state = $injector.get('$state');
-      if (UserService.isLoggedIn() === true) {
+      if (User.isLoggedIn() === true) {
         $state.go('template.overview');
       } else {
         $state.go('security.login');
@@ -58,16 +59,21 @@ angular.module('cinderella-ui-app', requires)
       })
       .determinePreferredLanguage();
 
-      /*
-       The fallback language is not working ...
-       $translateProvider.fallbackLanguage('en');
-       The following workaround sets the preferred language to english,
-       if the detection failed or the detected language is not known.
-       */
-      var language = $translateProvider.preferredLanguage();
-      if ((language !== null) || !language.match(/(de).*/)) {
-        return $translateProvider.preferredLanguage('de');
-      }
+    /*
+     The fallback language is not working ...
+     $translateProvider.fallbackLanguage('en');
+     The following workaround sets the preferred language to english,
+     if the detection failed or the detected language is not known.
+     */
+    var language = $translateProvider.preferredLanguage();
+    if ((language !== null) || !language.match(/(de).*/)) {
+      return $translateProvider.preferredLanguage('de');
+    }
+  })
+  .config(function ($translatePartialLoaderProvider) {
+
+    $translatePartialLoaderProvider.addPart('default');
+
   });
 
 angular.bootstrap(document, ['cinderella-ui-app']);

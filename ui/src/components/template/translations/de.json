@@ -1,2 +1,9 @@
 {
+  "template.save" : "Speichern",
+  "template.delete" : "Löschen",
+  "template.show_template_url" : "Embed Source",
+  "template.url.header" : "Embed Source",
+  "template.copy" : "Kopieren",
+  "template.cancel" : "Abbrechen",
+  "template.close" : "Schließen"
 }

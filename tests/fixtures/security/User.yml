@@ -1,6 +1,12 @@
 ScoreYa\Cinderella\Multitenancy\Model\Tenant:
   first_tenant:
     name: first_tenant
+    apiUser: @api_user
+
+ScoreYa\Cinderella\User\Model\ApiUser:
+  api_user:
+    apiKey: key
+    tenant: @first_tenant
 
 ScoreYa\Cinderella\User\Model\User:
   login_user:

@@ -26,16 +26,4 @@ describe('Components:Template:Controller:TemplateListController', function () {
     expect(controller.templates).toBe('templates');
   });
 
-  it('should return the format for a mimetype', function () {
-
-    templates = 'templates';
-
-    var controller = createController();
-
-    TemplateService.getFormat.and.returnValue('type');
-
-    expect(controller.getFormat('mimeType')).toBe('type');
-    expect(TemplateService.getFormat).toHaveBeenCalledWith('mimeType');
-  });
-
 });

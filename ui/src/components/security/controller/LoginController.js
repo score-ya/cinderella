@@ -3,14 +3,17 @@
 /**
  * @ngInject
  */
-module.exports = function (SecurityService, $state) {
+function LoginController(Security, $state) {
   var vm = this;
 
   vm.loginData = {};
+  vm.login = login;
 
-  vm.login = function () {
-    SecurityService.login(vm.loginData).then(function () {
+  function login() {
+    Security.login(vm.loginData).then(function () {
       $state.go('template.overview');
     });
   }
-};
+}
+
+module.exports = LoginController;

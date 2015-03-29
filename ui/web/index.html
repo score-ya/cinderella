@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Example - example-location-html5-mode-production</title>
+    <title translate="common.title"></title>
     <base href="/">
     <link rel="stylesheet" href="media/css/style.css"/>
 </head>
@@ -22,10 +22,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left" ui-view="header"></ul>
 
-            <ul class="nav navbar-nav navbar-right" ng-controller="MetaController as vm" ng-cloak>
+            <ul class="nav navbar-nav navbar-right" ng-controller="MetaController as meta" ng-cloak>
 
-                <li ng-if="vm.isLoggedIn() === true">
-                    <a ng-click="vm.logout()" title="{{ 'nav.logout.title' | translate }}">
+                <li ng-if="meta.isLoggedIn() === true">
+                    <a ng-click="meta.logout()" title="{{ 'nav.logout.title' | translate }}">
                         <span translate="nav.logout.label"></span></a></li>
                 </li>
             </ul>

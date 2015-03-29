@@ -4,17 +4,21 @@ var TemplateDetailController = require('../../../../src/components/template/cont
 
 describe('Components:Template:Controller:TemplateDetailController', function () {
 
-  var createController, template, $q, $rootScope;
-
-  var $state = jasmine.createSpyObj('$state', ['reload', 'go']);
+  var createController,
+      template,
+      $q,
+      $rootScope,
+      $state = jasmine.createSpyObj('$state', ['reload', 'go']),
+      $modal = jasmine.createSpyObj('$modal', ['open']);
 
   beforeEach(function () {
     angular.mock.inject(function ($injector) {
+      template = jasmine.createSpyObj('template', ['$update', '$delete', '$save']);
       var $controller = $injector.get('$controller');
       $q = $injector.get('$q');
       $rootScope = $injector.get('$rootScope');
       createController = function () {
-        return $controller(TemplateDetailController, {'$state': $state, template: template});
+        return $controller(TemplateDetailController, {'$state': $state, template: template, $modal: $modal});
       };
 
     });
@@ -22,7 +26,6 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
 
   it('should update a template', function () {
 
-    template = jasmine.createSpyObj('template', ['$update']);
     template.id = 'id';
 
     template.$update.and.returnValue($q.when(true));
@@ -37,8 +40,6 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
 
   it('should save a new template', function () {
 
-    template = jasmine.createSpyObj('template', ['$save']);
-
     template.$save.and.returnValue($q.when(true));
 
     var controller = createController();
@@ -50,8 +51,6 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
   });
 
   it('should copy a template', function () {
-
-    template = jasmine.createSpyObj('template', ['$save']);
 
     template.$save.and.returnValue($q.when(true));
 
@@ -65,8 +64,6 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
 
   it('should delete a template', function () {
 
-    template = jasmine.createSpyObj('template', ['$delete']);
-
     template.$delete.and.returnValue($q.when(true));
 
     var controller = createController();
@@ -75,6 +72,22 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
     $rootScope.$apply();
 
     expect($state.go).toHaveBeenCalledWith('template.overview', {}, {reload: true});
+  });
+
+  it('should open a modal for the template url', function () {
+
+    var controller = createController();
+
+    controller.showTemplateUrl();
+    var call = {
+      templateUrl: '/views/template/template_url.html',
+      controller: 'TemplateUrlController as vm',
+      resolve: {
+        template: jasmine.any(Function)
+      }
+    };
+    expect($modal.open).toHaveBeenCalledWith(call);
+    expect($modal.open.calls.argsFor(0)[0].resolve.template()).toEqual(template);
   });
 
 });

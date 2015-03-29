@@ -1,13 +1,10 @@
 'use strict';
+
 /**
  * @ngInject
  */
-module.exports = function (templates, TemplateService) {
-  var vm = this;
+function TemplateListController(templates) {
+  this.templates =  templates;
+}
 
-  vm.templates =  templates;
-
-  vm.getFormat = function(mimeType) {
-    return TemplateService.getFormat(mimeType);
-  }
-};
+module.exports = TemplateListController;
