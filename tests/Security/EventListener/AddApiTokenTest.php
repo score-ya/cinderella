@@ -9,7 +9,7 @@ use ScoreYa\Cinderella\User\Model\ApiUser;
 use ScoreYa\Cinderella\User\Model\User;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  *
  * @covers ScoreYa\Cinderella\Security\EventListener\AddApiToken
  */
