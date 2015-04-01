@@ -1,0 +1,18 @@
+language: php
+
+php: 5.6
+
+services: mongodb
+
+before_install:
+  - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - mkdir -p var/jwt
+  - openssl genrsa -passout pass:testing -out var/jwt/jwt.pem -aes256 4096
+  - openssl rsa -pubout -in var/jwt/jwt.pem -passin pass:testing -out var/jwt/jwt_public.pem
+
+install: composer install -n --prefer-source
+
+script: phpunit -v --coverage-clover=coverage.clover
+
+after_script:
+  - sh -c 'wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover coverage.clover'
