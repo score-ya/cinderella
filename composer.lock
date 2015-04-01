@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "09495552ee12c88cf040db0755b36a7a",
+    "hash": "07ca04490456cba2eb4d61356920dd53",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -617,12 +617,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "db8ba4b611b1fb1ff3d4d85e02ed425c04d96484"
+                "reference": "f04de2ed82760d0a490d0ea80e2ebfb85eea335a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/db8ba4b611b1fb1ff3d4d85e02ed425c04d96484",
-                "reference": "db8ba4b611b1fb1ff3d4d85e02ed425c04d96484",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/f04de2ed82760d0a490d0ea80e2ebfb85eea335a",
+                "reference": "f04de2ed82760d0a490d0ea80e2ebfb85eea335a",
                 "shasum": ""
             },
             "require": {
@@ -687,7 +687,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2015-03-28 17:31:04"
+            "time": "2015-03-30 13:38:48"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -1588,12 +1588,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/score-ya/cinderella-sdk.git",
-                "reference": "b6c587224ae79dc83ec68a7b760a559be8d536d6"
+                "reference": "bed7371cb1caeefd1efcb09306c10d8805270e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/score-ya/cinderella-sdk/zipball/b6c587224ae79dc83ec68a7b760a559be8d536d6",
-                "reference": "b6c587224ae79dc83ec68a7b760a559be8d536d6",
+                "url": "https://api.github.com/repos/score-ya/cinderella-sdk/zipball/bed7371cb1caeefd1efcb09306c10d8805270e17",
+                "reference": "bed7371cb1caeefd1efcb09306c10d8805270e17",
                 "shasum": ""
             },
             "require": {
@@ -1624,7 +1624,7 @@
                 "cinderella",
                 "sdk"
             ],
-            "time": "2015-01-31 17:40:58"
+            "time": "2015-03-29 15:14:32"
         },
         {
             "name": "scoreya/cinderella-sdk-bundle",
@@ -2010,12 +2010,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "6ce03d3942ae65b9bcbc2afbec800ea1cf8361d8"
+                "reference": "5188cfecc58c78bda18cd7081ea86ea69f0d596c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/6ce03d3942ae65b9bcbc2afbec800ea1cf8361d8",
-                "reference": "6ce03d3942ae65b9bcbc2afbec800ea1cf8361d8",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/5188cfecc58c78bda18cd7081ea86ea69f0d596c",
+                "reference": "5188cfecc58c78bda18cd7081ea86ea69f0d596c",
                 "shasum": ""
             },
             "require": {
@@ -2125,7 +2125,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-03-29 09:44:52"
+            "time": "2015-04-01 11:40:31"
         },
         {
             "name": "twig/extensions",
@@ -2993,16 +2993,16 @@
         },
         {
             "name": "guzzlehttp/ringphp",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4"
+                "reference": "52d868f13570a9a56e5fce6614e0ec75d0f13ac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
-                "reference": "f43ab34aad69ca0ba04172cf2c3cd5c12fc0e5a4",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/52d868f13570a9a56e5fce6614e0ec75d0f13ac2",
+                "reference": "52d868f13570a9a56e5fce6614e0ec75d0f13ac2",
                 "shasum": ""
             },
             "require": {
@@ -3040,7 +3040,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2015-02-26 20:43:09"
+            "time": "2015-03-30 01:43:20"
         },
         {
             "name": "guzzlehttp/streams",

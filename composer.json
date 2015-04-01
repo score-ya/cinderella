@@ -67,13 +67,15 @@
         "webmozart/json" : "~1.0"
     },
     "scripts": {
+        "heroku" : [
+          "mkdir -p var/jwt;curl -o var/jwt/jwt_public.pem -L $JWT_PUBLIC; curl -o var/jwt/jwt.pem -L $JWT_PRIVATE",
+          "cd ui; npm install --production;rm -rf node_modules;"
+        ],
         "pre-install-cmd": [
             "ScoreYa\\Cinderella\\Core\\Composer\\HerokuEnvironment::populateEnvironment"
         ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "mkdir -p var/jwt;curl -o var/jwt/jwt_public.pem -L $JWT_PUBLIC; curl -o var/jwt/jwt.pem -L $JWT_PRIVATE",
-            "cd ui; npm install --production;rm -rf node_modules;",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",

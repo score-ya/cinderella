@@ -46,7 +46,7 @@ abstract class BaseFlushProcessor implements FlushProcessor
      */
     private function hasNewId(array $changeSet)
     {
-        if (count($changeSet) > 0 && isset($changeSet['id']) === true) {
+        if (count($changeSet) > 0 && array_key_exists('id', $changeSet) === true) {
             return $changeSet['id'][0] === null && $changeSet['id'][1] !== null;
         }
 

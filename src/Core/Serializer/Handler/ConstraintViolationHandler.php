@@ -25,7 +25,7 @@ class ConstraintViolationHandler extends BaseConstraintViolationHandler
     ) {
         $data = array(
             'propertyPath' => $violation->getPropertyPath(),
-            'message'       => $violation->getMessage(),
+            'message'       => $violation->getMessage()
         );
 
         if (null === $visitor->getRoot()) {

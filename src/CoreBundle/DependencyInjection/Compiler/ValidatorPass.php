@@ -5,6 +5,7 @@ namespace ScoreYa\Cinderella\Bundle\CoreBundle\DependencyInjection\Compiler;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -25,6 +26,7 @@ class ValidatorPass implements CompilerPassInterface
         $validatorFiles = array();
         $finder = new Finder();
 
+        /** @var SplFileInfo $file */
         foreach ($finder->files()->in($appDir.'/src/*/Validator')->name('*.xml') as $file) {
             $validatorFiles[] = $file->getRealPath();
         }
