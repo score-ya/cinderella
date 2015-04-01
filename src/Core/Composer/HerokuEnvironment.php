@@ -23,11 +23,13 @@ class HerokuEnvironment
         if ($url !== false) {
             $urlPath = parse_url($url, PHP_URL_PATH);
 
-            putenv("SYMFONY__DATABASE_SERVER=".$url);
-            putenv("SYMFONY__DATABASE_NAME=".substr($urlPath, 1));
+            putenv('SYMFONY__DATABASE_SERVER='.$url);
+            putenv('SYMFONY__DATABASE_NAME='.substr($urlPath, 1));
 
             $io = $event->getIO();
             $io->write('MONGOLAB_URI='.getenv('MONGOLAB_URI'));
+
+            $event->getComposer()->getEventDispatcher()->dispatchScript('heroku', $event->isDevMode());
         }
     }
 }

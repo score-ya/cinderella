@@ -19,10 +19,12 @@ class ParamConverterListener
     {
         $request = $event->getRequest();
 
+        /** @var array $converters */
         if ($converters = $request->attributes->get('_converters')) {
-            foreach ($converters as $key => $configuration) {
-                $converters[$key] = new ParamConverter($configuration);
+            foreach ($converters as &$configuration) {
+                $configuration = new ParamConverter($configuration);
             }
+            unset($configuration);
 
             $request->attributes->set('_converters', $converters);
         }

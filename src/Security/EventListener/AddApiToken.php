@@ -10,6 +10,9 @@ use ScoreYa\Cinderella\User\Model\User;
  */
 class AddApiToken
 {
+    /**
+     * @param AuthenticationSuccessEvent $event
+     */
     public function onAuthenticationSuccess(AuthenticationSuccessEvent $event)
     {
         $data = $event->getData();

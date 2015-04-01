@@ -3,9 +3,7 @@
 namespace ScoreYa\Cinderella\Bundle\CoreBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
-use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
 /**
@@ -39,11 +37,11 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
      */
     private function createCanonicalizePropertyListener(array $mergedConfig, ContainerBuilder $container)
     {
-        if (!isset($mergedConfig['canonicalizable']) || count($mergedConfig['canonicalizable']) === 0) {
+        if (array_key_exists('canonicalizable', $mergedConfig) === false || count($mergedConfig['canonicalizable']) === 0) {
             return;
         }
 
-        $parentId = "score_ya.cinderella.core.event_listener.canonicalize_property";
+        $parentId = 'score_ya.cinderella.core.event_listener.canonicalize_property';
 
         foreach ($mergedConfig['canonicalizable'] as $canonicalizable) {
             $definition = new DefinitionDecorator($parentId);
@@ -65,11 +63,11 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
      */
     private function createCanonicalInitializer(array $mergedConfig, ContainerBuilder $container)
     {
-        if (!isset($mergedConfig['canonicalizable']) || count($mergedConfig['canonicalizable']) === 0) {
+        if (array_key_exists('canonicalizable', $mergedConfig) === false || count($mergedConfig['canonicalizable']) === 0) {
             return;
         }
 
-        $parentId = "score_ya.cinderella.core.validator.canonical_initializer";
+        $parentId = 'score_ya.cinderella.core.validator.canonical_initializer';
 
         foreach ($mergedConfig['canonicalizable'] as $canonicalizable) {
             $definition = new DefinitionDecorator($parentId);
