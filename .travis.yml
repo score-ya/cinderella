@@ -4,15 +4,22 @@ php: 5.6
 
 services: mongodb
 
+env:
+  global:
+    - SYMFONY__PRIVATE_KEY__PASS_PHRASE=testing
+    - SYMFONY__DATABASE_SERVER="mongodb://localhost:27017"
+    - SYMFONY__DATABASE_NAME="cinderella_test"
+
 before_install:
   - echo $SYMFONY__PRIVATE_KEY__PASS_PHRASE
   - echo $SYMFONY__DATABASE_SERVER
   - echo $SYMFONY__DATABASE_NAME
   - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - rm -rf app/config/parameters.yml
+  - rm -rf var
   - mkdir -p var/jwt
   - openssl genrsa -passout pass:testing -out var/jwt/jwt.pem -aes256 4096
   - openssl rsa -pubout -in var/jwt/jwt.pem -passin pass:testing -out var/jwt/jwt_public.pem
-  - rm -rf app/config/parameters.yml
 
 install: composer install -n --prefer-source
 
