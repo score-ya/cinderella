@@ -34,7 +34,7 @@ class SendConfirmationEmail
         $this->templateClient = $templateClient;
         $this->mailer         = $mailer;
         $this->fromAddress    = $fromAddress;
-        $this->translator = $translator;
+        $this->translator     = $translator;
     }
 
     /**

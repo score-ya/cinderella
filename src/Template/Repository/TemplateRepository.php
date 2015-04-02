@@ -30,16 +30,22 @@ interface TemplateRepository
 
     /**
      * @param Template $template
+     *
+     * @return void
      */
     public function delete(Template $template);
 
     /**
      * @param Template $template
+     *
+     * @return void
      */
     public function update(Template $template);
 
     /**
      * @param Template $template
+     *
+     * @return void
      */
     public function create(Template $template);
 

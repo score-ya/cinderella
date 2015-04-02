@@ -34,7 +34,7 @@ class UserEvent extends Event implements CanonicalizableEventObject
     }
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getCanonicalizableObject()
     {

@@ -75,3 +75,8 @@ apiary:
             base_url: "http://private-09e91-cinderella.apiary-mock.com"
             goutte: ~
             default_session: goutte
+
+travis:
+    formatters:
+        progress : ~
+        pretty: false

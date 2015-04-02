@@ -19,7 +19,7 @@ class ViolationsListener
      */
     public function __construct($validationErrorsArgument)
     {
-        $this->validationErrorsArgument  = $validationErrorsArgument;
+        $this->validationErrorsArgument = $validationErrorsArgument;
     }
 
     /**

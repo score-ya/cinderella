@@ -22,13 +22,13 @@ class CanonicalizedUserProvider implements UserProviderInterface
     public function __construct(Canonicalizer $canonicalizer, UserProviderInterface $userProvider)
     {
         $this->canonicalizer = $canonicalizer;
-        $this->userProvider = $userProvider;
+        $this->userProvider  = $userProvider;
     }
 
     /**
      * @param string $username
      *
-     * @return object|\Symfony\Component\Security\Core\User\UserInterface
+     * @return UserInterface
      */
     public function loadUserByUsername($username)
     {

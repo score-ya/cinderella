@@ -10,8 +10,8 @@ use JMS\Parser\SimpleLexer;
  */
 class TemplateParser extends AbstractParser
 {
-    const T_STRING = 2;
-    const T_OPEN_VARIABLE = 3;
+    const T_STRING         = 2;
+    const T_OPEN_VARIABLE  = 3;
     const T_CLOSE_VARIABLE = 4;
 
     const REGEX_NAME = '([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)';
@@ -37,7 +37,7 @@ class TemplateParser extends AbstractParser
                 array(
                     self::T_OPEN_VARIABLE  => 'T_OPEN_VARIABLE',
                     self::T_CLOSE_VARIABLE => 'T_CLOSE_VARIABLE',
-                    self::T_STRING           => 'T_STRING',
+                    self::T_STRING           => 'T_STRING'
                 ),
                 function ($value) use ($opener, $closer) {
                     switch ($value) {
@@ -67,7 +67,7 @@ class TemplateParser extends AbstractParser
             $variable = $this->match(self::T_OPEN_VARIABLE);
 
             if (!$this->lexer->isNext(self::T_STRING)) {
-                throw new \RuntimeException("Expected a variable after opening.");
+                throw new \RuntimeException('Expected a variable after opening.');
             }
 
             $variable .= $variableName = $this->match(self::T_STRING);
@@ -78,7 +78,7 @@ class TemplateParser extends AbstractParser
             }
 
             if (!$this->lexer->isNext(self::T_CLOSE_VARIABLE)) {
-                throw new \RuntimeException("Expected closing after variable name.");
+                throw new \RuntimeException('Expected closing after variable name.');
             }
             $variable .= $this->match(self::T_CLOSE_VARIABLE);
             $vars[$variable] = trim($variableName);

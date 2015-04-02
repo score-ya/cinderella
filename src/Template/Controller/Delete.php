@@ -26,7 +26,7 @@ class Delete
     /**
      * @param Template $template
      *
-     * @return Template
+     * @return Response
      */
     public function __invoke(Template $template)
     {

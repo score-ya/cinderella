@@ -37,6 +37,6 @@ class Index
         /** @var ApiUser $user */
         $user = $this->tokenStorage->getToken()->getUser();
 
-        return $this->templateRepository->findAll($user->getTenant());
+        return $this->templateRepository->findAllByTenant($user->getTenant());
     }
 }
