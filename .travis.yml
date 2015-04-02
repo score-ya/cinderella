@@ -12,7 +12,9 @@ before_install:
 
 install: composer install -n --prefer-source
 
-script: phpunit -v --coverage-clover=coverage.clover
+script:
+  - bin/phpunit -v --coverage-clover=coverage.clover
+  - bin/behat
 
 after_script:
   - sh -c 'wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover coverage.clover'
