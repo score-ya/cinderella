@@ -25,6 +25,7 @@ install: composer install -n --prefer-source
 
 script:
   - bin/phpunit -v --coverage-clover=coverage.clover
+  - echo "error_reporting = -1 & ~E_USER_DEPRECATED" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - bin/behat
 
 after_script:
