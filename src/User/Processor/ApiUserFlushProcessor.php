@@ -26,10 +26,12 @@ class ApiUserFlushProcessor extends BaseFlushProcessor
     /**
      * @param DocumentManager $dm
      * @param ApiUser         $doc
+     *
+     * @return void
      */
     public function process(DocumentManager $dm, $doc)
     {
-        if ($this->isCreated($dm, $doc) && $doc->getApiKey() === null) {
+        if ($this->isType(self::CREATED, $dm, $doc) && $doc->getApiKey() === null) {
             $this->eventDispatcher->dispatch(ApiUserEvent::CREATED, new ApiUserEvent($doc));
         }
     }

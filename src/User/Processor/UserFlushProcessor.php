@@ -26,10 +26,12 @@ class UserFlushProcessor extends BaseFlushProcessor
     /**
      * @param DocumentManager $dm
      * @param mixed           $doc
+     *
+     * @return void
      */
     public function process(DocumentManager $dm, $doc)
     {
-        if ($this->isCreated($dm, $doc)) {
+        if ($this->isType(self::CREATED, $dm, $doc)) {
             $this->eventDispatcher->dispatch(UserEvent::CREATED, new UserEvent($doc));
         }
     }

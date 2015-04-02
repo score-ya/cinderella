@@ -31,11 +31,11 @@ class TemplateFlushProcessor extends BaseFlushProcessor
      */
     public function process(DocumentManager $dm, $doc)
     {
-        if ($this->isCreated($dm, $doc)) {
+        if ($this->isType(self::CREATED, $dm, $doc)) {
             $this->eventDispatcher->dispatch(TemplateEvent::CREATED, new TemplateEvent($doc));
         }
 
-        if ($this->isUpdated($dm, $doc)) {
+        if ($this->isType(self::UPDATED, $dm, $doc)) {
             $this->eventDispatcher->dispatch(TemplateEvent::UPDATED, new TemplateEvent($doc));
         }
     }

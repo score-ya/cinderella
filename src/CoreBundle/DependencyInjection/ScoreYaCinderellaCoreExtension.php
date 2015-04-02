@@ -27,8 +27,12 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
     {
         $this->loadServices($container, __DIR__);
 
-        $this->createCanonicalizePropertyListener($mergedConfig, $container);
-        $this->createCanonicalInitializer($mergedConfig, $container);
+        if (array_key_exists('canonicalizable', $mergedConfig) === true
+            && count($mergedConfig['canonicalizable']) > 0
+        ) {
+            $this->createCanonicalizePropertyListener($mergedConfig, $container);
+            $this->createCanonicalInitializer($mergedConfig, $container);
+        }
     }
 
     /**
@@ -37,10 +41,6 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
      */
     private function createCanonicalizePropertyListener(array $mergedConfig, ContainerBuilder $container)
     {
-        if (array_key_exists('canonicalizable', $mergedConfig) === false || count($mergedConfig['canonicalizable']) === 0) {
-            return;
-        }
-
         $parentId = 'score_ya.cinderella.core.event_listener.canonicalize_property';
 
         foreach ($mergedConfig['canonicalizable'] as $canonicalizable) {
@@ -51,7 +51,7 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
                 ->addTag('kernel.event_listener', ['event' => $canonicalizable['event'], 'method' => 'canonicalize']);
 
             $container->setDefinition(
-                $parentId.'.'.$canonicalizable['event'].'.'.$canonicalizable['property_name'],
+                $parentId . '.' . $canonicalizable['event'] . '.' . $canonicalizable['property_name'],
                 $definition
             );
         }
@@ -63,10 +63,6 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
      */
     private function createCanonicalInitializer(array $mergedConfig, ContainerBuilder $container)
     {
-        if (array_key_exists('canonicalizable', $mergedConfig) === false || count($mergedConfig['canonicalizable']) === 0) {
-            return;
-        }
-
         $parentId = 'score_ya.cinderella.core.validator.canonical_initializer';
 
         foreach ($mergedConfig['canonicalizable'] as $canonicalizable) {
@@ -75,11 +71,10 @@ class ScoreYaCinderellaCoreExtension extends ConfigurableExtension
                 ->addArgument($canonicalizable['class'])
                 ->addArgument($canonicalizable['property_name'])
                 ->addArgument($canonicalizable['canonicalized_property_name'])
-                ->addTag('validator.initializer')
-                ;
+                ->addTag('validator.initializer');
 
             $container->setDefinition(
-                $parentId.'.'.$canonicalizable['event'].'.'.$canonicalizable['property_name'],
+                $parentId . '.' . $canonicalizable['event'] . '.' . $canonicalizable['property_name'],
                 $definition
             );
         }

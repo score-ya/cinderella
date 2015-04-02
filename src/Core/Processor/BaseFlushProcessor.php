@@ -10,33 +10,36 @@ use Doctrine\ODM\MongoDB\UnitOfWork;
  */
 abstract class BaseFlushProcessor implements FlushProcessor
 {
+
+    const CREATED = 'created';
+    const UPDATED = 'updated';
+
     /**
+     * @param string          $type
      * @param DocumentManager $dm
      * @param mixed           $doc
      *
-     * @return boolean
+     * @return bool
      */
-    protected function isCreated(DocumentManager $dm, $doc)
+    protected function isType($type, DocumentManager $dm, $doc)
     {
+
         $changeSet = $dm->getUnitOfWork()->getDocumentChangeSet($doc);
         $state     = $dm->getUnitOfWork()->getDocumentState($doc);
 
-        return $state === UnitOfWork::STATE_MANAGED
-        && (count($changeSet) === 0 || $this->hasNewId($changeSet)) === true;
-    }
-
-    /**
-     * @param DocumentManager $dm
-     * @param mixed           $doc
-     *
-     * @return boolean
-     */
-    protected function isUpdated(DocumentManager $dm, $doc)
-    {
-        $changeSet = $dm->getUnitOfWork()->getDocumentChangeSet($doc);
-        $state     = $dm->getUnitOfWork()->getDocumentState($doc);
-
-        return $state === UnitOfWork::STATE_MANAGED && count($changeSet) > 0 && $this->hasNewId($changeSet) === false;
+        switch ($type) {
+            case self::CREATED :
+                return $state === UnitOfWork::STATE_MANAGED
+                && (count($changeSet) === 0 || $this->hasNewId($changeSet)) === true;
+                break;
+            case self::UPDATED:
+                return $state === UnitOfWork::STATE_MANAGED && count($changeSet) > 0
+                && $this->hasNewId($changeSet) === false;
+                break;
+            default:
+                return false;
+                break;
+        }
     }
 
     /**
