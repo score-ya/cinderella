@@ -10,8 +10,8 @@ use JMS\Parser\SimpleLexer;
  */
 class TemplateParser extends AbstractParser
 {
-    const T_STRING         = 2;
-    const T_OPEN_VARIABLE  = 3;
+    const T_STRING = 2;
+    const T_OPEN_VARIABLE = 3;
     const T_CLOSE_VARIABLE = 4;
 
     const REGEX_NAME = '([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)';
@@ -27,17 +27,17 @@ class TemplateParser extends AbstractParser
                 '/
                 # Template variable opener
 
-                ('.preg_quote($opener).')
+                (' . preg_quote($opener) . ')
 
                 # Template variable closer
 
-                | ('.preg_quote($closer).')
+                | (' . preg_quote($closer) . ')
 
             /x',
                 array(
                     self::T_OPEN_VARIABLE  => 'T_OPEN_VARIABLE',
                     self::T_CLOSE_VARIABLE => 'T_CLOSE_VARIABLE',
-                    self::T_STRING           => 'T_STRING'
+                    self::T_STRING         => 'T_STRING'
                 ),
                 function ($value) use ($opener, $closer) {
                     switch ($value) {
@@ -70,7 +70,8 @@ class TemplateParser extends AbstractParser
                 throw new \RuntimeException('Expected a variable after opening.');
             }
 
-            $variable .= $variableName = $this->match(self::T_STRING);
+            $variableName = $this->match(self::T_STRING);
+            $variable    .= $variableName;
 
             preg_match(self::REGEX_NAME, $variableName, $matches);
             if (count($matches) === 0 || $matches[0] !== trim($variableName)) {
@@ -80,7 +81,7 @@ class TemplateParser extends AbstractParser
             if (!$this->lexer->isNext(self::T_CLOSE_VARIABLE)) {
                 throw new \RuntimeException('Expected closing after variable name.');
             }
-            $variable .= $this->match(self::T_CLOSE_VARIABLE);
+            $variable       .= $this->match(self::T_CLOSE_VARIABLE);
             $vars[$variable] = trim($variableName);
         } while ($this->lexer->moveNext());
 

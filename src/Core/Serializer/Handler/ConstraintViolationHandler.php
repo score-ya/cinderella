@@ -14,19 +14,19 @@ class ConstraintViolationHandler extends BaseConstraintViolationHandler
     /**
      * @param JsonSerializationVisitor $visitor
      * @param ConstraintViolation      $violation
-     * @param array                    $type
+     * @param null|array               $type
      *
-     * @return array
+     * @return array<string,string>
      */
     public function serializeViolationToJson(
         JsonSerializationVisitor $visitor,
         ConstraintViolation $violation,
         array $type = null
     ) {
-        $data = array(
+        $data = [
             'propertyPath' => $violation->getPropertyPath(),
-            'message'       => $violation->getMessage()
-        );
+            'message'      => $violation->getMessage()
+        ];
 
         if (null === $visitor->getRoot()) {
             $visitor->setRoot($data);

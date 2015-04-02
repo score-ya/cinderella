@@ -12,6 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ExceptionController extends BaseExceptionController
 {
+
+    /**
+     * @param Request $request
+     * @param string  $format
+     *
+     * @return string
+     */
     protected function getFormat(Request $request, $format)
     {
         $resolvedFormat = parent::getFormat($request, $format);

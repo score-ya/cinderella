@@ -26,6 +26,8 @@ class TemplateFlushProcessor extends BaseFlushProcessor
     /**
      * @param DocumentManager $dm
      * @param mixed           $doc
+     *
+     * @return void
      */
     public function process(DocumentManager $dm, $doc)
     {

@@ -22,8 +22,6 @@ class AddApiToken
             return;
         }
 
-        // $data['token'] contains the JWT
-
         $data['data'] = ['apiKey' => $user->getTenant()->getApiUser()->getApiKey()];
 
         $event->setData($data);
