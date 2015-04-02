@@ -9,6 +9,7 @@ before_install:
   - mkdir -p var/jwt
   - openssl genrsa -passout pass:testing -out var/jwt/jwt.pem -aes256 4096
   - openssl rsa -pubout -in var/jwt/jwt.pem -passin pass:testing -out var/jwt/jwt_public.pem
+  - rm -rf app/config/parameters.yml
 
 install: composer install -n --prefer-source
 
