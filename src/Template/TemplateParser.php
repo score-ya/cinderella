@@ -27,17 +27,17 @@ class TemplateParser extends AbstractParser
                 '/
                 # Template variable opener
 
-                ('.preg_quote($opener).')
+                (' . preg_quote($opener) . ')
 
                 # Template variable closer
 
-                | ('.preg_quote($closer).')
+                | (' . preg_quote($closer) . ')
 
             /x',
                 array(
                     self::T_OPEN_VARIABLE  => 'T_OPEN_VARIABLE',
                     self::T_CLOSE_VARIABLE => 'T_CLOSE_VARIABLE',
-                    self::T_STRING           => 'T_STRING',
+                    self::T_STRING         => 'T_STRING'
                 ),
                 function ($value) use ($opener, $closer) {
                     switch ($value) {
@@ -67,10 +67,11 @@ class TemplateParser extends AbstractParser
             $variable = $this->match(self::T_OPEN_VARIABLE);
 
             if (!$this->lexer->isNext(self::T_STRING)) {
-                throw new \RuntimeException("Expected a variable after opening.");
+                throw new \RuntimeException('Expected a variable after opening.');
             }
 
-            $variable .= $variableName = $this->match(self::T_STRING);
+            $variableName = $this->match(self::T_STRING);
+            $variable    .= $variableName;
 
             preg_match(self::REGEX_NAME, $variableName, $matches);
             if (count($matches) === 0 || $matches[0] !== trim($variableName)) {
@@ -78,9 +79,9 @@ class TemplateParser extends AbstractParser
             }
 
             if (!$this->lexer->isNext(self::T_CLOSE_VARIABLE)) {
-                throw new \RuntimeException("Expected closing after variable name.");
+                throw new \RuntimeException('Expected closing after variable name.');
             }
-            $variable .= $this->match(self::T_CLOSE_VARIABLE);
+            $variable       .= $this->match(self::T_CLOSE_VARIABLE);
             $vars[$variable] = trim($variableName);
         } while ($this->lexer->moveNext());
 

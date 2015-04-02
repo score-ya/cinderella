@@ -27,7 +27,7 @@ class TemplateEvent extends Event implements CanonicalizableEventObject
     }
 
     /**
-     * @return mixed
+     * @return Template
      */
     public function getCanonicalizableObject()
     {

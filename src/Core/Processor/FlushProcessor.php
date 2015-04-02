@@ -12,6 +12,8 @@ interface FlushProcessor
     /**
      * @param DocumentManager $dm
      * @param mixed           $doc
+     *
+     * @return null
      */
     public function process(DocumentManager $dm, $doc);
 

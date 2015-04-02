@@ -19,10 +19,9 @@ trait ServiceLoadExtensionTrait
      */
     protected function loadServices(ContainerBuilder $container, $path)
     {
-        $servicesPath = $path.'/../Resources/config/services';
-        $loader = new XmlFileLoader($container, new FileLocator($servicesPath));
-
-        $finder = new Finder();
+        $servicesPath = $path . '/../Resources/config/services';
+        $loader       = new XmlFileLoader($container, new FileLocator($servicesPath));
+        $finder       = new Finder();
 
         /** @var $file SplFileInfo */
         foreach ($finder->in($servicesPath)->files()->name('*.xml') as $file) {

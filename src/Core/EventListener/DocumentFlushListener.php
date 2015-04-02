@@ -26,7 +26,7 @@ class DocumentFlushListener
     /**
      * @param string $class
      *
-     * @return FlushProcessor
+     * @return FlushProcessor|null
      */
     private function getFlushProcessor($class)
     {
@@ -36,7 +36,7 @@ class DocumentFlushListener
             }
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -44,7 +44,7 @@ class DocumentFlushListener
      */
     public function onFlush(OnFlushEventArgs $event)
     {
-        $dm = $event->getDocumentManager();
+        $dm  = $event->getDocumentManager();
         $uow = $dm->getUnitOfWork();
 
         foreach ($uow->getIdentityMap() as $class => $docs) {

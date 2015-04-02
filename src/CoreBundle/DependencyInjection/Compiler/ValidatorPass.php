@@ -22,12 +22,12 @@ class ValidatorPass implements CompilerPassInterface
         }
 
         $validatorBuilder = $container->findDefinition('validator.builder');
-        $appDir = $container->getParameterBag()->resolveValue('%app.root_dir%');
-        $validatorFiles = array();
-        $finder = new Finder();
+        $appDir           = $container->getParameterBag()->resolveValue('%app.root_dir%');
+        $validatorFiles   = array();
+        $finder           = new Finder();
 
         /** @var SplFileInfo $file */
-        foreach ($finder->files()->in($appDir.'/src/*/Validator')->name('*.xml') as $file) {
+        foreach ($finder->files()->in($appDir . '/src/*/Validator')->name('*.xml') as $file) {
             $validatorFiles[] = $file->getRealPath();
         }
 

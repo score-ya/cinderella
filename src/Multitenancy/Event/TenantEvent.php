@@ -26,7 +26,7 @@ class TenantEvent extends Event implements CanonicalizableEventObject
     }
 
     /**
-     * @return mixed
+     * @return Tenant
      */
     public function getCanonicalizableObject()
     {

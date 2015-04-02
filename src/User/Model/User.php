@@ -25,9 +25,9 @@ class User implements AdvancedUserInterface
 
     public function __construct()
     {
-        $this->id = (string) new \MongoId();
+        $this->id      = (string)new \MongoId();
         $this->enabled = false;
-        $this->locked = false;
+        $this->locked  = false;
     }
 
     /**

@@ -21,8 +21,8 @@ class CanonicalizePropertyListener
      */
     public function __construct(Canonicalizer $canonicalizer, $propertyName, $canonicalizedPropertyName)
     {
-        $this->canonicalizer = $canonicalizer;
-        $this->propertyName = $propertyName;
+        $this->canonicalizer             = $canonicalizer;
+        $this->propertyName              = $propertyName;
         $this->canonicalizedPropertyName = $canonicalizedPropertyName;
     }
 

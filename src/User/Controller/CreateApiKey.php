@@ -35,10 +35,10 @@ class CreateApiKey
     public function __invoke()
     {
         /** @var Tenant $tenant */
-        $tenant  = $this->tokenStorage->getToken()->getUser()->getTenant();
+        $tenant = $this->tokenStorage->getToken()->getUser()->getTenant();
 
         if ($tenant->getApiUser() !== null) {
-            throw new ConflictHttpException("Api key is already created.");
+            throw new ConflictHttpException('Api key is already created.');
         }
 
         $apiUser = new ApiUser();
