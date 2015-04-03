@@ -28,17 +28,14 @@ abstract class BaseFlushProcessor implements FlushProcessor
         $state     = $dm->getUnitOfWork()->getDocumentState($doc);
 
         switch ($type) {
-            case self::CREATED :
+            case self::CREATED:
                 return $state === UnitOfWork::STATE_MANAGED
                 && (count($changeSet) === 0 || $this->hasNewId($changeSet)) === true;
-                break;
             case self::UPDATED:
                 return $state === UnitOfWork::STATE_MANAGED && count($changeSet) > 0
                 && $this->hasNewId($changeSet) === false;
-                break;
             default:
                 return false;
-                break;
         }
     }
 
