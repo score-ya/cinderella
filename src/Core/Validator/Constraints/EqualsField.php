@@ -5,7 +5,7 @@ namespace ScoreYa\Cinderella\Core\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  *
  * @codeCoverageIgnore
  */
