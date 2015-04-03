@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
 
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  * 
  * @covers ScoreYa\Cinderella\Core\Validator\Constraints\EqualsFieldValidator
  */
