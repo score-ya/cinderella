@@ -43,6 +43,8 @@ class CacheLoader implements UpdateableLoaderInterface
      * updates existing template variables
      *
      * @param Template $template A template
+     *
+     * @return void
      */
     public function update(Template $template)
     {
