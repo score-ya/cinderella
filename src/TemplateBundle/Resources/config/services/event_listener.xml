@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="score_ya.cinderella.template.event_listener.update_template_variables"
+             class="ScoreYa\Cinderella\Template\EventListener\UpdateTemplateVariables">
+      <argument type="service" id="score_ya.cinderella.loader.cache" />
+      <tag name="kernel.event_listener" event="cinderella.template.updated" method="update" />
+    </service>
+  </services>
+</container>

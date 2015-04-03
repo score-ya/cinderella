@@ -31,6 +31,14 @@ class TemplateEvent extends Event implements CanonicalizableEventObject
      */
     public function getCanonicalizableObject()
     {
+        return $this->getTemplate();
+    }
+
+    /**
+     * @return Template
+     */
+    public function getTemplate()
+    {
         return $this->template;
     }
 }
