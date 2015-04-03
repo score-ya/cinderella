@@ -40,7 +40,7 @@ class CacheLoaderTest extends \PHPUnit_Framework_TestCase
         $this->cache->contains('template_id')->willReturn(true);
         $this->cache->fetch('template_id')->willReturn([]);
 
-        $this->assertInternalType('array', $this->loader->load($template->reveal()));
+        self::assertInternalType('array', $this->loader->load($template->reveal()));
     }
 
     /**
@@ -55,7 +55,23 @@ class CacheLoaderTest extends \PHPUnit_Framework_TestCase
 
         $this->concreteLoader->load($template)->willReturn([]);
 
-        $this->assertInternalType('array', $this->loader->load($template->reveal()));
+        self::assertInternalType('array', $this->loader->load($template->reveal()));
+    }
+
+    /**
+     * @test
+     */
+    public function updateCache()
+    {
+        $template = $this->getTemplate();
+
+        $this->cache->contains('template_id')->willReturn(false);
+        $this->cache->save('template_id', [])->shouldBeCalled();
+        $this->cache->delete('template_id')->shouldBeCalled();
+
+        $this->concreteLoader->load($template)->willReturn([]);
+
+        $this->loader->update($template->reveal());
     }
 
     /**

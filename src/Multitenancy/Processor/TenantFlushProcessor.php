@@ -31,7 +31,7 @@ class TenantFlushProcessor extends BaseFlushProcessor
      */
     public function process(DocumentManager $dm, $doc)
     {
-        if ($this->isCreated($dm, $doc)) {
+        if ($this->isType(self::CREATED, $dm, $doc)) {
             $this->eventDispatcher->dispatch(TenantEvent::CREATED, new TenantEvent($doc));
         }
     }

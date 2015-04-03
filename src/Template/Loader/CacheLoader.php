@@ -8,7 +8,7 @@ use ScoreYa\Cinderella\Template\Model\Template;
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
  */
-class CacheLoader implements LoaderInterface
+class CacheLoader implements UpdateableLoaderInterface
 {
     private $loader;
     private $cache;
@@ -37,5 +37,16 @@ class CacheLoader implements LoaderInterface
         $this->cache->save($template->getId(), $variables);
 
         return $variables;
+    }
+
+    /**
+     * updates existing template variables
+     *
+     * @param Template $template A template
+     */
+    public function update(Template $template)
+    {
+        $this->cache->delete($template->getId());
+        $this->load($template);
     }
 }

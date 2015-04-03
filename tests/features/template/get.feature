@@ -22,6 +22,31 @@ Feature: Should return a template
     And the response should contain "other"
     And the response should contain "{{third}}"
 
+  Scenario: should update the template variables cache and replace new variables
+    Given I log in as "thetest@beamscore.com" with "test"
+    # send to init cache
+    And I send a GET request to "/template/first_template.txt?first=test+next&second=other&apikey=API_KEY" with placeholder
+    And I add "CONTENT_TYPE" client header equal to "application/json"
+    And I add "HTTP_ACCEPT" client header equal to "application/json"
+    And I add "SCRIPT_FILENAME" client header equal to " "
+    And I have a template id as placeholder
+    And I send a PUT request to "/templates/TEMPLATE_ID" with placeholder and body:
+    """
+    {
+      "id" : "TEMPLATE_ID",
+      "name" : "first_template",
+      "mimeType": "text/plain",
+      "content": "{{fourth}}"
+    }
+    """
+    And the response status code should be 204
+    When I send a GET request to "/template/first_template.txt?first=test+next&second=other&fourth=replace&apikey=API_KEY" with placeholder
+    Then the response status code should be 200
+    And the response should not contain "test next"
+    And the response should not contain "other"
+    And the response should not contain "{{third}}"
+    And the response should contain "replace"
+
   Scenario: should not allow calls without api_key
     When I send a GET request to "/template/first_template.txt"
     Then the response status code should be 401
