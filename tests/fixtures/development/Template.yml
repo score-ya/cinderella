@@ -8,13 +8,13 @@ ScoreYa\Cinderella\Template\Model\Template:
       sed diam nonumy eirmod tempor
       invidunt ut {{third}} et dolore
       magna aliquyam
-    tenant: @score_ya
+    user: @score_ya_test_user
     openingVariable: '{{'
     closingVariable: '}}'
   user_create_html:
     name: user_create
     mimeType: text/html
-    tenant: @score_ya
+    user: @score_ya_test_user
     content: |
       Lorem ipsum dolor {{first}} amet,
       consetetur {{ second }} elitr,

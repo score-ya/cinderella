@@ -17,13 +17,12 @@
     <field name="ov" fieldName="openingVariable" type="string"/>
     <field name="cv" fieldName="closingVariable" type="string"/>
 
-    <reference-one target-document="ScoreYa\Cinderella\Multitenancy\Model\Tenant" field="t" fieldName="tenant"
-                   inversed-by="templates"/>
+    <reference-one target-document="ScoreYa\Cinderella\User\Model\User" field="u" fieldName="user"/>
 
     <indexes>
       <index unique="true" dropDups="true">
         <key name="nc" order="asc"/>
-        <key name="t" order="asc"/>
+        <key name="u" order="asc"/>
         <key name="mt" order="asc"/>
         <option name="safe" value="true"/>
       </index>

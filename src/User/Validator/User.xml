@@ -7,10 +7,42 @@
     <constraint name="Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique">
       <option name="fields">emailCanonical</option>
       <option name="errorPath">email</option>
+      <option name="groups">
+        <value>registration</value>
+      </option>
     </constraint>
+    <property name="repeatedPlainPassword">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>registration</value>
+        </option>
+      </constraint>
+    </property>
+    <property name="plainPassword">
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>registration</value>
+        </option>
+      </constraint>
+      <constraint name="ScoreYa\Cinderella\Core\Validator\Constraints\EqualsField">
+        <option name="field">repeatedPlainPassword</option>
+        <option name="message">The password and confirmation password do not match</option>
+        <option name="groups">
+          <value>registration</value>
+        </option>
+      </constraint>
+    </property>
     <property name="email">
-      <constraint name="NotBlank" />
-      <constraint name="Email" />
+      <constraint name="NotBlank">
+        <option name="groups">
+          <value>registration</value>
+        </option>
+      </constraint>
+      <constraint name="Email">
+        <option name="groups">
+          <value>registration</value>
+        </option>
+      </constraint>
     </property>
   </class>
 </constraint-mapping>

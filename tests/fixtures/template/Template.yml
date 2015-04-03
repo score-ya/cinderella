@@ -8,18 +8,16 @@ ScoreYa\Cinderella\Template\Model\Template:
       sed diam nonumy eirmod tempor
       invidunt ut {{third}} et dolore
       magna aliquyam
-    tenant: @first_tenant
+    user: @login_user
     openingVariable: '{{'
     closingVariable: '}}'
   second_template:
     name: second_template
     mimeType: text/html
-    tenant: @first_tenant
+    user: @login_user
   third_template:
     name: first_template
     mimeType: text/plain
-    tenant: @second_tenant
   fourth_template:
     name: second_template
     mimeType: text/html
-    tenant: @second_tenant

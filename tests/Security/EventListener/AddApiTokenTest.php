@@ -3,7 +3,6 @@
 namespace ScoreYa\Cinderella\Security\Tests\EventListener;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use ScoreYa\Cinderella\Security\EventListener\AddApiToken;
 use ScoreYa\Cinderella\User\Model\ApiUser;
 use ScoreYa\Cinderella\User\Model\User;
@@ -40,16 +39,13 @@ class AddApiTokenTest extends \PHPUnit_Framework_TestCase
     {
         $event = $this->prophesize(AuthenticationSuccessEvent::class);
         $user = $this->prophesize(User::class);
-        $tenant = $this->prophesize(Tenant::class);
         $apiUser = $this->prophesize(ApiUser::class);
 
         $event->getUser()->willReturn($user->reveal());
         $event->getData()->willReturn([]);
         $event->setData(['data' => ['apiKey' => 'key']])->shouldBeCalled();
 
-        $user->getTenant()->willReturn($tenant->reveal());
-
-        $tenant->getApiUser()->willReturn($apiUser->reveal());
+        $user->getApiUser()->willReturn($apiUser->reveal());
 
         $apiUser->getApiKey()->willReturn('key');
 

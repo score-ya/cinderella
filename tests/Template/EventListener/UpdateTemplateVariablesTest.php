@@ -8,7 +8,7 @@ use ScoreYa\Cinderella\Template\Loader\UpdateableLoaderInterface;
 use ScoreYa\Cinderella\Template\Model\Template;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  * 
  * @covers ScoreYa\Cinderella\Template\EventListener\UpdateTemplateVariables
  */

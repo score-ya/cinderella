@@ -8,7 +8,7 @@ security:
         users:
             canonicalized_document: {class: ScoreYa\Cinderella\User\Model\User, property: emailCanonical}
         api_users:
-            mongodb: {class: ScoreYa\Cinderella\User\Model\ApiUser, property: apiKey}
+            mongodb: {class: ScoreYa\Cinderella\User\Model\User, property: apiUser.apiKey}
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/

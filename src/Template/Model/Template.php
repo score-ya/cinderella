@@ -2,7 +2,7 @@
 
 namespace ScoreYa\Cinderella\Template\Model;
 
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
+use ScoreYa\Cinderella\User\Model\User;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -14,11 +14,11 @@ class Template
     private $id;
     private $name;
     private $nameCanonical;
-    private $tenant;
     private $content;
     private $mimeType;
     private $openingVariable;
     private $closingVariable;
+    private $user;
 
     public function __construct()
     {
@@ -62,18 +62,6 @@ class Template
     }
 
     /**
-     * @param Tenant $tenant
-     *
-     * @return Template
-     */
-    public function setTenant(Tenant $tenant)
-    {
-        $this->tenant = $tenant;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getOpeningVariable()
@@ -95,5 +83,25 @@ class Template
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Template
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

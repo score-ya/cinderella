@@ -2,7 +2,6 @@
 
 namespace ScoreYa\Cinderella\User\Model;
 
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
@@ -17,15 +16,17 @@ class User implements AdvancedUserInterface
     private $email;
     private $emailCanonical;
     private $password;
+    private $plainPassword;
+    private $repeatedPlainPassword;
     private $enabled;
     private $locked;
     private $roles;
-    private $tenant;
     private $confirmationToken;
+    private $apiUser;
 
     public function __construct()
     {
-        $this->id      = (string)new \MongoId();
+        $this->id      = (string) new \MongoId();
         $this->enabled = false;
         $this->locked  = false;
     }
@@ -179,18 +180,6 @@ class User implements AdvancedUserInterface
     }
 
     /**
-     * @param Tenant $tenant
-     *
-     * @return User
-     */
-    public function setTenant($tenant)
-    {
-        $this->tenant = $tenant;
-
-        return $this;
-    }
-
-    /**
      * @param string $confirmationToken
      *
      * @return User
@@ -222,10 +211,58 @@ class User implements AdvancedUserInterface
     }
 
     /**
-     * @return Tenant
+     * @return ApiUser
      */
-    public function getTenant()
+    public function getApiUser()
     {
-        return $this->tenant;
+        return $this->apiUser;
+    }
+
+    /**
+     * @param ApiUser $apiUser
+     *
+     * @return User
+     */
+    public function setApiUser($apiUser)
+    {
+        $this->apiUser = $apiUser;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRepeatedPlainPassword()
+    {
+        return $this->repeatedPlainPassword;
+    }
+
+    /**
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

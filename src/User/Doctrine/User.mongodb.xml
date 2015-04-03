@@ -43,7 +43,7 @@
 
     <field name="credentialsExpireAt" column="credentialsExpireAt" type="date" /> -->
 
-    <reference-one target-document="ScoreYa\Cinderella\Multitenancy\Model\Tenant" field="t" fieldName="tenant" inversed-by="users" />
+    <embed-one target-document="ScoreYa\Cinderella\User\Model\ApiUser" field="au" fieldName="apiUser" />
 
     <indexes>
      <!-- <index unique="true" dropDups="true">

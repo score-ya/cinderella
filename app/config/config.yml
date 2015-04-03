@@ -88,10 +88,6 @@ doctrine_mongodb:
             #  host: localhost
             #  port: 11211
             mappings:
-                multitenancy:
-                    type: xml
-                    dir: %app.root_dir%/src/Multitenancy/Doctrine
-                    prefix: ScoreYa\Cinderella\Multitenancy\Model
                 user:
                     type: xml
                     dir: %app.root_dir%/src/User/Doctrine
@@ -103,9 +99,6 @@ doctrine_mongodb:
 jms_serializer:
     metadata:
         directories:
-            Multitenancy:
-                namespace_prefix: "ScoreYa\\Cinderella\\Multitenancy\\Model"
-                path: "%app.root_dir%/src/Multitenancy/Serializer"
             User:
                 namespace_prefix: "ScoreYa\\Cinderella\\User\\Model"
                 path: "%app.root_dir%/src/User/Serializer"

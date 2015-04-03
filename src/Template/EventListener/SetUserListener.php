@@ -3,22 +3,22 @@
 namespace ScoreYa\Cinderella\Template\EventListener;
 
 use JMS\Serializer\EventDispatcher\ObjectEvent;
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use ScoreYa\Cinderella\Template\Model\Template;
+use ScoreYa\Cinderella\User\Model\User;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  */
-class SetTenantListener
+class SetUserListener
 {
-    private $tenant;
+    private $user;
 
     /**
-     * @param Tenant $tenant
+     * @param User $user
      */
-    public function __construct(Tenant $tenant)
+    public function __construct(User $user)
     {
-        $this->tenant = $tenant;
+        $this->user = $user;
     }
 
     public function onPostDeserialize(ObjectEvent $event)
@@ -26,6 +26,6 @@ class SetTenantListener
         /** @var Template $template */
         $template = $event->getObject();
 
-        $template->setTenant($this->tenant);
+        $template->setUser($this->user);
     }
 }

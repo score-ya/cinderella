@@ -2,5 +2,7 @@
 <serializer>
   <class name="ScoreYa\Cinderella\User\Model\User" exclusion-policy="ALL">
     <property name="email" type="string" since-version="1.0" expose="true" />
+    <property name="plainPassword" type="string" since-version="1.0" expose="true" groups="register" />
+    <property name="repeatedPlainPassword" type="string" since-version="1.0" expose="true" groups="register" />
   </class>
 </serializer>

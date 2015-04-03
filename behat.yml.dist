@@ -33,29 +33,12 @@ default:
                     resultPool: @behatch.http_call.result_pool
                     fixtures:
                         - %paths.base%/tests/fixtures/security/User.yml
-                        - %paths.base%/tests/fixtures/template/ApiUser.yml
                         - %paths.base%/tests/fixtures/template/Template.yml
                 - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
                 - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext
                 - Behat\MinkExtension\Context\MinkContext
             filters:
                 tags: "@template"
-        user:
-            paths:
-                features: %paths.base%/tests/features/user
-                fixtures: %paths.base%/tests/fixtures/user
-            contexts:
-                - behatch:rest
-                - behatch:json
-                - ScoreYa\Cinderella\Bundle\UserBundle\Tests\Behat\UserContext:
-                    resultPool: @behatch.http_call.result_pool
-                    fixtures:
-                        - %paths.base%/tests/fixtures/security/User.yml
-                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
-                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext
-                - Behat\MinkExtension\Context\MinkContext
-            filters:
-                tags: "@user"
 
     extensions:
         Sanpi\Behatch\Extension: ~

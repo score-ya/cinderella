@@ -56,7 +56,7 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface
         $apiKey = $request->query->get('apikey');
 
         if (!$apiKey) {
-            return null;
+            return;
         }
 
         return new PreAuthenticatedToken(

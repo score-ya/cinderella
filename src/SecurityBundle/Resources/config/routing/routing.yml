@@ -12,9 +12,8 @@ score_ya_cinderella_security_register:
                 converter: score_ya.cinderella.request_body
                 name: user
                 class: ScoreYa\Cinderella\User\Model\User
-            tenant:
-                converter: score_ya.cinderella.request_body
-                name: tenant
-                class: ScoreYa\Cinderella\Multitenancy\Model\Tenant
+                options:
+                  validator:
+                    groups: [registration]
     schemes: [https]
     methods: [POST]

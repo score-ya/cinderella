@@ -3,16 +3,16 @@
 namespace ScoreYa\Cinderella\Template\Tests\EventListener;
 
 use JMS\Serializer\EventDispatcher\ObjectEvent;
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
-use ScoreYa\Cinderella\Template\EventListener\SetTenantListener;
+use ScoreYa\Cinderella\Template\EventListener\SetUserListener;
 use ScoreYa\Cinderella\Template\Model\Template;
+use ScoreYa\Cinderella\User\Model\User;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  *
- * @covers ScoreYa\Cinderella\Template\EventListener\SetTenantListener
+ * @covers ScoreYa\Cinderella\Template\EventListener\SetUserListener
  */
-class SetTenantListenerTest extends \PHPUnit_Framework_TestCase
+class SetUserListenerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -21,12 +21,12 @@ class SetTenantListenerTest extends \PHPUnit_Framework_TestCase
     {
         $event = $this->prophesize(ObjectEvent::class);
         $template = $this->prophesize(Template::class);
-        $tenant = $this->prophesize(Tenant::class);
-        $listener = new SetTenantListener($tenant->reveal());
+        $user = $this->prophesize(User::class);
+        $listener = new SetUserListener($user->reveal());
 
         $event->getObject()->willReturn($template->reveal());
 
-        $template->setTenant($tenant)->shouldBeCalled();
+        $template->setUser($user)->shouldBeCalled();
 
         $listener->onPostDeserialize($event->reveal());
     }

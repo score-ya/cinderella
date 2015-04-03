@@ -22,7 +22,7 @@ class AddApiToken
             return;
         }
 
-        $data['data'] = ['apiKey' => $user->getTenant()->getApiUser()->getApiKey()];
+        $data['data'] = ['apiKey' => $user->getApiUser()->getApiKey()];
 
         $event->setData($data);
     }

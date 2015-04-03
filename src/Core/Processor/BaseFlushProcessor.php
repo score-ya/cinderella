@@ -10,7 +10,6 @@ use Doctrine\ODM\MongoDB\UnitOfWork;
  */
 abstract class BaseFlushProcessor implements FlushProcessor
 {
-
     const CREATED = 'created';
     const UPDATED = 'updated';
 
@@ -23,7 +22,6 @@ abstract class BaseFlushProcessor implements FlushProcessor
      */
     protected function isType($type, DocumentManager $dm, $doc)
     {
-
         $changeSet = $dm->getUnitOfWork()->getDocumentChangeSet($doc);
         $state     = $dm->getUnitOfWork()->getDocumentState($doc);
 
