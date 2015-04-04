@@ -24,8 +24,8 @@ function TemplateDetailController(template, $state, $modal) {
     }
 
     if (vm.template.id === undefined) {
-      vm.template.$save().then(function () {
-        $state.reload();
+      vm.template.$save().then(function (id) {
+        $state.go('template.detail', {id: id}, {reload: true});
       });
     }
   }

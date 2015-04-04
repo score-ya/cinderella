@@ -8,10 +8,12 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
       template,
       $q,
       $rootScope,
-      $state = jasmine.createSpyObj('$state', ['reload', 'go']),
-      $modal = jasmine.createSpyObj('$modal', ['open']);
+      $state,
+      $modal;
 
   beforeEach(function () {
+    $state = jasmine.createSpyObj('$state', ['reload', 'go']);
+    $modal = jasmine.createSpyObj('$modal', ['open']);
     angular.mock.inject(function ($injector) {
       template = jasmine.createSpyObj('template', ['$update', '$delete', '$save']);
       var $controller = $injector.get('$controller');
@@ -40,14 +42,14 @@ describe('Components:Template:Controller:TemplateDetailController', function () 
 
   it('should save a new template', function () {
 
-    template.$save.and.returnValue($q.when(true));
+    template.$save.and.returnValue($q.when('id'));
 
     var controller = createController();
 
     controller.save();
     $rootScope.$apply();
 
-    expect($state.reload).toHaveBeenCalled();
+    expect($state.go).toHaveBeenCalledWith('template.detail', { id: 'id' }, { reload: true });
   });
 
   it('should copy a template', function () {

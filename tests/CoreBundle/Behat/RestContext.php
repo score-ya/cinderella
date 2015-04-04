@@ -36,7 +36,10 @@ class RestContext extends DefaultContext
                 return;
             }
         }
-        throw new ExpectationException(sprintf('No violation for propertyPath "%s" found.', $propertyPath), $this->getSession());
+        throw new ExpectationException(
+            sprintf('No violation for propertyPath "%s" found.', $propertyPath),
+            $this->getSession()
+        );
     }
 
     /**
@@ -58,5 +61,50 @@ class RestContext extends DefaultContext
         }
 
         \PHPUnit_Framework_Assert::assertEquals($message, $currentViolation->message);
+    }
+
+    /**
+     * @Then the header :name should equal the regex :regex
+     */
+    public function theHeaderShouldEqualTheRegex($name, $regex)
+    {
+        \PHPUnit_Framework_Assert::assertRegExp($regex, $this->getHttpHeader($name));
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
+    private function getHttpHeader($name)
+    {
+        $name = strtolower($name);
+        $header = $this->getHttpHeaders();
+
+        if (array_key_exists($name, $header)) {
+            if (is_array($header[$name])) {
+                $value = implode(', ', $header[$name]);
+            }
+            else {
+                $value = $header[$name];
+            }
+        }
+        else {
+            throw new \OutOfBoundsException(
+                sprintf('The header "%s" doesn\'t exist', $name)
+            );
+        }
+        return $value;
+    }
+
+    /**
+     * @return array
+     */
+    private function getHttpHeaders()
+    {
+        return array_change_key_case(
+            $this->getSession()->getResponseHeaders(),
+            CASE_LOWER
+        );
     }
 }

@@ -18,6 +18,7 @@
     <service id="score_ya.cinderella.template.controller.create"
              class="ScoreYa\Cinderella\Template\Controller\Create">
       <argument type="service" id="score_ya.cinderella.template.repository.template" />
+      <argument type="service" id="router" />
     </service>
 
     <service id="score_ya.cinderella.template.controller.index"

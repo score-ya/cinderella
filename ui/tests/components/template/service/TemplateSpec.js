@@ -18,7 +18,18 @@ describe('Components:Template:Service:Template', function () {
   });
 
   it('should init the resource', function () {
-    expect($resource).toHaveBeenCalledWith('/api/templates/:id', {id: '@id'}, {update: {method: 'PUT'}});
+    expect($resource).toHaveBeenCalledWith('/api/templates/:id', {id: '@id'}, {
+      update: {method: 'PUT'},
+      save: {method: 'POST', interceptor: {response: jasmine.any(Function)}}
+    });
+  });
+
+  it('should return the id of a location', function () {
+    var response = jasmine.createSpyObj('response', ['headers']);
+
+    response.headers.and.returnValue('/uri/id');
+
+    expect($resource.calls.argsFor(0)[2].save.interceptor.response(response)).toBe('id');
   });
 
   it('should return the correct format for a mime type', function () {
@@ -31,7 +42,10 @@ describe('Components:Template:Service:Template', function () {
     $location.host.and.returnValue('host');
     User.getApiKey.and.returnValue('key');
 
-    expect(TemplateInstance.getUrl({name: 'template', mimeType: 'text/plain'})).toEqual('http://host/api/template/template.txt?apikey=key');
+    expect(TemplateInstance.getUrl({
+      name: 'template',
+      mimeType: 'text/plain'
+    })).toEqual('http://host/api/template/template.txt?apikey=key');
   });
 
   it('should return the api url for the template with api key and defined base url', function () {
@@ -42,7 +56,10 @@ describe('Components:Template:Service:Template', function () {
 
     process.env.BASE_TEMPLATE_URL = 'otherUri';
 
-    expect(TemplateInstance.getUrl({name: 'template', mimeType: 'text/plain'})).toEqual('otherUri/api/template/template.txt?apikey=key');
+    expect(TemplateInstance.getUrl({
+      name: 'template',
+      mimeType: 'text/plain'
+    })).toEqual('otherUri/api/template/template.txt?apikey=key');
   });
 
 });

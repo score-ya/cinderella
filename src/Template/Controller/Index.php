@@ -4,7 +4,7 @@ namespace ScoreYa\Cinderella\Template\Controller;
 
 use ScoreYa\Cinderella\Template\Model\Template;
 use ScoreYa\Cinderella\Template\Repository\TemplateRepository;
-use ScoreYa\Cinderella\User\Model\ApiUser;
+use ScoreYa\Cinderella\User\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
@@ -34,7 +34,7 @@ class Index
      */
     public function __invoke()
     {
-        /** @var ApiUser $user */
+        /** @var User $user */
         $user = $this->tokenStorage->getToken()->getUser();
 
         return $this->templateRepository->findAllByUser($user);

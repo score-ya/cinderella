@@ -24,11 +24,11 @@ module.exports = {
     views: {
       detail: {
         templateUrl: '/views/template/detail.html',
-        controller: 'TemplateDetailController as vm'
+        controller: 'TemplateDetailController as templateDetailVm'
       },
       'header@': {
         templateUrl: '/views/template/header.html',
-        controller: 'TemplateDetailController as vm'
+        controller: 'TemplateDetailController as templateHeaderVm'
       }
     },
     resolve: {
@@ -45,11 +45,11 @@ module.exports = {
     views: {
       detail: {
         templateUrl: '/views/template/detail.html',
-        controller: 'TemplateDetailController as vm'
+        controller: 'TemplateDetailController as templateDetailVm'
       },
       'header@': {
         templateUrl: '/views/template/header.html',
-        controller: 'TemplateDetailController as vm'
+        controller: 'TemplateDetailController as templateHeaderVm'
       }
     },
     resolve: {
@@ -69,11 +69,11 @@ module.exports = {
     views: {
       detail: {
         templateUrl: '/views/template/detail.html',
-        controller: 'TemplateDetailController as vm'
+        controller: 'TemplateDetailController as templateDetailVm'
       },
       'header@': {
         templateUrl: '/views/template/header.html',
-        controller: 'TemplateDetailController as vm'
+        controller: 'TemplateDetailController as templateHeaderVm'
       }
     },
     resolve: {
