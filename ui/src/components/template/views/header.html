@@ -1,29 +1,40 @@
 <li>
     <form class="navbar-form navbar-left" name="form" novalidate>
         <div class="form-group" ng-class="{'has-error': form.name.$error.required}">
-            <input class="form-control" name="name" type="text" value="{{vm.template.name}}" ng-model="vm.template.name" required />
+            <input class="form-control" name="name" type="text" value="{{templateHeaderVm.template.name}}" ng-model="templateHeaderVm.template.name" required />
         </div>
+
+            <select name="mimeType" ng-model="templateHeaderVm.template.mimeType" required class="hidden"
+                    ng-options="o as o for o in templateHeaderVm.mimeTypes">
+                <option value="" translate="template.select_mime_type"></option>
+            </select>
+            <input class="hidden" name="openingVariable" type="text" value="{{templateHeaderVm.template.openingVariable}}" ng-model="templateHeaderVm.template.openingVariable"
+                   required/>
+            <input class="hidden" name="closingVariable" type="text" value="{{templateHeaderVm.template.closingVariable}}" ng-model="templateHeaderVm.template.closingVariable"
+                   required/>
+            <textarea class="hidden" name="content" ng-model="templateHeaderVm.template.content"
+                      required>{{templateHeaderVm.template.content}}</textarea>
     </form>
 </li>
 <li ng-class="{disabled: form.$invalid}">
-    <a ng-click="vm.save() && form.$invalid == false">
+    <a ng-click="templateHeaderVm.save() && form.$invalid == false">
         <i class="fa fa-save"></i><span translate="template.save"></span>
     </a>
 </li>
-<li ng-if="vm.template.id != undefined">
-    <a ng-click="vm.copy()">
+<li ng-if="templateHeaderVm.template.id != undefined">
+    <a ng-click="templateHeaderVm.copy()">
         <i class="fa fa-copy"></i><span translate="template.copy"></span>
     </a>
 </li>
 
-<li ng-if="vm.template.id != undefined">
-    <a ng-click="vm.delete()">
+<li ng-if="templateHeaderVm.template.id != undefined">
+    <a ng-click="templateHeaderVm.delete()">
         <i class="fa fa-remove"></i><span translate="template.delete"></span>
     </a>
 </li>
 
-<li ng-if="vm.template.id != undefined">
-    <a ng-click="vm.showTemplateUrl()">
+<li ng-if="templateHeaderVm.template.id != undefined">
+    <a ng-click="templateHeaderVm.showTemplateUrl()">
         <i class="fa fa-download"></i><span translate="template.show_template_url"></span>
     </a>
 </li>

@@ -10,10 +10,10 @@ use JMS\Parser\SimpleLexer;
  */
 class TemplateParser extends AbstractParser
 {
-    const T_STRING = 2;
-    const T_OPEN_VARIABLE = 3;
+    const T_STRING         = 2;
+    const T_OPEN_VARIABLE  = 3;
     const T_CLOSE_VARIABLE = 4;
-    const REGEX_NAME = '([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)';
+    const REGEX_NAME       = '([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)';
 
     /**
      * @param string $opener

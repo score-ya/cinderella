@@ -9,7 +9,17 @@ function Template(User, $location, $resource) {
     'text/html': 'html'
   };
 
-  var Service = $resource('/api/templates/:id', {id: '@id'}, {'update': {method: 'PUT'}});
+  var Service = $resource('/api/templates/:id', {id: '@id'}, {
+    update: {method: 'PUT'},
+    save: {
+      method: 'POST',
+      interceptor: {
+        response: function (response) {
+          return response.headers('location').split('/').pop();
+        }
+      }
+    }
+  });
 
   Service.getFormat = getFormat;
   Service.getUrl = getUrl;

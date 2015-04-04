@@ -19,6 +19,7 @@ Feature: Should create a new template
     }
     """
     Then the response status code should be 201
+    And the header "location" should equal the regex "/api\/templates\/([a-f\d]{24})/"
     And the template "Dummy" for "text/plain" should contains:
     """
     template content

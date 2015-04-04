@@ -1,21 +1,21 @@
 <form class="form-horizontal" name="form" novalidate>
     <div class="form-group" ng-class="{'has-error': form.mimeType.$error.required}">
-        <select name="mimeType" ng-model="vm.template.mimeType" required class="form-control"
-                ng-options="o as o for o in vm.mimeTypes">
+        <select name="mimeType" ng-model="templateDetailVm.template.mimeType" required class="form-control"
+                ng-options="o as o for o in templateDetailVm.mimeTypes">
             <option value="" translate="template.select_mime_type"></option>
         </select>
     </div>
     <div class="form-group" ng-class="{'has-error': form.openingVariable.$error.required}">
-        <input class="form-control" name="openingVariable" type="text" placeholder="{{'template.openingVariable' | translate}}" value="{{vm.template.openingVariable}}" ng-model="vm.template.openingVariable"
+        <input class="form-control" name="openingVariable" type="text" placeholder="{{'template.openingVariable' | translate}}" value="{{templateDetailVm.template.openingVariable}}" ng-model="templateDetailVm.template.openingVariable"
                required/>
     </div>
     <div class="form-group" ng-class="{'has-error': form.closingVariable.$error.required}">
-        <input class="form-control" name="closingVariable" type="text" placeholder="{{'template.closingVariable' | translate}}" value="{{vm.template.closingVariable}}" ng-model="vm.template.closingVariable"
+        <input class="form-control" name="closingVariable" type="text" placeholder="{{'template.closingVariable' | translate}}" value="{{templateDetailVm.template.closingVariable}}" ng-model="templateDetailVm.template.closingVariable"
                required/>
     </div>
     <div class="form-group" ng-class="{'has-error': form.content.$error.required}">
-        <textarea class="form-control" name="content" ng-model="vm.template.content"
-                  required>{{vm.template.content}}</textarea>
+        <textarea class="form-control" name="content" ng-model="templateDetailVm.template.content"
+                  required>{{templateDetailVm.template.content}}</textarea>
     </div>
 </form>
-<pre>{{vm.template | json}}</pre>
+<pre>{{templateDetailVm.template | json}}</pre>

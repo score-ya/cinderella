@@ -3,8 +3,8 @@
 namespace ScoreYa\Cinderella\Core\Validator\Constraints;
 
 use Symfony\Component\PropertyAccess\PropertyAccess;
-use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -19,7 +19,7 @@ class EqualsFieldValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $accessor = PropertyAccess::createPropertyAccessor();
+        $accessor   = PropertyAccess::createPropertyAccessor();
         $otherValue = $accessor->getValue($this->context->getRoot(), $constraint->field);
 
         if ($value !== $otherValue) {
