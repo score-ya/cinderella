@@ -3,8 +3,8 @@
 namespace ScoreYa\Cinderella\Template\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use ScoreYa\Cinderella\Template\Model\Template;
+use ScoreYa\Cinderella\User\Model\User;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -16,17 +16,17 @@ class TemplateDocumentRepository extends DocumentRepository implements TemplateR
     /**
      * {@inheritdoc}
      */
-    public function findForApiCall($name, $mimeType, Tenant $tenant)
+    public function findForApiCall($name, $mimeType, User $user)
     {
-        return $this->findOneBy(['nameCanonical' => $name, 'mimeType' => $mimeType, 'tenant.id' => $tenant->getId()]);
+        return $this->findOneBy(['nameCanonical' => $name, 'mimeType' => $mimeType, 'user.id' => $user->getId()]);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function findAllByTenant(Tenant $tenant)
+    public function findAllByUser(User $user)
     {
-        return $this->findBy(['tenant.id' => $tenant->getId()]);
+        return $this->findBy(['user.id' => $user->getId()]);
     }
 
     /**
@@ -60,6 +60,6 @@ class TemplateDocumentRepository extends DocumentRepository implements TemplateR
      */
     public function findUniqueBy(array $options)
     {
-        return $this->findBy(['nameCanonical' => $options['nameCanonical'], 'mimeType' => $options['mimeType'], 'tenant.id' => $options['tenant']]);
+        return $this->findBy(['nameCanonical' => $options['nameCanonical'], 'mimeType' => $options['mimeType'], 'user.id' => $options['user']]);
     }
 }

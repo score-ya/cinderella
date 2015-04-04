@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ExceptionController extends BaseExceptionController
 {
-
     /**
      * @param Request $request
      * @param string  $format

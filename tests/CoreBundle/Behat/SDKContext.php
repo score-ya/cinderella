@@ -33,12 +33,11 @@ class SDKContext extends DefaultContext
 
     /**
      * @param string       $clientName
-     * @param string       $templateName
      * @param PyStringNode $templateContent
      *
      * @Given the :clientName client send a request for :templateName with:
      */
-    public function theTemplateClientSendARequestForWith($clientName, $templateName, PyStringNode $templateContent)
+    public function theTemplateClientSendARequestForWith($clientName, PyStringNode $templateContent)
     {
         $this->mockPlugin->addResponse(new Response(200, [], $templateContent));
         $this->getClient()->enableProfiler();
@@ -49,7 +48,7 @@ class SDKContext extends DefaultContext
         $hasPerformedRequest->setValue($this->getClient(), false);
 
         $clientId = sprintf(self::CLIENT_SERVICE_TEMPLATE, $clientName);
-        if (in_array($clientId, $this->clients) === false) {
+        if (in_array($clientId, $this->clients, true) === false) {
             /** @var Client $client */
             $this->getSession()->getDriver()->reset();
             $client          = $this->container->get($clientId);

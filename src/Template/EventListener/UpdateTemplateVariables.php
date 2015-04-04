@@ -6,7 +6,7 @@ use ScoreYa\Cinderella\Template\Event\TemplateEvent;
 use ScoreYa\Cinderella\Template\Loader\UpdateableLoaderInterface;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  */
 class UpdateTemplateVariables
 {

@@ -5,7 +5,3 @@ ScoreYaCinderellaTemplateBundle:
 ScoreYaCinderellaSecurityBundle:
   resource: "@ScoreYaCinderellaSecurityBundle/Resources/config/routing/routing.yml"
   prefix:   /api
-
-ScoreYaCinderellaUserBundle:
-  resource: "@ScoreYaCinderellaUserBundle/Resources/config/routing/routing.yml"
-  prefix:   /api

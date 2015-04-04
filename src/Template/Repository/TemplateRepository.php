@@ -2,8 +2,8 @@
 
 namespace ScoreYa\Cinderella\Template\Repository;
 
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use ScoreYa\Cinderella\Template\Model\Template;
+use ScoreYa\Cinderella\User\Model\User;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
@@ -15,18 +15,18 @@ interface TemplateRepository
     /**
      * @param string $name
      * @param string $mimeType
-     * @param Tenant $tenant
+     * @param User   $user
      *
      * @return Template
      */
-    public function findForApiCall($name, $mimeType, Tenant $tenant);
+    public function findForApiCall($name, $mimeType, User $user);
 
     /**
-     * @param Tenant $tenant
+     * @param User $user
      *
      * @return Template[]
      */
-    public function findAllByTenant(Tenant $tenant);
+    public function findAllByUser(User $user);
 
     /**
      * @param Template $template

@@ -6,7 +6,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\DefaultContext;
 use ScoreYa\Cinderella\Template\Model\Template;
-use ScoreYa\Cinderella\User\Model\ApiUser;
+use ScoreYa\Cinderella\User\Model\User;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 /**
@@ -19,12 +19,12 @@ class TemplateContext extends DefaultContext implements SnippetAcceptingContext
      */
     public function iHaveAnApiKeyAsPlaceholder($placeholder)
     {
-        $apiUserRepository = $this->container->get('score_ya.cinderella.user.repository.api_user');
+        $userRepository = $this->container->get('score_ya.cinderella.user.repository.user');
 
-        /** @var ApiUser $apiUser */
-        $apiUser = $apiUserRepository->findAll()[0];
+        /** @var User $user */
+        $user = $userRepository->findAll()[0];
 
-        $this->setPlaceholder($placeholder, $apiUser->getApiKey());
+        $this->setPlaceholder($placeholder, $user->getApiUser()->getApiKey());
     }
 
     /**

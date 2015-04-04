@@ -2,7 +2,6 @@
 
 namespace ScoreYa\Cinderella\User\Model;
 
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -13,14 +12,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class ApiUser implements UserInterface
 {
-    private $id;
     private $apiKey;
     private $roles;
-    private $tenant;
+    private $user;
 
     public function __construct()
     {
-        $this->id    = (string) new \MongoId();
         $this->roles = [new Role('ROLE_USER')];
     }
 
@@ -112,21 +109,21 @@ class ApiUser implements UserInterface
     }
 
     /**
-     * @return Tenant
+     * @return User
      */
-    public function getTenant()
+    public function getUser()
     {
-        return $this->tenant;
+        return $this->user;
     }
 
     /**
-     * @param Tenant $tenant
+     * @param User $user
      *
      * @return ApiUser
      */
-    public function setTenant(Tenant $tenant)
+    public function setUser(User $user)
     {
-        $this->tenant = $tenant;
+        $this->user = $user;
 
         return $this;
     }

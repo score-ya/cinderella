@@ -1,5 +1,0 @@
-ScoreYa\Cinderella\Multitenancy\Model\Tenant:
-  second_tenant:
-    name: second_template_tenant
-
-

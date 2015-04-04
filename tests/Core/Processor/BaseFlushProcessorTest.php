@@ -7,7 +7,7 @@ use Doctrine\ODM\MongoDB\UnitOfWork;
 use ScoreYa\Cinderella\Core\Processor\BaseFlushProcessor;
 
 /**
- * @author Alexander Miehe <alexander.miehe@movingimage24.com>
+ * @author Alexander Miehe <thelex@beamscore.com>
  *
  * @covers ScoreYa\Cinderella\Core\Processor\BaseFlushProcessor
  */

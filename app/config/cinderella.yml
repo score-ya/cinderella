@@ -6,11 +6,6 @@ score_ya_cinderella_core:
       property_name: email
       canonicalized_property_name: emailCanonical
     -
-      class: ScoreYa\Cinderella\Multitenancy\Model\Tenant
-      event: cinderella.tenant.created
-      property_name: name
-      canonicalized_property_name: nameCanonical
-    -
       class: ScoreYa\Cinderella\Template\Model\Template
       event: cinderella.template.created
       property_name: name

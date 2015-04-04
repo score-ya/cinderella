@@ -4,7 +4,7 @@ namespace ScoreYa\Cinderella\Template\Controller;
 
 use ScoreYa\Cinderella\Core\Util\Canonicalizer;
 use ScoreYa\Cinderella\Template\Repository\TemplateRepository;
-use ScoreYa\Cinderella\User\Model\ApiUser;
+use ScoreYa\Cinderella\User\Model\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -49,12 +49,12 @@ class GetApi
      */
     public function __invoke($name, Request $request)
     {
-        /** @var ApiUser $user */
+        /** @var User $user */
         $user     = $this->tokenStorage->getToken()->getUser();
         $template = $this->templateRepository->findForApiCall(
             $this->canonicalizer->canonicalize($name),
             $request->getMimeType($request->getRequestFormat(null)),
-            $user->getTenant()
+            $user
         );
 
         if ($template === null) {

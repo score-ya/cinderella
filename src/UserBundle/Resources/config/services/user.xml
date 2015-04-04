@@ -19,5 +19,11 @@
       <argument type="service" id="security.secure_random" />
       <tag name="kernel.event_listener" event="cinderella.api_user.created" method="onApiUserCreated"/>
     </service>
+
+    <service id="score_ya.cinderella.user.event_listener.set_password"
+             class="ScoreYa\Cinderella\User\EventListener\SetPassword">
+      <argument type="service" id="score_ya.cinderella.security.password_encoder" />
+      <tag name="kernel.event_listener" event="cinderella.user.created" method="onUserCreated"/>
+    </service>
   </services>
 </container>

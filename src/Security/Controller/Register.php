@@ -3,7 +3,7 @@
 namespace ScoreYa\Cinderella\Security\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use ScoreYa\Cinderella\Multitenancy\Model\Tenant;
+use ScoreYa\Cinderella\User\Model\ApiUser;
 use ScoreYa\Cinderella\User\Model\User;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,16 +25,18 @@ class Register
     }
 
     /**
-     * @param Tenant $tenant
-     * @param User   $user
+     * @param User $user
      *
      * @return Response
      */
-    public function __invoke(Tenant $tenant, User $user)
+    public function __invoke(User $user)
     {
-        $this->dm->persist($tenant);
+        $apiUser = new ApiUser();
 
-        $user->setTenant($tenant);
+        $this->dm->persist($apiUser);
+
+        $user->setApiUser($apiUser);
+
         $this->dm->persist($user);
 
         $this->dm->flush();
