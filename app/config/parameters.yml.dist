@@ -9,3 +9,6 @@ parameters:
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
     private_key.pass_phrase: pass_phrase
+    cinderella_api_key: apiKey
+    cinderella_api_url: url
+    verify_ssl: true

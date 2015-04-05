@@ -17,3 +17,20 @@ score_ya_cinderella_security_register:
                     groups: [registration]
     schemes: [https]
     methods: [POST]
+
+score_ya_cinderella_security_confirm:
+    pattern: /confirm/{confirmationToken}
+    defaults:
+        _controller: score_ya.cinderella.security.controller.confirm
+        _converters:
+            template:
+                converter: score_ya.cinderella.doctrine_odm
+                name: user
+                class: ScoreYa\Cinderella\User\Model\User
+                options:
+                  id: confirmationToken
+                  repository_method: findByConfirmationToken
+    schemes: [https]
+    methods: [PATCH]
+    requirements:
+        confirmationToken: "[\w-_]{43}"

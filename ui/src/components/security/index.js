@@ -3,11 +3,16 @@
 var angular = require('angular');
 var RoutingConfig = require('./config');
 var LoginController = require('./controller/LoginController');
+var RegistrationController = require('./controller/RegistrationController');
+var ConfirmController = require('./controller/ConfirmController');
 var Security = require('./service/Security');
+var RouteChecker = require('./service/RouteChecker');
 
 module.exports = angular
   .module('security', [])
   .controller('LoginController', LoginController)
+  .controller('RegistrationController', RegistrationController)
+  .controller('ConfirmController', ConfirmController)
   .factory('Security', Security)
   .config(function ($stateProvider, $translatePartialLoaderProvider) {
     angular.forEach(RoutingConfig, function (config, name) {
@@ -15,16 +20,5 @@ module.exports = angular
     });
     $translatePartialLoaderProvider.addPart('security');
   })
-  .run(function ($rootScope, $state, User) {
-    $rootScope.$on('$stateChangeStart', function (e, to) {
-      if (to.name !== 'security.login' && User.isLoggedIn() === false) {
-        e.preventDefault();
-        $state.go('security.login');
-      }
-      if (to.name === 'security.login' && User.isLoggedIn() === true) {
-        e.preventDefault();
-        $state.go('template.overview');
-      }
-    });
-  });
+  .run(RouteChecker);
 

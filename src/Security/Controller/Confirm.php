@@ -3,7 +3,6 @@
 namespace ScoreYa\Cinderella\Security\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use ScoreYa\Cinderella\User\Model\ApiUser;
 use ScoreYa\Cinderella\User\Model\User;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -12,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @codeCoverageIgnore
  */
-class Register
+class Confirm
 {
     private $dm;
 
@@ -31,12 +30,11 @@ class Register
      */
     public function __invoke(User $user)
     {
-        $user->setApiUser(new ApiUser());
-
-        $this->dm->persist($user);
+        $user->setConfirmationToken(null);
+        $user->enable();
 
         $this->dm->flush();
 
-        return new Response(null, Response::HTTP_CREATED);
+        return new Response(null, Response::HTTP_NO_CONTENT);
     }
 }

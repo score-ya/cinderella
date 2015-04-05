@@ -4,13 +4,16 @@ var LoginController = require('../../../../src/components/security/controller/Lo
 
 describe('Components:Security:Controller:LoginController', function () {
 
-  var createController, $q, $rootScope;
-
-  var $state = jasmine.createSpyObj('$state', ['go']);
-  var Security = jasmine.createSpyObj('Security', ['login']);
+  var createController,
+      $q,
+      $rootScope,
+      $state,
+      Security;
 
   beforeEach(function () {
     angular.mock.inject(function ($injector) {
+      $state = jasmine.createSpyObj('$state', ['go']);
+      Security = jasmine.createSpyObj('Security', ['login']);
       var $controller = $injector.get('$controller');
       $q = $injector.get('$q');
       $rootScope = $injector.get('$rootScope');

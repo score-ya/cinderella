@@ -4,15 +4,30 @@ var TemplateListController = require('../../../../src/components/template/contro
 
 describe('Components:Template:Controller:TemplateListController', function () {
 
-  var createController, templates;
+  var createController,
+    templates,
+    TemplateService,
+    $state,
+    $rootScope;
 
-  var TemplateService = jasmine.createSpyObj('TemplateService', ['getFormat']);
 
   beforeEach(function () {
+    TemplateService = jasmine.createSpyObj('TemplateService', ['getFormat']);
+    $state = jasmine.createSpyObj('$state', ['go']);
+
     angular.mock.inject(function ($injector) {
       var $controller = $injector.get('$controller');
+      $rootScope = $injector.get('$rootScope');
+      templates = ['templates'];
+      var locals = {
+        TemplateService: TemplateService,
+        templates: templates,
+        $state: $state,
+        $rootScope: $rootScope,
+        $scope: $rootScope
+      };
       createController = function () {
-        return $controller(TemplateListController, {'TemplateService': TemplateService, templates: templates});
+        return $controller(TemplateListController, locals);
       };
 
     });
@@ -20,10 +35,36 @@ describe('Components:Template:Controller:TemplateListController', function () {
 
   it('should init the templates', function () {
 
-    templates = 'templates';
+    var controller = createController();
+    expect(controller.templates).toEqual(['templates']);
+  });
+
+  it('should redirect to new template view if templates are empty', function () {
+
+    templates.pop();
 
     var controller = createController();
-    expect(controller.templates).toBe('templates');
+    expect(controller.templates).toEqual([]);
+    expect($state.go).toHaveBeenCalledWith('template.new');
+  });
+
+  it('should redirect to new template view if templates are empty and route changes to overview', function () {
+    createController();
+    templates.pop();
+
+    $rootScope.$emit('$stateChangeStart', {name: 'other'});
+    expect($state.go).not.toHaveBeenCalled();
+    $rootScope.$emit('$stateChangeStart', {name: 'template.overview'});
+    expect($state.go).toHaveBeenCalledWith('template.new');
+  });
+
+  it('should remove listener if controller is destroyed', function () {
+    createController();
+    templates.pop();
+
+    $rootScope.$emit('$destroy');
+    $rootScope.$emit('$stateChangeStart', {name: 'template.overview'});
+    expect($state.go).not.toHaveBeenCalled();
   });
 
 });

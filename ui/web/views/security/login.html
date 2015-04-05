@@ -6,17 +6,17 @@
 
         <form class="form" id="formLogin" name="form" novalidate>
             <div class="form-group">
-                <input type="email" class="form-control" autofocus ng-model="vm.loginData.email" required
+                <input type="email" class="form-control" autofocus ng-model="loginVm.loginData.email" required
                        name="email" placeholder="{{ 'security.form.email.placeholder' | translate}}"/>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="password"
                        placeholder="{{ 'security.form.password.placeholder'| translate}}"
-                       ng-model="vm.loginData.password" required>
+                       ng-model="loginVm.loginData.password" required>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-6">
-                    <button ng-click="vm.login()" ng-disabled="form.$invalid"
+                    <button ng-click="loginVm.login()" ng-disabled="form.$invalid"
                             translate="security.form.login.label" class="btn btn-primary">
                     </button>
                 </div>

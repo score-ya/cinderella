@@ -92,6 +92,16 @@ class User implements AdvancedUserInterface
     }
 
     /**
+     * @return User
+     */
+    public function enable()
+    {
+        $this->enabled = true;
+
+        return $this;
+    }
+
+    /**
      * Returns the roles granted to the user.
      *
      * <code>

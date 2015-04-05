@@ -1,7 +1,9 @@
 ScoreYa\Cinderella\User\Model\ApiUser:
   api_user:
     apiKey: key
-    user: @login_user
+
+  confirm_api_user:
+    apiKey: null
 
 ScoreYa\Cinderella\User\Model\User:
   login_user:
@@ -9,3 +11,9 @@ ScoreYa\Cinderella\User\Model\User:
     plainPassword: test
     enabled: true
     apiUser: @api_user
+  confirm_user:
+    email: confirm@beamscore.com
+    plainPassword: test
+    enabled: true
+    confirmationToken: EqdfjDCfGTWEu-EM5KxJcSPaUEk4_XmGq5Q0B4oEuMY
+    apiUser: @confirm_api_user

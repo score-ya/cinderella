@@ -8,6 +8,7 @@ require('angular-translate');
 require('angular-translate-loader-partial');
 require('angular-resource');
 require('angular-ui-unique');
+require('angular-ui-validate');
 require('angular-bootstrap');
 var requires = [
   'ui.router',
@@ -15,6 +16,7 @@ var requires = [
   'pascalprecht.translate',
   'ngResource',
   'ui.unique',
+  'ui.validate',
   'ui.bootstrap',
   require('angular-cache'),
   require('./components').name,

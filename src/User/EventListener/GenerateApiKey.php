@@ -2,7 +2,7 @@
 
 namespace ScoreYa\Cinderella\User\EventListener;
 
-use ScoreYa\Cinderella\User\Event\ApiUserEvent;
+use ScoreYa\Cinderella\User\Event\UserEvent;
 use Symfony\Component\Security\Core\Util\SecureRandomInterface;
 
 /**
@@ -21,10 +21,14 @@ class GenerateApiKey
     }
 
     /**
-     * @param ApiUserEvent $event
+     * @param UserEvent $event
      */
-    public function onApiUserCreated(ApiUserEvent $event)
+    public function onUserCreated(UserEvent $event)
     {
-        $event->getApiUser()->setApiKey(rtrim(strtr(base64_encode($this->hashGenerator->nextBytes(32)), '+/', '-_'), '='));
+        if ($event->getUser()->getApiUser()->getApiKey() !== null) {
+            return;
+        }
+
+        $event->getUser()->getApiUser()->setApiKey(rtrim(strtr(base64_encode($this->hashGenerator->nextBytes(32)), '+/', '-_'), '='));
     }
 }
