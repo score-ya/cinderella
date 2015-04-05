@@ -91,7 +91,7 @@ Vagrant.configure("2") do |config|
 
 
       config.vm.provision "docker",
-        images: ["crosbymichael/skydock", "crosbymichael/skydns", "ubuntu:14.04.1"]
+        images: ["crosbymichael/skydock:latest", "crosbymichael/skydns:latest", "ubuntu:14.04.2"]
 
       config.vm.provision "docker" do |d|
           d.build_image "/home/core/project/docker/nginx", args: "-t scoreya/nginx"
@@ -99,6 +99,7 @@ Vagrant.configure("2") do |config|
           d.build_image "/home/core/project/docker/php-debug", args: "-t scoreya/php-debug"
           d.build_image "/home/core/project/docker/php-mongoadmin", args: "-t scoreya/php-mongoadmin"
           d.build_image "/home/core/project/docker/mongo", args: "-t scoreya/mongo"
+          d.build_image "/home/core/project/docker/mailcatcher", args: "-t scoreya/mailcatcher"
       end
 
 

@@ -1,5 +1,7 @@
 {
   "common.title" : "Cinderella",
   "nav.logout.label" : "Logout",
-  "nav.logout.title" : "Logout"
+  "nav.logout.title" : "Logout",
+  "nav.registration.label" : "Registrieren",
+  "nav.registration.title" : "Registrieren"
 }

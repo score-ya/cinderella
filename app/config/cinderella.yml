@@ -12,8 +12,8 @@ score_ya_cinderella_core:
       canonicalized_property_name: nameCanonical
 
 score_ya_cinderella_sdk:
-  api_key: cBRRU2W4gE5KPXnKAhDOqRoHajo7w1vFYvzFyZ3QKOE
-  verify_ssl: false
+  api_key: %cinderella_api_key%
+  verify_ssl: %verify_ssl%
   clients:
     template:
-      base_url: https://nginx.nginx.dev.cinderella
+      base_url: %cinderella_api_url%

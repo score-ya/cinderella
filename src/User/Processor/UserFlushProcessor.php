@@ -25,7 +25,7 @@ class UserFlushProcessor extends BaseFlushProcessor
 
     /**
      * @param DocumentManager $dm
-     * @param mixed           $doc
+     * @param User            $doc
      *
      * @return void
      */

@@ -15,12 +15,11 @@ class CanonicalizedDocumentFactory extends EntityFactory
 {
     public function create(ContainerBuilder $container, $id, $config)
     {
-        parent::create($container, $id.'.wrapped', $config);
+        parent::create($container, $id . '.wrapped', $config);
 
         $container
             ->setDefinition($id, new Definition(CanonicalizedUserProvider::class))
             ->addArgument(new Reference('score_ya.cinderella.core.util.canonicalizer'))
-            ->addArgument(new Reference($id.'.wrapped'))
-        ;
+            ->addArgument(new Reference($id . '.wrapped'));
     }
 }

@@ -17,7 +17,7 @@
     <service id="score_ya.cinderella.user.event_listener.generate_api_key"
              class="ScoreYa\Cinderella\User\EventListener\GenerateApiKey">
       <argument type="service" id="security.secure_random" />
-      <tag name="kernel.event_listener" event="cinderella.api_user.created" method="onApiUserCreated"/>
+      <tag name="kernel.event_listener" event="cinderella.user.created" method="onUserCreated"/>
     </service>
 
     <service id="score_ya.cinderella.user.event_listener.set_password"

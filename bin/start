@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 docker run -d \
+           --name mailcatcher \
+           --cidfile $(pwd)/docker/tmp/mailcatcher-docker.cid \
+           scoreya/mailcatcher
+
+docker run -d \
            --volumes-from app-data \
            -v $(pwd)/docker/logs/php:/var/log/php-fpm \
            --name php \

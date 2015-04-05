@@ -22,6 +22,7 @@
     "angular-jwt": "./node_modules/angular-jwt/dist/angular-jwt.js",
     "angular-resource": "./node_modules/angular-resource/angular-resource.js",
     "angular-ui-unique": "./node_modules/angular-ui-utils/modules/unique/unique.js",
+    "angular-ui-validate": "./node_modules/angular-ui-utils/modules/validate/validate.js",
     "angular-bootstrap": "./node_modules/angular-bootstrap/dist/ui-bootstrap-tpls.js"
   },
   "browserify-shim": {
@@ -63,7 +64,7 @@
     "karma-coverage": "0.2.6",
     "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.1.4",
-    "watch": "^0.14.0"
+    "watch": "^0.15.0"
   },
   "scripts": {
     "postinstall": "npm run build",

@@ -7,6 +7,7 @@ use Doctrine\ODM\MongoDB\UnitOfWork;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use ScoreYa\Cinderella\User\Event\UserEvent;
+use ScoreYa\Cinderella\User\Model\ApiUser;
 use ScoreYa\Cinderella\User\Model\User;
 use ScoreYa\Cinderella\User\Processor\UserFlushProcessor;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

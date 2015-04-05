@@ -101,6 +101,8 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "env-map": {
+                "cinderella_api_key": "SYMFONY__CINDERELLA_API_KEY",
+                "cinderella_api_url": "SYMFONY__CINDERELLA_API_URL",
                 "database_name": "SYMFONY__DATABASE_NAME",
                 "database_server": "SYMFONY__DATABASE_SERVER",
                 "private_key.pass_phrase": "SYMFONY__PRIVATE_KEY__PASS_PHRASE"

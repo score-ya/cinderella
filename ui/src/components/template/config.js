@@ -21,6 +21,9 @@ module.exports = {
   },
   'template.overview': {
     url: '',
+    params: {
+      auth: true
+    },
     views: {
       detail: {
         templateUrl: '/views/template/detail.html',
@@ -42,6 +45,9 @@ module.exports = {
   },
   'template.detail': {
     url: '/{id:[a-f\\d]{24}}',
+    params: {
+      auth: true
+    },
     views: {
       detail: {
         templateUrl: '/views/template/detail.html',
@@ -66,6 +72,9 @@ module.exports = {
   },
   'template.new': {
     url: '/new',
+    params: {
+      auth: true
+    },
     views: {
       detail: {
         templateUrl: '/views/template/detail.html',

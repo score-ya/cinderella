@@ -10,11 +10,5 @@
       <argument type="service" id="event_dispatcher" />
       <tag name="cinderella.flush_processor" />
     </service>
-
-    <service id="score_ya.cinderella.user.flush_processor.api_user" public="false"
-             class="ScoreYa\Cinderella\User\Processor\ApiUserFlushProcessor">
-      <argument type="service" id="event_dispatcher" />
-      <tag name="cinderella.flush_processor" />
-    </service>
   </services>
 </container>

@@ -4,5 +4,15 @@
   "security.form.login.header": "Anmeldung",
   "security.form.login.msg": "Geben Sie hier bitte ihre Login-Daten ein.",
   "security.form.login.label": "Anmelden",
-  "security.form.forgot_password.label": "Passwort vergessen?"
+  "security.form.forgot_password.label": "Passwort vergessen?",
+
+  "security.form.repeatedPassword.placeholder" : "Kennwort wiederholen",
+  "security.form.register.label" : "Registrieren",
+  "security.form.registration.header": "Erstellen sie ihren persönlichen Account",
+  "security.form.repeatedPlainPassword.error" : "Passwörter müssen übereinstimmen.",
+
+  "security.form.confirmation.header": "Registierungsbestätigung",
+  "security.form.confirmation.progress": "Benutzer wird aktiviert.",
+  "security.form.confirmation.failed": "Aktivierung ist fehlgeschlagen.",
+  "security.form.confirmation.success": "Aktivierung war erfolgreich."
 }

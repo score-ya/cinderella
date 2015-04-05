@@ -1,8 +1,9 @@
 ScoreYa\Cinderella\Template\Model\Template:
   user_create_txt:
-    name: user_create
+    name: user_created
     mimeType: text/plain
     content: |
+      https://cinderella.dev/confirm/{{confirmation_token}}
       Lorem ipsum dolor {{first}} amet,
       consetetur {{ second }} elitr,
       sed diam nonumy eirmod tempor
@@ -12,10 +13,11 @@ ScoreYa\Cinderella\Template\Model\Template:
     openingVariable: '{{'
     closingVariable: '}}'
   user_create_html:
-    name: user_create
+    name: user_created
     mimeType: text/html
     user: @score_ya_test_user
     content: |
+      <a href="https://cinderella.dev/confirm/{{confirmation_token}}">activate</a>
       Lorem ipsum dolor {{first}} amet,
       consetetur {{ second }} elitr,
       sed diam nonumy eirmod tempor

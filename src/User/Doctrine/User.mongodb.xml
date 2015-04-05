@@ -5,7 +5,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                   http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-  <document name="ScoreYa\Cinderella\User\Model\User" collection="users">
+  <document name="ScoreYa\Cinderella\User\Model\User" collection="users" repository-class="ScoreYa\Cinderella\User\Repository\UserDocumentRepository">
     <field fieldName="id" id="true" />
     <!--<field name="username" fieldName="username" type="string" />
 

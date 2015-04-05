@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "07ca04490456cba2eb4d61356920dd53",
+    "hash": "0c0378d229c95a09b5a1f7aac576e40a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -612,12 +612,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "f04de2ed82760d0a490d0ea80e2ebfb85eea335a"
+                "reference": "5b18470760f5ddd39311b7469239cae717b3d12d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/f04de2ed82760d0a490d0ea80e2ebfb85eea335a",
-                "reference": "f04de2ed82760d0a490d0ea80e2ebfb85eea335a",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/5b18470760f5ddd39311b7469239cae717b3d12d",
+                "reference": "5b18470760f5ddd39311b7469239cae717b3d12d",
                 "shasum": ""
             },
             "require": {
@@ -682,7 +682,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2015-03-30 13:38:48"
+            "time": "2015-04-05 08:24:44"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -2104,12 +2104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "fb514b6f30edba29f2aaaf68938372236773afe5"
+                "reference": "045433c7c47424e2d3eb26ace671fdc2f97c7777"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/fb514b6f30edba29f2aaaf68938372236773afe5",
-                "reference": "fb514b6f30edba29f2aaaf68938372236773afe5",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/045433c7c47424e2d3eb26ace671fdc2f97c7777",
+                "reference": "045433c7c47424e2d3eb26ace671fdc2f97c7777",
                 "shasum": ""
             },
             "require": {
@@ -2219,7 +2219,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-04 09:11:30"
+            "time": "2015-04-05 07:48:59"
         },
         {
             "name": "twig/extensions",
