@@ -20,6 +20,8 @@ RUN mv composer.phar /usr/local/bin/composer
 VOLUME ["/var/log/php-fpm", "/root/.composer", "/srv/www/app"]
 WORKDIR /srv/www/app
 
+RUN usermod -u 500 www-data
+
 EXPOSE 9000
 
 CMD ["php5-fpm", "-F"]

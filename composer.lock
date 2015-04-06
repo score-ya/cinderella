@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0c0378d229c95a09b5a1f7aac576e40a",
+    "hash": "fe73d985a800af739887b6eeeb49fedb",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -612,12 +612,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "5b18470760f5ddd39311b7469239cae717b3d12d"
+                "reference": "683728eb0b4723dd5551686addc724f8f1b13afe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/5b18470760f5ddd39311b7469239cae717b3d12d",
-                "reference": "5b18470760f5ddd39311b7469239cae717b3d12d",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/683728eb0b4723dd5551686addc724f8f1b13afe",
+                "reference": "683728eb0b4723dd5551686addc724f8f1b13afe",
                 "shasum": ""
             },
             "require": {
@@ -682,7 +682,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2015-04-05 08:24:44"
+            "time": "2015-04-07 14:09:54"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -1772,17 +1772,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.20",
+            "version": "v3.0.21",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "48c76189fb0a76a20a4a67a750b513ed06074b55"
+                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/48c76189fb0a76a20a4a67a750b513ed06074b55",
-                "reference": "48c76189fb0a76a20a4a67a750b513ed06074b55",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/da23c78093676a823a1ff43a214987ea3fbf83c8",
+                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8",
                 "shasum": ""
             },
             "require": {
@@ -1828,7 +1828,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-03-26 11:09:50"
+            "time": "2015-04-10 06:20:46"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2100,16 +2100,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.7.x-dev",
+            "version": "v2.7.0-BETA1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "045433c7c47424e2d3eb26ace671fdc2f97c7777"
+                "reference": "07379d1d80594872bfbb7e9baad2cf7709c73102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/045433c7c47424e2d3eb26ace671fdc2f97c7777",
-                "reference": "045433c7c47424e2d3eb26ace671fdc2f97c7777",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/07379d1d80594872bfbb7e9baad2cf7709c73102",
+                "reference": "07379d1d80594872bfbb7e9baad2cf7709c73102",
                 "shasum": ""
             },
             "require": {
@@ -2219,7 +2219,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-05 07:48:59"
+            "time": "2015-04-10 19:52:02"
         },
         {
             "name": "twig/extensions",
@@ -2887,28 +2887,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behatch/contexts.git",
-                "reference": "fc1ffd6120be4c380fc0e61b1feb22bbde222f8d"
+                "reference": "a1583afd723198403ef6e66304431fd49b093d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behatch/contexts/zipball/fc1ffd6120be4c380fc0e61b1feb22bbde222f8d",
-                "reference": "fc1ffd6120be4c380fc0e61b1feb22bbde222f8d",
+                "url": "https://api.github.com/repos/Behatch/contexts/zipball/a1583afd723198403ef6e66304431fd49b093d9e",
+                "reference": "a1583afd723198403ef6e66304431fd49b093d9e",
                 "shasum": ""
             },
             "require": {
-                "behat/behat": "3.*",
-                "behat/mink": "*",
+                "behat/behat": "~3.0",
                 "behat/mink-extension": "~2.0",
-                "justinrainbow/json-schema": "*",
+                "justinrainbow/json-schema": "~1.4",
+                "php": "~5.4",
                 "symfony/property-access": "~2.3"
             },
             "replace": {
-                "sanpi/behatch-skeleton": "self.version"
+                "sanpi/behatch-contexts": "self.version"
             },
             "require-dev": {
-                "atoum/atoum": "*@dev",
-                "behat/mink-goutte-driver": "*",
-                "behat/mink-selenium2-driver": "*",
+                "atoum/atoum": "dev-master",
+                "behat/mink-goutte-driver": "~1.1",
+                "behat/mink-selenium2-driver": "~1.2",
                 "kherge/box": "~2.0"
             },
             "type": "library",
@@ -2928,7 +2928,7 @@
                 "Context",
                 "Symfony2"
             ],
-            "time": "2015-02-02 08:34:52"
+            "time": "2015-04-10 13:22:53"
         },
         {
             "name": "fabpot/goutte",
@@ -3571,16 +3571,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67"
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/34cc484af1ca149188d0d9e91412191e398e0b67",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/934fd03eb6840508231a7f73eb8940cf32c3b66c",
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c",
                 "shasum": ""
             },
             "require": {
@@ -3629,7 +3629,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-24 10:06:35"
+            "time": "2015-04-11 04:35:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3768,16 +3768,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74"
+                "reference": "eab81d02569310739373308137284e0158424330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/db32c18eba00b121c145575fcbcd4d4d24e6db74",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/eab81d02569310739373308137284e0158424330",
+                "reference": "eab81d02569310739373308137284e0158424330",
                 "shasum": ""
             },
             "require": {
@@ -3813,20 +3813,20 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-01-17 09:51:32"
+            "time": "2015-04-08 04:46:07"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.6.1",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "08b2aacdd8433abbba468f995d6d64b76a7a62ec"
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/08b2aacdd8433abbba468f995d6d64b76a7a62ec",
-                "reference": "08b2aacdd8433abbba468f995d6d64b76a7a62ec",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
+                "reference": "163232991e652e6efed2f8470326fffa61e848e2",
                 "shasum": ""
             },
             "require": {
@@ -3865,9 +3865,6 @@
             "autoload": {
                 "classmap": [
                     "src/"
-                ],
-                "files": [
-                    "src/Framework/Assert/Functions.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3888,7 +3885,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-03 13:46:59"
+            "time": "2015-04-11 05:23:21"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4505,7 +4502,7 @@
         "scoreya/cinderella-sdk": 20,
         "doctrine/mongodb-odm": 20,
         "doctrine/mongodb-odm-bundle": 20,
-        "symfony/symfony": 20,
+        "symfony/symfony": 10,
         "behatch/contexts": 20
     },
     "prefer-stable": false,

@@ -48,7 +48,7 @@
         "sensio/framework-extra-bundle": "~3.0",
         "symfony/monolog-bundle": "~2.4",
         "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/symfony": "~2.7.0@dev",
+        "symfony/symfony": "~2.7.0@beta",
         "twig/extensions": "~1.0"
     },
     "require-dev": {
@@ -67,13 +67,6 @@
         "webmozart/json" : "~1.0"
     },
     "scripts": {
-        "heroku" : [
-          "mkdir -p var/jwt;curl -o var/jwt/jwt_public.pem -L $JWT_PUBLIC; curl -o var/jwt/jwt.pem -L $JWT_PRIVATE",
-          "cd ui; npm install --production;rm -rf node_modules;"
-        ],
-        "pre-install-cmd": [
-            "ScoreYa\\Cinderella\\Core\\Composer\\HerokuEnvironment::populateEnvironment"
-        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -103,9 +96,15 @@
             "env-map": {
                 "cinderella_api_key": "SYMFONY__CINDERELLA_API_KEY",
                 "cinderella_api_url": "SYMFONY__CINDERELLA_API_URL",
+                "mailer_host": "SYMFONY__MAILER_HOST",
+                "mailer_user": "SYMFONY__MAILER_USER",
+                "mailer_password": "SYMFONY__MAILER_PASSWORD",
+                "mailer_port": "SYMFONY__MAILER_PORT",
                 "database_name": "SYMFONY__DATABASE_NAME",
                 "database_server": "SYMFONY__DATABASE_SERVER",
-                "private_key.pass_phrase": "SYMFONY__PRIVATE_KEY__PASS_PHRASE"
+                "private_key.pass_phrase": "SYMFONY__PRIVATE_KEY__PASS_PHRASE",
+                "jwt_public_path": "SYMFONY__JWT_PUBLIC_PATH",
+                "jwt_private_path": "SYMFONY__JWT_PRIVATE_PATH"
             }
         },
         "branch-alias": {

@@ -30,6 +30,7 @@ ui/web/views
 /build/
 /vendor/
 /bin/*
+!bin/aws
 !bin/console
 !bin/composer
 !bin/php

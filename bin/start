@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 docker run -d \
+            -v /home/core/project/docker/mongo/mongodb.conf:/etc/mongod.conf \
+            -v /home/core/project/docker/data/mongo/mongo01:/data/db \
+            --name mongo01 \
+            --cidfile $(pwd)/docker/tmp/mongo01-docker.cid \
+            scoreya/mongo
+
+docker run -d \
            --name mailcatcher \
            --cidfile $(pwd)/docker/tmp/mailcatcher-docker.cid \
            scoreya/mailcatcher
@@ -9,12 +16,13 @@ docker run -d \
            --volumes-from app-data \
            -v $(pwd)/docker/logs/php:/var/log/php-fpm \
            --name php \
+           --env-file=/home/core/env/symfony \
            --cidfile $(pwd)/docker/tmp/php-docker.cid \
            scoreya/php-debug
 
 docker run -d \
            -v $(pwd)/docker/logs/php-mongoadmin:/var/log/php-fpm \
-           -v $(pwd)/docker/php-mongoadmin/config.php:/srv/config.php \
+           -v $(pwd)/docker/php-mongoadmin/config.php:/opt/config.php \
            --name php-mongoadmin \
            --cidfile $(pwd)/docker/tmp/php-mongoadmin-docker.cid \
            scoreya/php-mongoadmin
