@@ -25,7 +25,12 @@ var requires = [
 
 angular.module('cinderella-ui-app', requires)
   .config(function ($httpProvider, jwtInterceptorProvider) {
-    jwtInterceptorProvider.tokenGetter = ['User', function (User) {
+    jwtInterceptorProvider.tokenGetter = ['User', 'config', function (User, config) {
+
+      if (config.url.substr(config.url.length - 5) === '.html') {
+        return null;
+      }
+
       return User.getToken();
     }];
 

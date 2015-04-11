@@ -12,3 +12,5 @@ parameters:
     cinderella_api_key: apiKey
     cinderella_api_url: url
     verify_ssl: true
+    jwt_public_path: %app.root_dir%/var/jwt/jwt_public.pem
+    jwt_private_path: %app.root_dir%/var/jwt/jwt.pem

@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.2
 MAINTAINER Alexander Miehe <thelex@beamscore.com>
-ENV NGINX_VERSION 1.7.11
+ENV NGINX_VERSION 1.7.12
 
 RUN apt-get update \
     && apt-get install -y curl gcc libpcre3-dev libssl-dev make \

@@ -21,21 +21,6 @@ coreos:
             [Service]
             Environment=DOCKER_OPTS='--dns="172.17.42.1"'
             Environment=DOCKER_OPT_BIP='--bip="172.17.42.1/16"'
-    - name: docker-tcp.socket
-      command: start
-      enable: true
-      content: |
-        [Unit]
-        Description=Docker Socket for the API
-
-        [Socket]
-        ListenStream=2375
-        Service=docker.service
-        BindIPv6Only=both
-
-        [Install]
-        WantedBy=sockets.target
-
     - name: docker-skydns.service
       command: start
       enable: true
@@ -80,18 +65,98 @@ coreos:
         User=core
         ExecStartPre=-/usr/bin/docker kill app-data
         ExecStartPre=-/usr/bin/docker rm -f app-data
-        ExecStart=/usr/bin/docker run -v /home/core/project:/srv/www/app -v /tmp/vagrant-cache/composer:/root/.composer --name app-data ubuntu:14.04.1 echo "init app data"
+        ExecStart=/usr/bin/docker run -v /home/core/jwt:/home/core/jwt -v /home/core/project:/srv/www/app -v /home/core/composer:/root/.composer --name app-data ubuntu:14.04.2 echo "init app data"
+write_files:
+  - path: /home/core/env/symfony
+    permissions: 0644
+    owner: core
+    content: |
+      SYMFONY_DEBUG=1
+      SYMFONY_ENV=dev
+      SYMFONY__CINDERELLA_API_KEY=cBRRU2W4gE5KPXnKAhDOqRoHajo7w1vFYvzFyZ3QKOE
+      SYMFONY__CINDERELLA_API_URL=https://nginx.nginx.dev.cinderella
+      SYMFONY__MAILER_HOST=mailcatcher.mailcatcher.dev.cinderella
+      SYMFONY__MAILER_PASSWORD=null
+      SYMFONY__MAILER_PORT=1025
+      SYMFONY__MAILER_USER=null
+      SYMFONY__PRIVATE_KEY__PASS_PHRASE=cinderella
+      SYMFONY__DATABASE_SERVER=mongodb://mongo01.mongo.dev.cinderella:27017
+      SYMFONY__DATABASE_NAME=cinderella
+      SYMFONY__JWT_PUBLIC_PATH=/home/core/jwt/public.pem
+      SYMFONY__JWT_PRIVATE_PATH=/home/core/jwt/private.pem
+  - path: /home/core/jwt/private.pem
+    permissions: 0644
+    owner: core
+    content: |
+      -----BEGIN RSA PRIVATE KEY-----
+      Proc-Type: 4,ENCRYPTED
+      DEK-Info: AES-256-CBC,9EE4A8E4CFE5D67A2E2A6E81161E21C3
 
-    - name: docker-mongo-01.service
-      command: start
-      enable: true
-      content: |
-        [Unit]
-        Description= mongo 01 service
-        After=docker-skydock.service
-
-        [Service]
-        User=core
-        ExecStartPre=-/usr/bin/docker kill mongo01
-        ExecStartPre=-/usr/bin/docker rm -f mongo01
-        ExecStart=/usr/bin/docker run -v /home/core/project/docker/mongo/mongodb.conf:/etc/mongod.conf -v /home/core/project/docker/data/mongo/mongo01:/data/db --name mongo01 scoreya/mongo
+      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
+      -----END RSA PRIVATE KEY-----
+  - path: /home/core/jwt/public.pem
+    permissions: 0644
+    owner: core
+    content: |
+      -----BEGIN PUBLIC KEY-----
+      MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAnlrjQRyq+7Bxe/0Ew69+
+      acmkkJ+WeAcQaO0D/CTCnXlSwSrlknKjqwRbXFT+kNTHR2v+PSPt4grGbraSCUjO
+      ZbY2weFsX+sCq+FshLhpFK4yVnFQD2u7oiEgd92/FZQOFmwMln7OXF95/tnm2qH+
+      XqkOkRixkqfeJf/mxOvg5ivh8lkYUsKW/+8UahV5ucxuUhsiVmP4+oOTcySlYCL1
+      AWhDW9yfaKDmzR+nyQL9E4a4Q1GCbQBUHA7suDAOcqYqfE03HB0hbAbrOplLKBWd
+      3QQVhYoKkFjBqla5HM1KvCIA5aTWKQZBfATHVePUgAXuZFdMyuS9fs/eCbLV3MH/
+      /khQAVQXmWeTK15JXsyj0O6FpCU+QWNzxhwA2SiInBFOhR46ozmw8ku9FsLP3+ak
+      O9EwHLcdjwH1dKBfhQq4kKuWd8ui2ThQ6zRlF+jz3tXAS2ETvn/ij+FHydaeZvNJ
+      EXSKoy7e8vI+DaOav3SSA3602B2U93+AqbdIx5OJLa35pznKVnmrine0V+7sUeWX
+      dGHkPhnzK/21ItoU+TIcfrHihva+HPHFrSppJnU1S0LilOLFQlcdZdHaqZ2IsFLc
+      pdLYbU3qYWovZeaJFvqIOGazT9ZJeYRvYQSAz1nrxNbqLYw0l82YjD/vv8EgR5lz
+      FfEhwPVIiAZwbqaiHzkj9ZMCAwEAAQ==
+      -----END PUBLIC KEY-----
