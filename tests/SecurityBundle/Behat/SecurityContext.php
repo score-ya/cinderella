@@ -105,7 +105,7 @@ class SecurityContext extends DefaultContext implements SnippetAcceptingContext
         $this->scoreYaRestContext->iAddClientHeaderEqualTo('SCRIPT_FILENAME', '');
         $this->resultPool->store(
             new HttpCallResult(
-                $this->restContext->iSendARequestToWithBody(
+                $this->restContext->iSendARequestTo(
                     'POST',
                     '/login',
                     new PyStringNode(['{"email": "'.$email.'","password": "'.$password.'"}'], 0)
