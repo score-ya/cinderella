@@ -28,5 +28,12 @@
       <argument type="service" id="score_ya.cinderella.core.serializer.identical_property_naming_strategy"/>
     </service>
 
+    <service id="score_ya.cinderella.template.serializer.set_user_listener"
+             class="ScoreYa\Cinderella\Template\EventListener\SetUserListener">
+      <argument type="expression">service('security.token_storage').getToken().getUser()</argument>
+      <tag name="jms_serializer.event_listener" event="serializer.post_deserialize"
+           class="ScoreYa\Cinderella\Template\Model\Template" method="onPostDeserialize"/>
+    </service>
+
   </services>
 </container>

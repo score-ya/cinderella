@@ -18,7 +18,7 @@ RUN apt-get update \
     && apt-get remove -y gcc make \
     && apt-get -y autoremove
 
-VOLUME ["/srv/www/app", "/var/log/nginx", "/opt/nginx/conf/nginx.conf", "/opt/nginx/certs"]
+VOLUME ["/srv/www/app", "/var/log/nginx", "/opt/nginx/certs"]
 
 EXPOSE 80:80 443:443
 

@@ -37,7 +37,7 @@ module.exports = function(karma) {
     // browserify configuration
     browserify: {
       debug: true,
-      transform: ['browserify-shim', 'browserify-ngannotate', 'browserify-istanbul']
+      transform: ['browserify-ngannotate', 'browserify-istanbul']
     }
   });
 };

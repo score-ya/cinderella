@@ -2,13 +2,13 @@
 
 namespace ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\UserProvider;
 
-use ScoreYa\Cinderella\Bundle\SecurityBundle\UserProvider\CanonicalizedDocumentFactory;
+use ScoreYa\Cinderella\Bundle\CoreBundle\DependencyInjection\Security\UserProvider\CanonicalizedDocumentFactory;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @author Alexander Miehe <thelex@beamscore.com>
  *
- * @covers ScoreYa\Cinderella\Bundle\SecurityBundle\UserProvider\CanonicalizedDocumentFactory
+ * @covers ScoreYa\Cinderella\Bundle\CoreBundle\DependencyInjection\Security\UserProvider\CanonicalizedDocumentFactory
  */
 class CanonicalizedDocumentFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,7 +23,7 @@ class CanonicalizedDocumentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $documentFactory->create($container, 'test', $config);
 
-        $this->assertEquals('score_ya.cinderella.core.util.canonicalizer', (string) $container->getDefinition('test')->getArgument(0));
-        $this->assertEquals('test.wrapped', (string) $container->getDefinition('test')->getArgument(1));
+        self::assertEquals('score_ya.cinderella.core.util.canonicalizer', (string) $container->getDefinition('test')->getArgument(0));
+        self::assertEquals('test.wrapped', (string) $container->getDefinition('test')->getArgument(1));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ScoreYa\Cinderella\Bundle\SecurityBundle\UserProvider;
+namespace ScoreYa\Cinderella\Bundle\CoreBundle\DependencyInjection\Security\UserProvider;
 
 use ScoreYa\Cinderella\Security\UserProvider\CanonicalizedUserProvider;
 use Symfony\Bridge\Doctrine\DependencyInjection\Security\UserProvider\EntityFactory;

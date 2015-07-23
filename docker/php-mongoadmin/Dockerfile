@@ -12,4 +12,4 @@ RUN mkdir -p /opt/rockmongo \
 WORKDIR /opt/rockmongo
 RUN rm -f config.php && ln -fs /opt/config.php config.php
 
-VOLUME ["/opt/config.php", "/opt/rockmongo"]
+VOLUME ["/opt/rockmongo"]

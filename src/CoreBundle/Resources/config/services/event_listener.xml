@@ -15,6 +15,33 @@
       <argument>%fos_rest.converter.request_body.validation_errors_argument%</argument>
       <tag name="kernel.event_listener" event="kernel.controller" method="checkViolation" priority="-5"/>
     </service>
+    <service id="score_ya.cinderella.template.engine" class="ScoreYa\Cinderella\Template\TemplateEngine">
+      <argument type="service" id="score_ya.cinderella.loader.cache"/>
+      <argument type="service" id="request_stack" />
+    </service>
+
+    <service id="score_ya.cinderella.loader.variable" class="ScoreYa\Cinderella\Template\Loader\VariableLoader">
+      <argument type="service" id="score_ya.cinderella.template.parser_builder"/>
+    </service>
+
+    <service id="score_ya.cinderella.loader.cache" class="ScoreYa\Cinderella\Template\Loader\CacheLoader">
+      <argument type="service" id="score_ya.cinderella.loader.variable" />
+      <argument type="service" id="doctrine_cache.providers.template_variables_cache" />
+    </service>
+
+    <service id="score_ya.cinderella.template.parser_builder"
+             class="ScoreYa\Cinderella\Template\TemplateParserBuilder"/>
+
+    <service id="score_ya.cinderella.security.event_listener.add_api_token"
+             class="ScoreYa\Cinderella\Security\EventListener\AddApiToken">
+      <tag name="kernel.event_listener" event="lexik_jwt_authentication.on_authentication_success" method="onAuthenticationSuccess" />
+    </service>
+
+    <service id="score_ya.cinderella.template.event_listener.update_template_variables"
+             class="ScoreYa\Cinderella\Template\EventListener\UpdateTemplateVariables">
+      <argument type="service" id="score_ya.cinderella.loader.cache" />
+      <tag name="kernel.event_listener" event="cinderella.template.updated" method="update" />
+    </service>
 
   </services>
 </container>

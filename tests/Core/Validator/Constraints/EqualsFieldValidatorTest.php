@@ -1,6 +1,6 @@
 <?php
 
-namespace Mi24\Bundle\CustomerControlCenter\UserBundle\Tests\Validator\Constraints;
+namespace ScoreYa\Cinderella\Core\Tests\Validator\Constraints;
 
 use Prophecy\Prophecy\ObjectProphecy;
 use ScoreYa\Cinderella\Core\Validator\Constraints\EqualsField;

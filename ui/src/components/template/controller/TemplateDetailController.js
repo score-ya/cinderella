@@ -1,11 +1,11 @@
 'use strict';
 
 var angular = require('angular');
-
+var snakeCase = require('lodash.snakecase');
 /**
  * @ngInject
  */
-function TemplateDetailController(template, $state, $modal) {
+function TemplateDetailController(template, $state, $modal, $scope) {
   var vm = this;
 
   vm.mimeTypes = ['text/html', 'text/plain'];
@@ -14,6 +14,10 @@ function TemplateDetailController(template, $state, $modal) {
   vm.delete = $delete;
   vm.showTemplateUrl = showTemplateUrl;
   vm.copy = copy;
+
+  $scope.$watch('templateDetailVm.template.name', function(name) {
+    vm.template.apiName = snakeCase(name);
+  });
 
 
   function save() {

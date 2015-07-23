@@ -24,12 +24,12 @@ docker run -d \
            -v $(pwd)/docker/logs/php-mongoadmin:/var/log/php-fpm \
            -v $(pwd)/docker/php-mongoadmin/config.php:/opt/config.php \
            --name php-mongoadmin \
+           --volumes-from app-data \
            --cidfile $(pwd)/docker/tmp/php-mongoadmin-docker.cid \
            scoreya/php-mongoadmin
 
 docker run -d \
            --volumes-from php-mongoadmin \
-           --volumes-from app-data \
            -v $(pwd)/docker/logs/nginx:/var/log/nginx \
            -v $(pwd)/docker/nginx/nginx.conf:/opt/nginx/conf/nginx.conf \
            -v $(pwd)/docker/nginx/certs:/opt/nginx/certs \

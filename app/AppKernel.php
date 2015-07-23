@@ -21,9 +21,6 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
             new Gfreeau\Bundle\GetJWTBundle\GfreeauGetJWTBundle(),
-            new CinderellaBundle\TemplateBundle\ScoreYaCinderellaTemplateBundle(),
-            new CinderellaBundle\SecurityBundle\ScoreYaCinderellaSecurityBundle(),
-            new CinderellaBundle\UserBundle\ScoreYaCinderellaUserBundle(),
             new CinderellaBundle\CoreBundle\ScoreYaCinderellaCoreBundle(),
             new CinderellaBundle\SDKBundle\ScoreYaCinderellaSDKBundle(),
         ];

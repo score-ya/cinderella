@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.2
 MAINTAINER Alexander Miehe <thelex@beamscore.com>
-ENV PHP_VERSION 5.6.7
+ENV PHP_VERSION 5.6.11
 WORKDIR /tmp
 RUN echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" >> /etc/apt/sources.list \
     && echo "deb-src http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main " >> /etc/apt/sources.list \

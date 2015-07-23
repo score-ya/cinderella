@@ -1,0 +1,7 @@
+_security:
+  resource: "security.yml"
+  prefix:   /api
+
+_template:
+  resource: "template.yml"
+  prefix:   /api
