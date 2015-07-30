@@ -1,6 +1,6 @@
 <?php
 
-namespace ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat;
+namespace ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat;
 
 use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Context\SnippetAcceptingContext;
@@ -8,8 +8,6 @@ use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Gherkin\Node\PyStringNode;
 use Sanpi\Behatch\Context\JsonContext;
 use Sanpi\Behatch\HttpCall\HttpCallResult;
-use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\DefaultContext;
-use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Webmozart\Json\JsonDecoder;
 

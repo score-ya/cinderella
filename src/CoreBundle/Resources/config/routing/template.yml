@@ -1,5 +1,5 @@
 score_ya_cinderella_template_get_api:
-    pattern: /template/{name}.{format}
+    path: /template/{name}.{format}
     defaults: { _controller: score_ya.cinderella.template.controller.get_api }
     schemes: [https]
     methods: [GET]
@@ -7,7 +7,7 @@ score_ya_cinderella_template_get_api:
         name: "[\w-]+"
 
 score_ya_cinderella_template_get:
-    pattern: /templates/{id}
+    path: /templates/{id}
     defaults:
         _controller: score_ya.cinderella.template.controller.get
         _converters:
@@ -21,13 +21,13 @@ score_ya_cinderella_template_get:
         id: "[a-f\d]{24}"
 
 score_ya_cinderella_template_index:
-    pattern: /templates
+    path: /templates
     defaults: { _controller: score_ya.cinderella.template.controller.index }
     schemes: [https]
     methods: [GET]
 
 score_ya_cinderella_template_create:
-    pattern: /templates
+    path: /templates
     defaults:
         _controller: score_ya.cinderella.template.controller.create
         _converters:
@@ -39,7 +39,7 @@ score_ya_cinderella_template_create:
     methods: [POST]
 
 score_ya_cinderella_template_update:
-    pattern: /templates/{id}
+    path: /templates/{id}
     defaults:
         _controller: score_ya.cinderella.template.controller.update
         _converters:
@@ -53,7 +53,7 @@ score_ya_cinderella_template_update:
         id: "[a-f\d]{24}"
 
 score_ya_cinderella_template_delete:
-    pattern: /templates/{id}
+    path: /templates/{id}
     defaults:
         _controller: score_ya.cinderella.template.controller.delete
         _converters:

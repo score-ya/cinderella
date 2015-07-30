@@ -11,6 +11,12 @@
       <factory service="doctrine_mongodb.odm.default_document_manager" method="getRepository" />
       <argument>ScoreYa\Cinderella\Template\Model\Template</argument>
     </service>
+
+    <service id="score_ya.cinderella.user.repository.user"
+             class="ScoreYa\Cinderella\User\Repository\UserDocumentRepository">
+      <factory service="doctrine_mongodb.odm.default_document_manager" method="getRepository" />
+      <argument>ScoreYa\Cinderella\User\Model\User</argument>
+    </service>
   </services>
 
 </container>

@@ -29,7 +29,7 @@ module.exports = function(karma) {
 
     browsers: [ 'PhantomJS' ],
 
-    logLevel: 'LOG_INFO',
+    logLevel: karma.LOG_INFO,
 
     singleRun: false,
     autoWatch: true,
@@ -37,7 +37,7 @@ module.exports = function(karma) {
     // browserify configuration
     browserify: {
       debug: true,
-      transform: ['browserify-shim', 'browserify-ngannotate', 'browserify-istanbul']
+      transform: ['browserify-ngannotate', 'browserify-istanbul']
     }
   });
 };

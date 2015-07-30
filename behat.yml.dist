@@ -1,6 +1,4 @@
 default:
-    calls:
-        error_reporting: 16383 #ignore E_USER_DEPRECATED
     formatters:
         pretty:
             verbose:  true
@@ -13,7 +11,7 @@ default:
             contexts:
                 - behatch:rest
                 - behatch:json
-                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext:
+                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\SecurityContext:
                     resultPool: @behatch.http_call.result_pool
                     fixtures:
                         - %paths.base%/tests/fixtures/security/User.yml
@@ -29,12 +27,12 @@ default:
             contexts:
                 - behatch:rest
                 - behatch:json
-                - ScoreYa\Cinderella\Bundle\TemplateBundle\Tests\Behat\TemplateContext:
+                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\TemplateContext:
                     resultPool: @behatch.http_call.result_pool
                     fixtures:
                         - %paths.base%/tests/fixtures/security/User.yml
                         - %paths.base%/tests/fixtures/template/Template.yml
-                - ScoreYa\Cinderella\Bundle\SecurityBundle\Tests\Behat\SecurityContext
+                - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\SecurityContext
                 - ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\RestContext
                 - Behat\MinkExtension\Context\MinkContext
             filters:

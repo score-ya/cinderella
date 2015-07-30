@@ -1,10 +1,10 @@
 score_ya_cinderella_security_login:
-    pattern: /login
+    path: /login
     schemes: [https]
     methods: [POST]
 
 score_ya_cinderella_security_register:
-    pattern: /register
+    path: /register
     defaults:
         _controller: score_ya.cinderella.security.controller.register
         _converters:
@@ -19,7 +19,7 @@ score_ya_cinderella_security_register:
     methods: [POST]
 
 score_ya_cinderella_security_confirm:
-    pattern: /confirm/{confirmationToken}
+    path: /confirm/{confirmationToken}
     defaults:
         _controller: score_ya.cinderella.security.controller.confirm
         _converters:

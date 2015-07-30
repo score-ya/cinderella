@@ -38,7 +38,7 @@ function Template(User, $location, $resource) {
       baseTemplateUrl = process.env.BASE_TEMPLATE_URL;
     }
 
-    return baseTemplateUrl + '/api/template/' + template.name + '.' + getFormat(template.mimeType) + '?apikey=' + User.getApiKey();
+    return baseTemplateUrl + '/api/template/' + template.apiName + '.' + getFormat(template.mimeType) + '?apikey=' + User.getApiKey();
   }
 
 }

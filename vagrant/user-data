@@ -65,7 +65,7 @@ coreos:
         User=core
         ExecStartPre=-/usr/bin/docker kill app-data
         ExecStartPre=-/usr/bin/docker rm -f app-data
-        ExecStart=/usr/bin/docker run -v /home/core/jwt:/home/core/jwt -v /home/core/project:/srv/www/app -v /home/core/composer:/root/.composer --name app-data ubuntu:14.04.2 echo "init app data"
+        ExecStart=/usr/bin/docker run -v /home/core/jwt:/home/core/jwt -v /home/core/project:/srv/www/app -v /tmp/vagrant-cache/composer:/root/.composer --name app-data busybox:latest echo "init app data"
 write_files:
   - path: /home/core/env/symfony
     permissions: 0644

@@ -1,18 +1,29 @@
 {
     "type": "object",
-    "required": true,
+    "required": ["name", "mimeType", "content", "apiName", "openingVariable", "closingVariable", "id"],
+    "additionalProperties": false,
     "properties": {
         "name": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "mimeType": {
-            "type": "string",
-            "required": true
+            "type": "string"
         },
         "content": {
+            "type": "string"
+        },
+        "apiName": {
+            "type": "string"
+        },
+        "openingVariable": {
+            "type": "string"
+        },
+        "closingVariable": {
+            "type": "string"
+        },
+        "id": {
             "type": "string",
-            "required": true
+            "pattern": "^[a-f\\d]{24}$"
         }
     }
 }

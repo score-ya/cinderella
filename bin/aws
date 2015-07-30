@@ -7,7 +7,6 @@ docker run --rm \
            
 docker run --rm \
            --volumes-from app-data \
-           -v /home/core/jwt:/home/core/jwt \
            -w /srv/www/app/ui \
            node:0.10.38 npm run build --silent
 

@@ -43,7 +43,7 @@ describe('Components:Template:Service:Template', function () {
     User.getApiKey.and.returnValue('key');
 
     expect(TemplateInstance.getUrl({
-      name: 'template',
+      apiName: 'template',
       mimeType: 'text/plain'
     })).toEqual('http://host/api/template/template.txt?apikey=key');
   });
@@ -57,7 +57,7 @@ describe('Components:Template:Service:Template', function () {
     process.env.BASE_TEMPLATE_URL = 'otherUri';
 
     expect(TemplateInstance.getUrl({
-      name: 'template',
+      apiName: 'template',
       mimeType: 'text/plain'
     })).toEqual('otherUri/api/template/template.txt?apikey=key');
   });

@@ -2,7 +2,7 @@
 
 var angular = require('angular');
 
-require('angular-route');
+require('angular-ui-router');
 require('angular-jwt');
 require('angular-translate');
 require('angular-translate-loader-partial');

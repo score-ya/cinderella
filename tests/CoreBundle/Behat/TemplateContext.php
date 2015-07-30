@@ -1,10 +1,9 @@
 <?php
 
-namespace ScoreYa\Cinderella\Bundle\TemplateBundle\Tests\Behat;
+namespace ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
-use ScoreYa\Cinderella\Bundle\CoreBundle\Tests\Behat\DefaultContext;
 use ScoreYa\Cinderella\Template\Model\Template;
 use ScoreYa\Cinderella\User\Model\User;
 use Symfony\Component\PropertyAccess\PropertyAccess;

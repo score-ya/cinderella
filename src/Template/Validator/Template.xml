@@ -13,6 +13,15 @@
       <option name="errorPath">name</option>
       <option name="repositoryMethod">findUniqueBy</option>
     </constraint>
+    <constraint name="Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique">
+      <option name="fields">
+        <value>apiName</value>
+        <value>user</value>
+        <value>mimeType</value>
+      </option>
+      <option name="errorPath">apiName</option>
+      <option name="repositoryMethod">findUniqueBy</option>
+    </constraint>
     <property name="name">
       <constraint name="NotBlank" />
     </property>

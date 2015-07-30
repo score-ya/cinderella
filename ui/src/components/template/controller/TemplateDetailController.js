@@ -1,7 +1,6 @@
 'use strict';
 
 var angular = require('angular');
-
 /**
  * @ngInject
  */
@@ -14,7 +13,6 @@ function TemplateDetailController(template, $state, $modal) {
   vm.delete = $delete;
   vm.showTemplateUrl = showTemplateUrl;
   vm.copy = copy;
-
 
   function save() {
     if (vm.template.id) {
