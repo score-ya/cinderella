@@ -19,6 +19,7 @@ class Template
     private $openingVariable;
     private $closingVariable;
     private $user;
+    private $apiName;
 
     public function __construct()
     {
@@ -95,13 +96,17 @@ class Template
 
     /**
      * @param User $user
-     *
-     * @return Template
      */
     public function setUser(User $user)
     {
         $this->user = $user;
+    }
 
-        return $this;
+    /**
+     * @param mixed $apiName
+     */
+    public function setApiName($apiName)
+    {
+        $this->apiName = $apiName;
     }
 }

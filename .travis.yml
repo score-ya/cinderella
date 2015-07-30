@@ -21,11 +21,10 @@ before_install:
   - openssl genrsa -passout pass:testing -out var/jwt/jwt.pem -aes256 4096
   - openssl rsa -pubout -in var/jwt/jwt.pem -passin pass:testing -out var/jwt/jwt_public.pem
 
-install: composer install -n --prefer-source
+install: composer install -n --prefer-dist
 
 script:
   - bin/phpunit -v --coverage-clover=coverage.clover
-  - echo "error_reporting = -1 & ~E_USER_DEPRECATED" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - bin/behat -p travis
 
 after_script:

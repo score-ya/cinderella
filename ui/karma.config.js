@@ -29,7 +29,7 @@ module.exports = function(karma) {
 
     browsers: [ 'PhantomJS' ],
 
-    logLevel: 'LOG_INFO',
+    logLevel: karma.LOG_INFO,
 
     singleRun: false,
     autoWatch: true,

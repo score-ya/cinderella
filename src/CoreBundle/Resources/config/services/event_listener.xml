@@ -43,5 +43,10 @@
       <tag name="kernel.event_listener" event="cinderella.template.updated" method="update" />
     </service>
 
+    <service id="score_ya.cinderella.template.event_listener.set_api_name"
+             class="ScoreYa\Cinderella\Template\EventListener\SetApiName">
+      <tag name="kernel.event_listener" event="cinderella.template.created" method="__invoke" />
+    </service>
+
   </services>
 </container>

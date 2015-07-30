@@ -1,6 +1,4 @@
 default:
-    calls:
-        error_reporting: 16383 #ignore E_USER_DEPRECATED
     formatters:
         pretty:
             verbose:  true

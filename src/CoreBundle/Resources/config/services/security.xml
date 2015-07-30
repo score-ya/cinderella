@@ -9,8 +9,8 @@
     </service>
 
     <service id="score_ya.cinderella.security.password_encoder" public="false"
-             class="Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface"
-             factory-service="security.encoder_factory" factory-method="getEncoder">
+             class="Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface">
+      <factory service="security.encoder_factory" method="getEncoder" />
       <argument>ScoreYa\Cinderella\User\Model\User</argument>
     </service>
 

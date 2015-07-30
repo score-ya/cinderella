@@ -12,6 +12,7 @@
     <field name="n" fieldName="name" type="string"/>
 
     <field name="nc" fieldName="nameCanonical" type="string"/>
+    <field name="an" fieldName="apiName" type="string"/>
     <field name="c" fieldName="content" type="string"/>
     <field name="mt" fieldName="mimeType" type="string"/>
     <field name="ov" fieldName="openingVariable" type="string"/>
@@ -22,6 +23,12 @@
     <indexes>
       <index unique="true" dropDups="true">
         <key name="nc" order="asc"/>
+        <key name="u" order="asc"/>
+        <key name="mt" order="asc"/>
+        <option name="safe" value="true"/>
+      </index>
+      <index unique="true" dropDups="true">
+        <key name="an" order="asc"/>
         <key name="u" order="asc"/>
         <key name="mt" order="asc"/>
         <option name="safe" value="true"/>

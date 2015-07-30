@@ -18,7 +18,7 @@ class TemplateDocumentRepository extends DocumentRepository implements TemplateR
      */
     public function findForApiCall($name, $mimeType, User $user)
     {
-        return $this->findOneBy(['nameCanonical' => $name, 'mimeType' => $mimeType, 'user.id' => $user->getId()]);
+        return $this->findOneBy(['apiName' => $name, 'mimeType' => $mimeType, 'user.id' => $user->getId()]);
     }
 
     /**
@@ -60,6 +60,11 @@ class TemplateDocumentRepository extends DocumentRepository implements TemplateR
      */
     public function findUniqueBy(array $options)
     {
-        return $this->findBy(['nameCanonical' => $options['nameCanonical'], 'mimeType' => $options['mimeType'], 'user.id' => $options['user']]);
+        if (array_key_exists('user', $options)) {
+            $options['user.id'] = $options['user'];
+            unset($options['user']);
+        }
+
+        return $this->findBy($options);
     }
 }
