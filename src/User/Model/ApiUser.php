@@ -64,7 +64,6 @@ class ApiUser implements UserInterface
      */
     public function getSalt()
     {
-        return;
     }
 
     /**
@@ -85,7 +84,6 @@ class ApiUser implements UserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 
     /**

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7711cdbc7629f8aa26f0ea6cda315113",
+    "hash": "ffdd810519bed4d60dd504de3adba8b9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -610,12 +610,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "dbf21abf46f027d49328e13baaa6651e2e408710"
+                "reference": "e934061c53758634e2376c082efc19afe21770de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/dbf21abf46f027d49328e13baaa6651e2e408710",
-                "reference": "dbf21abf46f027d49328e13baaa6651e2e408710",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/e934061c53758634e2376c082efc19afe21770de",
+                "reference": "e934061c53758634e2376c082efc19afe21770de",
                 "shasum": ""
             },
             "require": {
@@ -684,7 +684,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2015-07-28 19:04:52"
+            "time": "2015-07-31 07:30:15"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -2113,16 +2113,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "969d709ad428076bf1084e386dc26dd904d9fb84"
+                "reference": "a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/969d709ad428076bf1084e386dc26dd904d9fb84",
-                "reference": "969d709ad428076bf1084e386dc26dd904d9fb84",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486",
+                "reference": "a9af4708b4bb650c4897e9b8dfbfbdb2ea5f0486",
                 "shasum": ""
             },
             "require": {
@@ -2231,7 +2231,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-07-13 19:27:49"
+            "time": "2015-07-31 13:24:45"
         },
         {
             "name": "twig/extensions",
@@ -2287,16 +2287,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.18.2",
+            "version": "v1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602"
+                "reference": "edbeaf43b0a606cdaadc32a11d2673614a377b90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e8e6575abf6102af53ec283f7f14b89e304fa602",
-                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/edbeaf43b0a606cdaadc32a11d2673614a377b90",
+                "reference": "edbeaf43b0a606cdaadc32a11d2673614a377b90",
                 "shasum": ""
             },
             "require": {
@@ -2305,7 +2305,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-master": "1.19-dev"
                 }
             },
             "autoload": {
@@ -2340,7 +2340,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-06-06 23:31:24"
+            "time": "2015-07-31 13:45:26"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -4418,7 +4418,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",

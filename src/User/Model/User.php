@@ -20,7 +20,6 @@ class User implements AdvancedUserInterface
     private $repeatedPlainPassword;
     private $enabled;
     private $locked;
-    private $roles;
     private $confirmationToken;
     private $apiUser;
 
@@ -144,7 +143,6 @@ class User implements AdvancedUserInterface
      */
     public function getSalt()
     {
-        return;
     }
 
     /**
@@ -217,7 +215,6 @@ class User implements AdvancedUserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 
     /**
