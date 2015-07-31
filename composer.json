@@ -14,6 +14,7 @@
     },
     "autoload": {
         "psr-4": {
+            "ScoreYa\\Cinderella\\App\\": "app",
             "ScoreYa\\Cinderella\\Bundle\\CoreBundle\\": "src/CoreBundle",
             "ScoreYa\\Cinderella\\Core\\": "src/Core",
             "ScoreYa\\Cinderella\\Security\\": "src/Security",
