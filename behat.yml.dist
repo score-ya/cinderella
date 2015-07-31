@@ -48,6 +48,7 @@ default:
             show_auto:    false
         Behat\Symfony2Extension:
             kernel:
+                class: ScoreYa\Cinderella\App\AppKernel
                 bootstrap: %paths.base%/var/bootstrap.php.cache
 
 apiary:
